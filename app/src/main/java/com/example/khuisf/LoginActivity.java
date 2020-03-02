@@ -51,17 +51,18 @@ public class LoginActivity extends AppCompatActivity {
                 .setTag("LOGIN")
                 .build().
                 /*getAsString(new StringRequestListener() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("answ", response.toString());
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("sss",response);
+                    }
 
-            }
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.d("sss",anError.toString());
 
-            @Override
-            public void onError(ANError anError) {
+                    }
+                });*/
 
-            }
-        });*/
     getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
@@ -69,19 +70,20 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     String getedUsername = response.getString("username");
                     String getedName = response.getString("name");
-                    int getedAccess = response.getInt("access");
+                    String getedAccess = response.getString("role");
 
                     if (getedUsername.toLowerCase().equals(username.toLowerCase())) {
                         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
                         preferences.edit().putString("username", getedUsername).apply();
                         preferences.edit().putString("name", getedName).apply();
-                        preferences.edit().putInt("access", getedAccess).apply();
+                        preferences.edit().putString("role", getedAccess).apply();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                         Toast.makeText(LoginActivity.this, "شما وارد شدید", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     Toast.makeText(LoginActivity.this, "نام کاربری یا رمز عبور اشتباه است", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
@@ -92,7 +94,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
 

@@ -46,12 +46,10 @@ public class MainActivity extends AppCompatActivity {
         TextView tv_access = headView.findViewById(R.id.nav_header_access_tv);
         TextView tv_name = headView.findViewById(R.id.nav_header_name_tv);
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        int access=preferences.getInt("access", 0);
+        String role=preferences.getString("role", "");
         //set menu
-        setMenu(access);
-
-        Log.d("access",preferences.getString("name", ""));
-        tv_access.setText(setAccess(access));
+        setMenu(role);
+        tv_access.setText(preferences.getString("role",""));
         tv_name.setText(preferences.getString("name", ""));
 
 
@@ -68,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setMenu(int access) {
-        if(access==1) navigationView.inflateMenu(R.menu.stu_menu);
-        else if(access==2)navigationView.inflateMenu(R.menu.teacher_menu);
+    private void setMenu(String role) {
+        //this menu sett menu by user roles
+        if(role.equals("دانشجو")) navigationView.inflateMenu(R.menu.stu_menu);
+        else if(role.equals("استاد"))navigationView.inflateMenu(R.menu.teacher_menu);
     }
 
 
@@ -97,10 +96,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+/*
     private String setAccess(int access) {
         if (access == 1) return "دانشجو";
         else if (access == 2) return "استاد";
         else if (access == 3) return "پرسنل";
         return "";
-    }
+    }*/
 }
