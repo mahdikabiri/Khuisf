@@ -1,7 +1,7 @@
-package com.example.khuisf.ui.home;
+package com.example.khuisf.ui.attendancer;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,32 +17,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.example.khuisf.CourseAdapter;
 import com.example.khuisf.Course;
+import com.example.khuisf.CourseAdapter;
 import com.example.khuisf.R;
 import com.example.khuisf.Urls;
+import com.example.khuisf.attendancerAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-import static android.content.Context.MODE_PRIVATE;
-
-public class HomeFragment extends Fragment {
-    ArrayList<Course> courseItems;
+public class AttendacerFragment extends Fragment {
+    ArrayList<Course> studentItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
-    public HomeFragment() {
+    public AttendacerFragment() {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_attendance, container, false);
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
         return view;
@@ -52,22 +50,22 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.recycler_getcourse);
+        recyclerView = getActivity().findViewById(R.id.recycler_attendance);
         AndroidNetworking.initialize(getContext());
-        courseItems = new ArrayList<>();
-        adapter = new CourseAdapter(getContext(), courseItems);
+        studentItems = new ArrayList<>();
+        adapter = new attendancerAdapter(getContext(), studentItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-        getCourses();
+        getStudnets();
     }
 
-    private void getCourses() {
+    private void getStudnets() {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getCourses)
-                .addBodyParameter("username", getNameFromSharedRefs())
-                .setTag("getCourses")
+        AndroidNetworking.post(Urls.host+ Urls.getStudent)
+                .addBodyParameter("characteristic",getCharFromSharedPrefs())
+                .setTag("getCourse")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
@@ -75,39 +73,26 @@ public class HomeFragment extends Fragment {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
-                        String cName = object.getString("course_name");
-                        String cDay = object.getString("day");
-                        String cTime = object.getString("time");
+                        String cName = object.getString("name");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime));
+                        studentItems.add(new Course(cName));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(getActivity(), e.toString() + "", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
-                }
-            }
+                }            }
 
             @Override
             public void onError(ANError anError) {
-                Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
+                Log.d("salam",anError.toString());
+
             }
         });
     }
 
-    private String getNameFromSharedRefs() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        return preferences.getString("username", "");
+    private String getCharFromSharedPrefs() {
+        return "2222";
     }
 
-    private void readyResponse(String result) {
-        String[] elements = result.split(",");
-
-        List<String> fix = Arrays.asList(elements);
-
-        ArrayList<String> listofStrings = new ArrayList<>(fix);
-
-        Toast.makeText(getActivity(), "courses:" + listofStrings, Toast.LENGTH_SHORT).show();
-
-    }
 }

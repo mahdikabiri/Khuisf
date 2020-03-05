@@ -1,4 +1,4 @@
-package com.example.khuisf.ui.gallery;
+package com.example.khuisf.ui.attendancer;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

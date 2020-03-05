@@ -70,13 +70,13 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     String getedUsername = response.getString("username");
                     String getedName = response.getString("name");
-                    String getedAccess = response.getString("role");
+                    int getedAccess = response.getInt("role");
 
                     if (getedUsername.toLowerCase().equals(username.toLowerCase())) {
                         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
                         preferences.edit().putString("username", getedUsername).apply();
                         preferences.edit().putString("name", getedName).apply();
-                        preferences.edit().putString("role", getedAccess).apply();
+                        preferences.edit().putInt("role", getedAccess).apply();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                         Toast.makeText(LoginActivity.this, "شما وارد شدید", Toast.LENGTH_SHORT).show();
@@ -102,8 +102,6 @@ public class LoginActivity extends AppCompatActivity {
         edtUsername = findViewById(R.id.login_edt_username);
         edtPassword = findViewById(R.id.login_edt_password);
         spinner = findViewById(R.id.spinner);
-
-
     }
 
     public void opentest(View view) {

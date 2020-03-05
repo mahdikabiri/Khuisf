@@ -1,14 +1,18 @@
 package com.example.khuisf;
 
-public class ExapleItem {
+public class Course {
     private String title;
     private String day;
     private String time;
 
-    public ExapleItem(String title, String day, String time) {
+    public Course(String title, String day, String time) {
         this.title = title;
         this.day = day;
         this.time = time;
+    }
+
+    public Course(String title) {
+        this.title = title;
     }
 
     public String getTitle() {
