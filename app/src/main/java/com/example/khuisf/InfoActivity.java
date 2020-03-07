@@ -1,33 +1,22 @@
-package com.example.khuisf.ui.share;
+package com.example.khuisf;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ActionMode;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.khuisf.InfoActivity;
-import com.example.khuisf.MainActivity;
-import com.example.khuisf.R;
-import com.example.khuisf.Urls;
-import com.google.android.material.internal.NavigationMenu;
-import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,44 +24,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.Context.MODE_PRIVATE;
+public class InfoActivity extends AppCompatActivity {
+    Spinner spinner;
+    TextView tvCode,tvName;
+    Button btnReturn;
+    public static int ROLE=0;
 
-public class ShareFragment extends Fragment {
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
-        SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        int role = preferences.getInt("role", 0);
-
-        if (role > 4) {
-             startActivity(new Intent(getActivity(), InfoActivity.class));
-             getActivity().finish();
-
-        }
-        return root;
-
-    }
-}
-        /*
-
-        spinner = root.findViewById(R.id.info_spinner_role);
-        tvCode=root.findViewById(R.id.info_tv_num);
-        tvName=root.findViewById(R.id.info_tv_name);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_info);
+        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        spinner = findViewById(R.id.spinner2);
+        btnReturn=findViewById(R.id.info_btn_return);
+        tvCode=findViewById(R.id.info_tv_num);
+        tvName=findViewById(R.id.info_tv_name2);
+        createSpinner(preferences,spinner);
         tvName.setText(preferences.getString("name",""));
-        createSpinner(root,preferences, spinner);
-        AndroidNetworking.initialize(getActivity());
-
-
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String textFormSpinner= spinner.getSelectedItem().toString();
                 //get role code form spinner and send with username to server
-                String s=String.valueOf(getSelectedItem(textFormSpinner));
-                preferences.edit().putString("role",s);
                 getInfo(String.valueOf(getSelectedItem(textFormSpinner)),preferences.getString("username",""));
+                ROLE=getSelectedItem(textFormSpinner);
+                preferences.edit().putInt("role",getSelectedItem(textFormSpinner)).apply();
 
             }
 
@@ -82,7 +58,14 @@ public class ShareFragment extends Fragment {
             }
         });
 
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(InfoActivity.this,MainActivity.class));
+            }
+        });
     }
+
 
     private int getSelectedItem(String textFormSpinner) {
         int roleForSend=0;
@@ -106,12 +89,10 @@ public class ShareFragment extends Fragment {
     }
 
 
-    private void createSpinner(View root, SharedPreferences preferences, Spinner s) {
+    private void createSpinner( SharedPreferences preferences, Spinner s) {
         int role = preferences.getInt("role", 0);
         if(role>4){
-            Toast.makeText(getActivity(), "شما چند نقش دارید لطفا یکی را انتخاب کنید", Toast.LENGTH_SHORT).show();
-           // startActivity(new Intent(getActivity(), InfoActivity.class));
-
+            Toast.makeText(this, "شما چند نقش دارید لطفا یکی را انتخاب کنید", Toast.LENGTH_SHORT).show();
         }
         final List<String> list=new ArrayList<String>();
 
@@ -141,7 +122,7 @@ public class ShareFragment extends Fragment {
         }
 
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, list);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         s.setAdapter(dataAdapter);
@@ -156,7 +137,7 @@ public class ShareFragment extends Fragment {
                 .build().getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
-                SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
 
                 String getedCode = null;
                 try {
@@ -166,7 +147,6 @@ public class ShareFragment extends Fragment {
                 }
                 tvCode.setText(getedCode);
                 preferences.edit().putString("code",getedCode).apply();
-                Log.d("sdsd",response.toString());
             }
 
             @Override
@@ -174,5 +154,7 @@ public class ShareFragment extends Fragment {
                 Log.d("sdsd",anError.toString());
             }
         });
+    }
 
-*/
+
+}

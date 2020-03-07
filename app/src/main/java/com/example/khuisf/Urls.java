@@ -5,4 +5,5 @@ public class Urls {
     public static String login="login.php";
     public static String getCourses="get_courses.php";
     public static String getStudent="get_students.php";
+    public static String getInfo="get_info.php";
 }

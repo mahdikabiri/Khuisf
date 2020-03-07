@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
@@ -14,6 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.khuisf.ui.share.ShareFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -23,13 +25,18 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
     NavigationView navigationView;
+    Button btnInfo;
+    private AppBarConfiguration mAppBarConfiguration;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +44,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-         navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+
+
 
         View headView = navigationView.getHeaderView(0);
 
         TextView tv_access = headView.findViewById(R.id.nav_header_access_tv);
         TextView tv_name = headView.findViewById(R.id.nav_header_name_tv);
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        int role=preferences.getInt("role", 0);
+        int role = preferences.getInt("role", 0);
         //set menu
         setMenu(role);
         tv_access.setText(setAccess(role));
@@ -68,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setMenu(int role) {
         //this menu sett menu by user roles
-        if(role==1) navigationView.inflateMenu(R.menu.stu_menu);
-        else if(role==2)navigationView.inflateMenu(R.menu.teacher_menu);
+        if (role == 1) navigationView.inflateMenu(R.menu.stu_menu);
+        else if (role == 2) navigationView.inflateMenu(R.menu.teacher_menu);
 
     }
 
@@ -78,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
+
+
         return true;
     }
 
@@ -85,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itme_action_settings) {
             startActivity(new Intent(MainActivity.this, ElipsisActivity.class));
+        }else if(item.getItemId()==R.id.itme_img_prof){
+        startActivity(new Intent(MainActivity.this,InfoActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

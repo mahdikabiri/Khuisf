@@ -2,7 +2,9 @@ package com.example.khuisf.ui.home;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -61,21 +63,26 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         getCourses();
+
+
+
+
     }
 
     private void getCourses() {
         AndroidNetworking.initialize(getActivity());
         AndroidNetworking.post(Urls.host + Urls.getCourses)
-                .addBodyParameter("username", getNameFromSharedRefs())
+                .addBodyParameter("code", getNameFromSharedRefs())
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
+                Log.d("sss",response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
-                        String cName = object.getString("course_name");
+                        String cName = object.getString("name");
                         String cDay = object.getString("day");
                         String cTime = object.getString("time");
                         // add items from db and save to arraylist
@@ -91,13 +98,15 @@ public class HomeFragment extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
+                Log.d("sss",anError.toString());
+
             }
         });
     }
 
     private String getNameFromSharedRefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        return preferences.getString("username", "");
+        return preferences.getString("code", "");
     }
 
     private void readyResponse(String result) {
