@@ -63,9 +63,8 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         getCourses();
-
-
-
+        view.findViewById(R.id.howm_prograss).setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
 
     }
 
@@ -85,8 +84,9 @@ public class HomeFragment extends Fragment {
                         String cName = object.getString("name");
                         String cDay = object.getString("day");
                         String cTime = object.getString("time");
+                        String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime));
+                        courseItems.add(new Course(cName, cDay, cTime,cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {

@@ -32,7 +32,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final String CHARAC="characteristic";
+    public static final String NAME="coursename";
+    public static final String DAY="courseday";
+    public static final String TIME="coursetime";
     NavigationView navigationView;
     Button btnInfo;
     private AppBarConfiguration mAppBarConfiguration;

@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class attendancerAdapter extends RecyclerView.Adapter<attendancerAdapter.CourseViewHolder> {
-    private ArrayList<Course> mstudents;
+    private ArrayList<Student> mstudents;
     LayoutInflater inflater;
     Context context;
 
-    public attendancerAdapter(Context context, ArrayList<Course> courses) {
+    public attendancerAdapter(Context context, ArrayList<Student> students) {
        this.context=context;
-        mstudents = courses;
+        mstudents = students;
         this.inflater=LayoutInflater.from(context);
     }
 
@@ -33,8 +33,8 @@ public class attendancerAdapter extends RecyclerView.Adapter<attendancerAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
-        Course currentItem= mstudents.get(position);
-        holder.tvName.setText(currentItem.getTitle());
+        Student currentItem= mstudents.get(position);
+        holder.tvName.setText(currentItem.getName());
 
     }
 

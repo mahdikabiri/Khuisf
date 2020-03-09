@@ -6,20 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
-
+public class CourseAdapterForTeach extends RecyclerView.Adapter<CourseAdapterForTeach.CourseViewHolder> {
     LayoutInflater inflater;
     Context context;
+
     private ArrayList<Course> mCourses;
 
-    public CourseAdapter(Context context, ArrayList<Course> courses) {
+    public CourseAdapterForTeach(Context context, ArrayList<Course> courses) {
         this.context = context;
         mCourses = courses;
         this.inflater = LayoutInflater.from(context);
@@ -39,18 +38,24 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         holder.tvDay.setText(currentItem.getDay());
         holder.tvTime.setText(currentItem.getTime());
         holder.tvChar.setText(currentItem.getCharac());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
                 Intent intent=new Intent(context, CourseInfoActivity.class);
                 intent.putExtra(MainActivity.CHARAC,currentItem.getCharac());
                 intent.putExtra(MainActivity.NAME,currentItem.getTitle());
                 intent.putExtra(MainActivity.DAY,currentItem.getDay());
                 intent.putExtra(MainActivity.TIME,currentItem.getTime());
-
                 context.startActivity(intent);
-                Toast.makeText(context, holder.tvTime.getText(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, AttendancerActivity.class);
+                intent.putExtra("CHARACTRISTIC",currentItem.getCharac());
+                context.startActivity(intent);
             }
         });
     }

@@ -1,32 +1,82 @@
 package com.example.khuisf;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.TextViewCompat;
 
-import android.view.View;
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CourseInfoActivity extends AppCompatActivity {
-
+    TextView tvCourseName,tvTeacherName,tvActualUnit,tvTheoriUnit,tvCharac,tvDay,tvTime;
+    String charac,name,time,day;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_info);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        inti();
+        charac=getIntent().getStringExtra(MainActivity.CHARAC);
+        name=getIntent().getStringExtra(MainActivity.NAME);
+        time=getIntent().getStringExtra(MainActivity.TIME);
+        day=getIntent().getStringExtra(MainActivity.DAY);
+        AndroidNetworking.initialize(this);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        tvCharac.setText(charac);
+        tvDay.setText(day);
+        tvTime.setText(time);
+        tvCourseName.setText(name);
+
+        getCourseInfo(charac);
+    }
+// for more performance  get some data form previus activity
+    private void getCourseInfo(String charac) {
+        AndroidNetworking.post(Urls.host + Urls.getCourseInfo)
+                .addBodyParameter("char", charac)
+                .setTag("LOGIN")
+                .build().getAsJSONObject(new JSONObjectRequestListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onResponse(JSONObject response) {
+                try {
+                    String unitPractical=response.getString("unit_practical");
+                    String unitTheoretical=response.getString("unit_theoretical");
+                    String name=response.getString("name");
+                    tvActualUnit.setText(unitPractical);
+                    tvTheoriUnit.setText(unitTheoretical);
+                    tvTeacherName.setText(name);
+                 } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onError(ANError anError) {
+                Log.d("sdsd",anError.toString());
             }
         });
+    }
+
+    private void inti() {
+        tvCourseName=findViewById(R.id.courseinfo_tv_coursename);
+        tvTeacherName=findViewById(R.id.courseinfo_teachername);
+        tvActualUnit=findViewById(R.id.courseinfo_tv_amali);
+        tvTheoriUnit=findViewById(R.id.courseinfo_tv_theori);
+        tvCharac=findViewById(R.id.courseinfo_course_char);
+        tvDay=findViewById(R.id.courseinfo_tv_day);
+        tvTime=findViewById(R.id.courseinfo_tv_time);
     }
 
 }
