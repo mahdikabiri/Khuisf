@@ -16,7 +16,7 @@
             android:id="@+id/nav_slideshow"
             android:title="ثبت نمرات" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_score"
             android:title="نمرات ترم جاری" />
         <item
             android:id="@+id/nav_tool"

@@ -8,4 +8,5 @@ public class Urls {
     public static String getCourseTeacher="get_courses_forteacher.php";
     public static String getInfo="get_info.php";
     public static String getCourseInfo="get_courses_info.php";
+    public static String getScore="get_courses_score.php";
 }

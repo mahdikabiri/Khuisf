@@ -23,10 +23,9 @@
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.khuisf.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_score"
+        android:name="com.example.khuisf.ui.send.GetScoreFragment"
+        android:label="کارنامه" />
 
     <fragment
         android:id="@+id/nav_share"
@@ -36,7 +35,7 @@
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.khuisf.ui.send.SendFragment"
+        android:name="com.example.khuisf.ui.send.GetScoreFragment"
         android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        tools:layout="@layout/fragment_getscore" />
 </navigation>

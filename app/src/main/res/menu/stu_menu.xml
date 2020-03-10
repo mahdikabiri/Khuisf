@@ -12,15 +12,9 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="برنامه هفتگی" />
+
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="انتخاب واحد" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:title="کارنامه ترمی" />
-        <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_score"
             android:title="نمرات ترم جاری" />
         <item
             android:id="@+id/nav_tool"
