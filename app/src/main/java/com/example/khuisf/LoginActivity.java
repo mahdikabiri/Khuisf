@@ -33,6 +33,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activiry);
         init();
+
+        SessionManager manager=new SessionManager(this);
+        if(manager.isLogedIn()){
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            finish();
+        }
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -40,11 +46,11 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener((View v) -> {
 
-            login(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim());
+            login(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim(),manager);
         });
     }
 
-    private void login(final String username, String password) {
+    private void login(final String username, String password,final SessionManager manager) {
         AndroidNetworking.post(Urls.host + Urls.login)
                 .addBodyParameter("username", username)
                 .addBodyParameter("password", password)
@@ -73,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                     int getedAccess = response.getInt("role");
 
                     if (getedUsername.toLowerCase().equals(username.toLowerCase())) {
+                        manager.setLogedIn(true);
                         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
                         preferences.edit().putString("username", getedUsername).apply();
                         preferences.edit().putString("name", getedName).apply();

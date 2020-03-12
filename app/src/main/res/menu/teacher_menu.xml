@@ -10,42 +10,29 @@
 
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_attendancer"
             android:title="لیست حضور و غیاب" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_contract"
+            android:id="@+id/nav_insertscore"
             android:title="ثبت نمرات" />
-        <item
-            android:id="@+id/nav_score"
-            android:title="نمرات ترم جاری" />
+
         <item
             android:id="@+id/nav_tool"
             android:title="پیام رسان" />
-        <item
-            android:id="@+id/nav_tیoosslds"
-            android:title="گواهی1" />
-        <item
-            android:id="@+id/naشv_tیoosslds"
-            android:title="گواهی2" />
-        <item
-            android:id="@+id/naسیv_tیoosslds"
-            android:title="گواهی3" />
+
 
 
 
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:onClick="logout"
+                android:icon="@drawable/ic_logout"
+                android:title="logout" />
         </menu>
     </item>
 

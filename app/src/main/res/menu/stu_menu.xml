@@ -10,49 +10,25 @@
             android:title="اطلاعات" />
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_weekly"
             android:title="برنامه هفتگی" />
 
         <item
+            android:icon="@drawable/ic_scoreboard"
             android:id="@+id/nav_score"
             android:title="نمرات ترم جاری" />
         <item
             android:id="@+id/nav_tool"
             android:title="پیام رسان" />
-        <item
-            android:id="@+id/nav_toos"
-            android:title="فعالیت کلاسی" />
-        <item
-            android:id="@+id/nav_toolds"
-            android:title="نمرات ترم جاری" />
-        <item
-            android:id="@+id/nav_tooslds"
-            android:title="مشاهده حضورغیاب" />
-        <item
-            android:id="@+id/nav_toosslds"
-            android:title="درخواست گواهی" />
-        <item
-            android:id="@+id/nav_tیoosslds"
-            android:title="گواهی1" />
-        <item
-            android:id="@+id/naشv_tیoosslds"
-            android:title="گواهی2" />
-        <item
-            android:id="@+id/naسیv_tیoosslds"
-            android:title="گواهی3" />
-
-
-
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="">
         <menu>
-
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:onClick="logout"
+                android:icon="@drawable/ic_logout"
+                android:title="logout" />
         </menu>
     </item>
 
