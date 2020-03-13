@@ -35,6 +35,7 @@ public class attendancerAdapter extends RecyclerView.Adapter<attendancerAdapter.
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         Student currentItem= mstudents.get(position);
         holder.tvName.setText(currentItem.getName());
+        holder.tvCode.setText(currentItem.getCode());
 
     }
 
@@ -45,10 +46,12 @@ public class attendancerAdapter extends RecyclerView.Adapter<attendancerAdapter.
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder{
         public TextView tvName;
+        public TextView tvCode;
         public RadioGroup radioGroup;
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName=itemView.findViewById(R.id.attendancer_tv_name);
+            tvCode=itemView.findViewById(R.id.attendancer_tv_code);
            radioGroup=itemView.findViewById(R.id.attendancer_rg);
         }
     }

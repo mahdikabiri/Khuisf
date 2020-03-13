@@ -1,17 +1,20 @@
 package com.example.khuisf;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,58 +22,73 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class AttendancerActivity extends AppCompatActivity {
+public class InsertScoreActivity extends AppCompatActivity {
+    String charac, title;
     ArrayList<Student> studentItems;
+    TextView tvTitle;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    String charac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attendancer);
-
-        charac=getIntent().getStringExtra("CHARACTRISTIC");
-        recyclerView = findViewById(R.id.recycler_attendance1);
+        setContentView(R.layout.activity_insert_score);
+        charac = getIntent().getStringExtra("CHARACTERISTIC");
+        title = getIntent().getStringExtra("title");
+        recyclerView = findViewById(R.id.insertscore_recycler);
+        tvTitle=findViewById(R.id.insertscore_tv_title);
+        tvTitle.setText(title);
         AndroidNetworking.initialize(this);
         studentItems = new ArrayList<>();
-        adapter = new attendancerAdapter(this, studentItems);
+        adapter = new InsertScoreAdapter(this, studentItems,charac);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         getStudnets();
+
+
     }
 
 
+/*
+    private void insertScores() {
+        int s=adapter.getItemCount();
+        EditText textView;
+        textView=recyclerView.findViewById(R.id.insertscore_item_edt_insertscore);
+            String s;
+
+        Toast.makeText(this, textView.getText(), Toast.LENGTH_SHORT).show();
+    }*/
 
     private void getStudnets() {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(Urls.host+ Urls.getStudent)
-                .addBodyParameter("char",charac)
+        AndroidNetworking.post(Urls.host + Urls.getStudent)
+                .addBodyParameter("char", charac)
                 .setTag("getCourse")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("ddf",response.toString());
+                Log.d("ddf", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
                         String cName = object.getString("name");
-                        String cCode=object.getString("codestudent");
+                        String cCode = object.getString("codestudent");
                         // add items from db and save to arraylist
-                        studentItems.add(new Student(cName,cCode));
+                        studentItems.add(new Student(cName, cCode));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), e.toString() + "", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
-                }            }
+                }
+            }
 
             @Override
             public void onError(ANError anError) {
-                Log.d("salam",anError.toString());
+                Log.d("salam", anError.toString());
 
             }
         });

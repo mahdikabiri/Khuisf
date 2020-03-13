@@ -67,7 +67,6 @@ public class AttendacerFragment extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         String code=preferences.getString("code","");
         getCourses(code);
-
     }
 
 
