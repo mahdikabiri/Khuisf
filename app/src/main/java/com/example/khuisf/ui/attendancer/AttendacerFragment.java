@@ -18,13 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.example.khuisf.AttendancerActivity;
-import com.example.khuisf.Course;
-import com.example.khuisf.CourseAdapter;
-import com.example.khuisf.CourseAdapterForTeach;
+import com.example.khuisf.entitys.Course;
+import com.example.khuisf.teachers.getcourses.CourseAdapterForTeach;
 import com.example.khuisf.R;
-import com.example.khuisf.Urls;
-import com.example.khuisf.attendancerAdapter;
+import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;

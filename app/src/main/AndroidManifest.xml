@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".InsertScoreActivity"></activity>
-        <activity android:name=".AttendancerActivity" />
+        <activity android:name=".teachers.insertscore.InsertScoreActivity"></activity>
+        <activity android:name=".teachers.attendancer.AttendancerActivity" />
         <activity
             android:name=".CourseInfoActivity"
             android:label="@string/title_activity_course_info"

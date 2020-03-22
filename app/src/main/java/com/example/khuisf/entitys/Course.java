@@ -1,4 +1,4 @@
-package com.example.khuisf;
+package com.example.khuisf.entitys;
 
 public class Course {
     private String title;

@@ -9,29 +9,24 @@
             android:title="اساتید" />
 
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_attendaner"
             android:icon="@drawable/ic_attendancer"
             android:title="لیست حضور و غیاب" />
         <item
-            android:icon="@drawable/ic_contract"
             android:id="@+id/nav_insertscore"
+            android:icon="@drawable/ic_contract"
             android:title="ثبت نمرات" />
-
         <item
             android:id="@+id/nav_tool"
             android:title="پیام رسان" />
-
-
-
-
 
     </group>
 
     <item android:title="">
         <menu>
             <item
-                android:onClick="logout"
                 android:icon="@drawable/ic_logout"
+                android:onClick="logout"
                 android:title="logout" />
         </menu>
     </item>

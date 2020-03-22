@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_attendaner"
         android:name="com.example.khuisf.ui.attendancer.AttendacerFragment"
         android:label="حضور و غیاب" />
 
@@ -25,16 +25,18 @@
         android:id="@+id/nav_score"
         android:name="com.example.khuisf.ui.send.GetScoreFragment"
         android:label="کارنامه" />
-
+    <fragment
+        android:id="@+id/nav_score12"
+        android:name="com.example.khuisf.ui.send.GetScoreFragment"
+        android:label="کارنامه" />
     <fragment
         android:id="@+id/nav_share"
         android:name="com.example.khuisf.ui.share.ShareFragment"
         android:label="اطلاعات فردی"
         tools:layout="@layout/fragment_share" />
-
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.khuisf.ui.send.GetScoreFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_getscore" />
+        android:id="@+id/select_courses"
+        android:name="com.example.khuisf.students.selectcourse.SelectCourses"
+        android:label="انتخاب واحد"
+        tools:layout="@layout/fragment_select_courses" />
 </navigation>

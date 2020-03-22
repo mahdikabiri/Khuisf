@@ -13,17 +13,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.example.khuisf.Course;
-import com.example.khuisf.CourseAdapterForTeach;
+import com.example.khuisf.entitys.Course;
 import com.example.khuisf.CourseAdapterForTeachInsertScore;
 import com.example.khuisf.R;
-import com.example.khuisf.Urls;
+import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;

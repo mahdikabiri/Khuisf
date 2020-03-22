@@ -20,9 +20,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.androidnetworking.AndroidNetworking;
+import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
     public static final String CHARAC = "characteristic";
     public static final String NAME = "coursename";
     public static final String DAY = "courseday";
@@ -63,15 +64,32 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_insertscore,
-                R.id.nav_score, R.id.nav_share, R.id.nav_send)
+                R.id.nav_home, R.id.nav_insertscore, R.id.nav_attendaner,
+                R.id.nav_score, R.id.nav_share, R.id.select_courses)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
     }
+/*
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        switch (item.getItemId()) {
+
+            case R.id.nav_select: {
+                //do somthing
+                 //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new SelectCourses()).commit();
+                break;
+            }
+        }
+        //close navigation drawer
+        //mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+*/
 
 
     private void setMenu(int role) {
@@ -85,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
-
         return true;
     }
 
@@ -96,9 +113,8 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.itme_img_prof) {
             startActivity(new Intent(MainActivity.this, InfoActivity.class));
         }
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
-
 
 
     @Override
@@ -117,11 +133,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void logout(MenuItem item) {
-        SessionManager manager=new SessionManager(MainActivity.this);
+        SessionManager manager = new SessionManager(MainActivity.this);
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        preferences.edit().putString("code","null").apply();
+        preferences.edit().putString("code", "null").apply();
         manager.setLogedIn(false);
-        startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
         finish();
     }
 }

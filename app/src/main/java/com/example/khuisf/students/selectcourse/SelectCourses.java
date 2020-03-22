@@ -1,12 +1,7 @@
-package com.example.khuisf.ui.send;
+package com.example.khuisf.students.selectcourse;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,12 +10,17 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Score;
-import com.example.khuisf.ScoreAdapter;
+import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
@@ -31,39 +31,46 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class GetScoreFragment extends Fragment {
-    ArrayList<Score> courseItems;
+
+public class SelectCourses extends Fragment {
+    ArrayList<Course> courseItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_getscore, container, false);
-        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        root.setLayoutParams(layoutParams);
-        return root;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_select_courses, container, false);
+
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.frag_getscore_recycler);
+        recyclerView = getActivity().findViewById(R.id.select_course_recycler);
         AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
-        adapter = new ScoreAdapter(getContext(), courseItems);
+        adapter = new SelectCourseAdapter(getContext(), courseItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-        getScore();
+        getCourses();
 
     }
 
-    private void getScore() {
+    private void getCourses() {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getScore)
-                .addBodyParameter("code", getCodeFromSharedPrefs())
+        AndroidNetworking.post(Urls.host + Urls.getSelectedCourses)
+                .addBodyParameter("code",getNameFromSharedRefs())
+                .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
@@ -72,16 +79,12 @@ public class GetScoreFragment extends Fragment {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
-                        String score = object.getString("score");
-                        String cName = object.getString("course_name");
-                        String unitAmali = object.getString("unit_practical");
-                        String unitTeori = object.getString("unit_theoretical");
-                        //if score not inserted
-                        if (score.equals("null")){
-                            score="خالی";
-                        }
+                        String cName = object.getString("name");
+                        String cDay = object.getString("day");
+                        String cTime = object.getString("time");
+                        String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Score(cName, unitTeori, unitAmali,score));
+                        courseItems.add(new Course(cName, cDay, cTime,cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -92,15 +95,14 @@ public class GetScoreFragment extends Fragment {
 
             @Override
             public void onError(ANError anError) {
-                Toast.makeText(getActivity(), "اراد در دریافت نمرات", Toast.LENGTH_SHORT).show();
-                Log.d("sss",anError.toString());
+                Toast.makeText(getActivity(), "ایراد در دریافت برنامه دروس", Toast.LENGTH_SHORT).show();
+                Log.d("ersss",anError.toString());
 
             }
         });
     }
-
-    private String getCodeFromSharedPrefs() {
+    private String getNameFromSharedRefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        return preferences.getString("code","");
+        return preferences.getString("code", "");
     }
 }

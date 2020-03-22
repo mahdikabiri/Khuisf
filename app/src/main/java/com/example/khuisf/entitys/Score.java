@@ -1,4 +1,4 @@
-package com.example.khuisf;
+package com.example.khuisf.entitys;
 
 public class Score {
     String courseName,unitTeori,unitAmali,score;

@@ -1,4 +1,4 @@
-package com.example.khuisf;
+package com.example.khuisf.teachers.insertscore;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.example.khuisf.R;
+import com.example.khuisf.entitys.Student;
+import com.example.khuisf.entitys.Urls;
 
 import java.util.ArrayList;
 

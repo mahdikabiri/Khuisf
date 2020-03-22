@@ -2,19 +2,14 @@ package com.example.khuisf;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.widget.TextViewCompat;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +21,7 @@ public class CourseInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_info);
-        inti();
+        init();
         charac=getIntent().getStringExtra(MainActivity.CHARAC);
         name=getIntent().getStringExtra(MainActivity.NAME);
         time=getIntent().getStringExtra(MainActivity.TIME);
@@ -69,7 +64,7 @@ public class CourseInfoActivity extends AppCompatActivity {
         });
     }
 
-    private void inti() {
+    private void init() {
         tvCourseName=findViewById(R.id.courseinfo_tv_coursename);
         tvTeacherName=findViewById(R.id.courseinfo_teachername);
         tvActualUnit=findViewById(R.id.courseinfo_tv_amali);

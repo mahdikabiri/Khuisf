@@ -1,4 +1,4 @@
-package com.example.khuisf;
+package com.example.khuisf.teachers.attendancer;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.khuisf.R;
+import com.example.khuisf.entitys.Student;
 
 import java.util.ArrayList;
 

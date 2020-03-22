@@ -1,8 +1,7 @@
-package com.example.khuisf;
+package com.example.khuisf.teachers.insertscore;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.khuisf.R;
+import com.example.khuisf.entitys.Student;
+import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -69,7 +70,6 @@ public class InsertScoreActivity extends AppCompatActivity {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("ddf", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {

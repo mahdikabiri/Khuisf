@@ -17,10 +17,15 @@
             android:icon="@drawable/ic_scoreboard"
             android:id="@+id/nav_score"
             android:title="نمرات ترم جاری" />
+      <!--  <item
+            android:icon="@drawable/ic_scoreboard"
+            android:id="@+id/fragment_selectscore"
+            android:title="نمرات ترم جاری" />
+      -->
         <item
-            android:id="@+id/nav_tool"
-            android:title="پیام رسان" />
-
+            android:id="@+id/select_courses"
+            android:icon="@drawable/ic_books_stack_of_three"
+            android:title="انتخاب واحد" />
     </group>
 
     <item android:title="">

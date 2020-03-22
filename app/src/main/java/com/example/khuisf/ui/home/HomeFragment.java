@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -19,10 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.example.khuisf.CourseAdapter;
-import com.example.khuisf.Course;
+import com.example.khuisf.students.CourseAdapter;
+import com.example.khuisf.entitys.Course;
 import com.example.khuisf.R;
-import com.example.khuisf.Urls;
+import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,8 +44,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setLayoutParams(layoutParams);
+
         return view;
     }
 
@@ -63,7 +61,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         getCourses();
-
     }
 
     private void getCourses() {
@@ -109,11 +106,8 @@ public class HomeFragment extends Fragment {
 
     private void readyResponse(String result) {
         String[] elements = result.split(",");
-
         List<String> fix = Arrays.asList(elements);
-
         ArrayList<String> listofStrings = new ArrayList<>(fix);
-
         Toast.makeText(getActivity(), "courses:" + listofStrings, Toast.LENGTH_SHORT).show();
 
     }

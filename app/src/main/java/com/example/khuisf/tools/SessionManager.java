@@ -1,4 +1,4 @@
-package com.example.khuisf;
+package com.example.khuisf.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
