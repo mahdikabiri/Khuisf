@@ -39,4 +39,10 @@
         android:name="com.example.khuisf.students.selectcourse.SelectCourses"
         android:label="انتخاب واحد"
         tools:layout="@layout/fragment_select_courses" />
+
+    <fragment
+        android:id="@+id/deleteCourses"
+        android:name="com.example.khuisf.students.deletecourse.selectcourse.DeleteCourses"
+        android:label="حدف درس"
+        tools:layout="@layout/fragment_delete_courses" />
 </navigation>

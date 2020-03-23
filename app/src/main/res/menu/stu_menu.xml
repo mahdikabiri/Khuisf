@@ -10,29 +10,34 @@
             android:title="اطلاعات" />
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_weekly"
+            android:icon="@drawable/ic_timetable"
             android:title="برنامه هفتگی" />
 
         <item
-            android:icon="@drawable/ic_scoreboard"
             android:id="@+id/nav_score"
-            android:title="نمرات ترم جاری" />
-      <!--  <item
             android:icon="@drawable/ic_scoreboard"
-            android:id="@+id/fragment_selectscore"
             android:title="نمرات ترم جاری" />
-      -->
+        <!--  <item
+              android:icon="@drawable/ic_scoreboard"
+              android:id="@+id/fragment_selectscore"
+              android:title="نمرات ترم جاری" />
+        -->
         <item
             android:id="@+id/select_courses"
             android:icon="@drawable/ic_books_stack_of_three"
             android:title="انتخاب واحد" />
+
+        <item
+            android:id="@+id/deleteCourses"
+            android:icon="@drawable/ic_cancel_course"
+            android:title="حذف و اضافه" />
     </group>
 
     <item android:title="">
         <menu>
             <item
-                android:onClick="logout"
                 android:icon="@drawable/ic_logout"
+                android:onClick="logout"
                 android:title="logout" />
         </menu>
     </item>

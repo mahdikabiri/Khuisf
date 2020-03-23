@@ -3,9 +3,7 @@ package com.example.khuisf.students.selectcourse;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
-import com.example.khuisf.CourseInfoActivity;
-import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Urls;
@@ -139,7 +135,7 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
             tvDay = itemView.findViewById(R.id.select_course_item_tv_day);
             tvChar = itemView.findViewById(R.id.select_course_item_tv_char);
             btnSelect = itemView.findViewById(R.id.select_course_item_btn_select);
-            cl = itemView.findViewById(R.id.cl);
+            cl = itemView.findViewById(R.id.select_course_item_layout);
         }
     }
 

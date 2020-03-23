@@ -23,7 +23,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     public static final String CHARAC = "characteristic";
     public static final String NAME = "coursename";
     public static final String DAY = "courseday";
@@ -65,31 +65,14 @@ public class MainActivity extends AppCompatActivity  {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_insertscore, R.id.nav_attendaner,
-                R.id.nav_score, R.id.nav_share, R.id.select_courses)
+                R.id.nav_score, R.id.nav_share,R.id.select_courses,R.id.deleteCourses)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
-/*
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
-        switch (item.getItemId()) {
-
-            case R.id.nav_select: {
-                //do somthing
-                 //getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new SelectCourses()).commit();
-                break;
-            }
-        }
-        //close navigation drawer
-        //mDrawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
-*/
 
 
     private void setMenu(int role) {

@@ -10,7 +10,7 @@
     android:elevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl"
+        android:id="@+id/select_course_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FDD835"

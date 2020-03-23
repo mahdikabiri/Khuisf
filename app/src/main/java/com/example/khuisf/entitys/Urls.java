@@ -13,4 +13,5 @@ public class Urls {
 
     public static String getSelectedCourses ="get_selected_courses.php";
     public static String selectCourse="select_courses.php";
+    public static String deleteCourse="delete_courses.php";
 }
