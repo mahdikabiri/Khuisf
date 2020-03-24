@@ -1,4 +1,4 @@
-package com.example.khuisf.ui.home;
+package com.example.khuisf.students.weeklyplan;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.example.khuisf.students.CourseAdapter;
 import com.example.khuisf.entitys.Course;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Urls;
@@ -33,12 +32,12 @@ import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class HomeFragment extends Fragment {
+public class weeklyPlanFragment extends Fragment {
     ArrayList<Course> courseItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
-    public HomeFragment() {
+    public weeklyPlanFragment() {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,

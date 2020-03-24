@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.khuisf.ui.home.HomeFragment"
+        android:name="com.example.khuisf.students.weeklyplan.weeklyPlanFragment"
         android:label="برنامه هفتگی"
         tools:layout="@layout/fragment_home" />
 

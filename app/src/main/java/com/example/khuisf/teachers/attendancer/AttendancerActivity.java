@@ -5,13 +5,16 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.example.khuisf.CalenderActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Student;
 import com.example.khuisf.entitys.Urls;
@@ -28,6 +31,7 @@ public class AttendancerActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     String charac;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,7 @@ public class AttendancerActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         getStudnets();
+
     }
 
 
@@ -77,5 +82,9 @@ public class AttendancerActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void openCalender(View view) {
+        startActivity(new Intent(AttendancerActivity.this, CalenderActivity.class));
     }
 }

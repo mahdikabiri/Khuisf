@@ -1,4 +1,4 @@
-package com.example.khuisf.students;
+package com.example.khuisf.students.weeklyplan;
 
 import android.content.Context;
 import android.content.Intent;
