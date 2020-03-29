@@ -61,6 +61,7 @@ public class CourseAdapterForTeach extends RecyclerView.Adapter<CourseAdapterFor
             public void onClick(View v) {
                 Intent intent=new Intent(context, AttendancerActivity.class);
                 intent.putExtra("CHARACTRISTIC",currentItem.getCharac());
+                intent.putExtra("coursename",currentItem.getTitle());
                 context.startActivity(intent);
             }
         });
