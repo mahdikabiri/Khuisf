@@ -11,10 +11,9 @@
         android:title=""
     />
     <item
-        android:id="@+id/itme_action_favorite"
-        android:title="ویرایش پروفایل"
-        app:showAsAction="never"
-        />
+        android:id="@+id/itme_action_sendmessage"
+        android:title="ارسال پیام "
+        app:showAsAction="never" />
 
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/itme_action_settings"

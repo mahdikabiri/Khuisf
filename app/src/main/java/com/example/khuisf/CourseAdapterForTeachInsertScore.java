@@ -65,10 +65,10 @@ public class CourseAdapterForTeachInsertScore extends RecyclerView.Adapter<Cours
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.item_tv_title);
-            tvTime = itemView.findViewById(R.id.item_tv_time);
-            tvDay = itemView.findViewById(R.id.item_tv_day);
-            tvChar = itemView.findViewById(R.id.item_tv_char);
+            tvTitle = itemView.findViewById(R.id.tem2_tv_title);
+            tvTime = itemView.findViewById(R.id.item2_tv_time);
+            tvDay = itemView.findViewById(R.id.item2_tv_day);
+            tvChar = itemView.findViewById(R.id.item2_tv_char);
         }
     }
 

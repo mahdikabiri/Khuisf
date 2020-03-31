@@ -17,8 +17,9 @@
             android:icon="@drawable/ic_contract"
             android:title="ثبت نمرات" />
         <item
-            android:id="@+id/nav_tool"
-            android:title="پیام رسان" />
+            android:id="@+id/nav_send_message_teacher"
+            android:icon="@drawable/ic_mail"
+            android:title="ارسال پیام" />
 
     </group>
 

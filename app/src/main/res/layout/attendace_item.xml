@@ -14,7 +14,7 @@
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/attendance_item_tv_date"
+            android:id="@+id/tem2_tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

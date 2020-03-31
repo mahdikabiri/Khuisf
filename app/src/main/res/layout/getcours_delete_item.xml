@@ -22,7 +22,7 @@
             android:text="cours title"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/item_tv_char"
+            app:layout_constraintBottom_toTopOf="@+id/item2_tv_char"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
             android:text="day"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/item_delete_course_btn_del"
-            app:layout_constraintEnd_toStartOf="@+id/item_tv_char"
+            app:layout_constraintEnd_toStartOf="@+id/item2_tv_char"
             app:layout_constraintHorizontal_bias="0.281"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -52,7 +52,7 @@
             app:layout_constraintBottom_toTopOf="@+id/item_delete_course_btn_del"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toEndOf="@+id/item_tv_char"
+            app:layout_constraintStart_toEndOf="@+id/item2_tv_char"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -81,6 +81,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_tv_char" />
+            app:layout_constraintTop_toBottomOf="@+id/item2_tv_char" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

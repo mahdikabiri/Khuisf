@@ -49,4 +49,8 @@
         android:id="@+id/see_attendace"
         android:name="com.example.khuisf.students.watchattendance.WatchAttendanceFragment"
         android:label="حضور وغیاب" />
+    <fragment
+        android:id="@+id/nav_send_message_teacher"
+        android:name="com.example.khuisf.teachers.messages.getCouserForSendMessageTeachFragment"
+        android:label="ارسال پیام" />
 </navigation>

@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_insertscore, R.id.nav_attendaner,
-                R.id.nav_score, R.id.nav_share,R.id.select_courses,R.id.deleteCourses,R.id.see_attendace)
+                R.id.nav_score, R.id.nav_share,R.id.select_courses,R.id.deleteCourses,R.id.see_attendace,
+                R.id.nav_send_message_teacher)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -95,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ElipsisActivity.class));
         } else if (item.getItemId() == R.id.itme_img_prof) {
             startActivity(new Intent(MainActivity.this, InfoActivity.class));
+        }else if(item.getItemId()==R.id.itme_action_sendmessage){
+
         }
         return super.onOptionsItemSelected(item);
     }

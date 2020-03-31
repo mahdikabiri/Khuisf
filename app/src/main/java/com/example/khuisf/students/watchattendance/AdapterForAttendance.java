@@ -1,7 +1,6 @@
 package com.example.khuisf.students.watchattendance;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +76,7 @@ public class AdapterForAttendance extends RecyclerView.Adapter<AdapterForAttenda
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvDate = itemView.findViewById(R.id.attendance_item_tv_date);
+            tvDate = itemView.findViewById(R.id.tem2_tv_title);
             ivStatus = itemView.findViewById(R.id.attendance_item_iv_status);
         }
     }

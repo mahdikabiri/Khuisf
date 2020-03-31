@@ -80,10 +80,10 @@ public class CourseAdapterForTeach extends RecyclerView.Adapter<CourseAdapterFor
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.item_tv_title);
-            tvTime = itemView.findViewById(R.id.item_tv_time);
-            tvDay = itemView.findViewById(R.id.item_tv_day);
-            tvChar = itemView.findViewById(R.id.item_tv_char);
+            tvTitle = itemView.findViewById(R.id.item_getcourse_tv_title);
+            tvTime = itemView.findViewById(R.id.item_getcourse_tv_time);
+            tvDay = itemView.findViewById(R.id.item_getcourse_tv_day);
+            tvChar = itemView.findViewById(R.id.item_getcourse_tv_char);
         }
     }
 
