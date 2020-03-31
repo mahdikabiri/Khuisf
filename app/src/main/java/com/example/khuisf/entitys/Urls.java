@@ -15,4 +15,5 @@ public class Urls {
     public static String selectCourse="select_courses.php";
     public static String deleteCourse="delete_courses.php";
     public static String insertAttendancer="insert_attendancer.php";
+    public static String getAttendancer="get_attendancer.php";
 }

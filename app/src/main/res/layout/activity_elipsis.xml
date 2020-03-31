@@ -7,86 +7,84 @@
     tools:context=".ElipsisActivity">
 
     <LinearLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+            style="textinpu"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            style="textinpu"
-            android:gravity="center"
-            android:hint="نام"
-            android:background="@drawable/tvbgwith"
-            android:layout_margin="10dp"
-           />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:hint="نام خانوادگی"
-            android:background="@drawable/tvbgwith"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            style="textinpu"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:hint="نام پدر"
-            android:background="@drawable/tvbgwith"
-            style="textinpu"
-            android:layout_margin="10dp"
-            android:gravity="center"
-
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            style="textinpu"
             android:layout_margin="10dp"
             android:background="@drawable/tvbgwith"
             android:gravity="center"
-            android:hint="شماره شناسنامه"
-            />
+            android:hint="نام" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_height="30dp"
-            android:background="@drawable/tvbgwith"
             style="textinpu"
-            android:hint="کدملی"
-            android:gravity="center"
-            />
-        <EditText
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@drawable/tvbgwith"
-            android:gravity="center"
-            style="textinpu"
-            android:hint="تلفن همراه"
-            />
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:gravity="center"
             android:background="@drawable/tvbgwith"
-            style="textinpu"
-            android:hint="پست الکترونیک"
-            />
+            android:gravity="center"
+            android:hint="نام خانوادگی" />
+
         <EditText
+            style="textinpu"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_margin="10dp"
+            android:background="@drawable/tvbgwith"
+            android:gravity="center"
+
+            android:hint="نام پدر" />
+
+        <EditText
+            style="textinpu"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tvbgwith"
+            android:gravity="center"
+            android:hint="شماره شناسنامه" />
+
+        <EditText
+            style="textinpu"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tvbgwith"
+            android:gravity="center"
+            android:hint="کدملی" />
+
+        <EditText
+            style="textinpu"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tvbgwith"
+            android:gravity="center"
+            android:hint="تلفن همراه" />
+
+        <EditText
+            style="textinpu"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/tvbgwith"
+            android:gravity="center"
+            android:hint="پست الکترونیک" />
+
+        <EditText
+            style="textinpu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="textinpu"
+            android:layout_margin="10dp"
             android:background="@drawable/tvbgwith"
-            android:hint="آدرس"
             android:gravity="center"
-            android:lines="5"
-            />
+            android:hint="آدرس"
+            android:lines="5" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

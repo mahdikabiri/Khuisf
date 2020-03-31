@@ -23,6 +23,10 @@
               android:title="نمرات ترم جاری" />
         -->
         <item
+            android:id="@+id/see_attendace"
+            android:icon="@drawable/ic_attendancer"
+            android:title="وضعیت حضور و غیاب" />
+        <item
             android:id="@+id/select_courses"
             android:icon="@drawable/ic_books_stack_of_three"
             android:title="انتخاب واحد" />

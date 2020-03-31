@@ -45,4 +45,8 @@
         android:name="com.example.khuisf.students.deletecourse.selectcourse.DeleteCourses"
         android:label="حدف درس"
         tools:layout="@layout/fragment_delete_courses" />
+    <fragment
+        android:id="@+id/see_attendace"
+        android:name="com.example.khuisf.students.watchattendance.WatchAttendanceFragment"
+        android:label="حضور وغیاب" />
 </navigation>

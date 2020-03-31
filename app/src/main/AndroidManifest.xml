@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".students.watchattendance.ShowAttendanceActivity"></activity>
         <activity android:name=".teachers.insertscore.InsertScoreActivity" />
         <activity android:name=".teachers.attendancer.AttendancerActivity" />
         <activity
