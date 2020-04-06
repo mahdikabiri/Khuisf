@@ -62,15 +62,13 @@ public class AttendancerActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         tvCourseName.setText(courseTitle);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String date = (String) tvDatePicker.getText();
-                if (!date.equals("تاریخ را انتخاب کنید")) {
-                    gatReadyValues(v);
-                } else {
-                    Toast.makeText(AttendancerActivity.this, "تاریخ را مشخص کنید", Toast.LENGTH_SHORT).show();
-                }
+
+        fab.setOnClickListener(v -> {
+            String date = (String) tvDatePicker.getText();
+            if (!date.equals("تاریخ را انتخاب کنید")) {
+                gatReadyValues(v);
+            } else {
+                Toast.makeText(AttendancerActivity.this, "تاریخ را مشخص کنید", Toast.LENGTH_SHORT).show();
             }
         });
         getStudnets();
@@ -175,7 +173,6 @@ public class AttendancerActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void openCalender(View view) {
         showCalendar(view);

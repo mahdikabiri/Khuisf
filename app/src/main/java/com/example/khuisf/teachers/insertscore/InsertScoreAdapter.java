@@ -30,11 +30,11 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
     private String characteristic;
     private ArrayList<Student> mstudents;
 
-    public InsertScoreAdapter(Context context, ArrayList<Student> students,String charac) {
+    public InsertScoreAdapter(Context context, ArrayList<Student> students, String charac) {
         this.context = context;
         mstudents = students;
         // take this var for send to db
-        characteristic=charac;
+        characteristic = charac;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -51,7 +51,6 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
         holder.tvName.setText(currentItem.getName());
         holder.tvCode.setText(currentItem.getCode());
 
-
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("ایا نمره را ثبت میکنید؟");
         builder1.setCancelable(true);
@@ -65,13 +64,13 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
                         holder.edtScore.setBackgroundColor(Color.GREEN);
                         holder.edtScore.setEnabled(false);
                         //get score again for function
-                        String score=holder.edtScore.getText().toString().trim();
+                        String score = holder.edtScore.getText().toString().trim();
                         float finalVal = Float.parseFloat(score);
-                        Toast.makeText(context, "ثبت شد"+finalVal, Toast.LENGTH_SHORT).show();
-                       // context.getIntent().getStringExtra("title");
+                        Toast.makeText(context, "ثبت شد" + finalVal, Toast.LENGTH_SHORT).show();
+                        // context.getIntent().getStringExtra("title");
 
 
-                        sendScoreToDb(score,holder.tvCode.getText().toString(),characteristic);
+                        sendScoreToDb(score, holder.tvCode.getText().toString(), characteristic);
                     }
                 });
 
@@ -88,7 +87,7 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
             @Override
             public void onClick(View v) {
                 AndroidNetworking.initialize(context);
-                    String score=holder.edtScore.getText().toString().trim();
+                String score = holder.edtScore.getText().toString().trim();
                 if (checkInput(score)) {
                     // the scoer passed filters
                     //ask question from user are you sure (complate code writed in alert dialog button)
@@ -104,29 +103,25 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
     }
 
 
-
-
     private void sendScoreToDb(String score, String studentCode, String charac) {
-        AndroidNetworking.post(Urls.host+Urls.setScore)
-                .addBodyParameter("characteristic",charac)
-                .addBodyParameter("code",studentCode)
-                .addBodyParameter("score",score)
+        AndroidNetworking.post(Urls.host + Urls.setScore)
+                .addBodyParameter("characteristic", charac)
+                .addBodyParameter("code", studentCode)
+                .addBodyParameter("score", score)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(context, response+"", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, response + "", Toast.LENGTH_SHORT).show();
 
                     }
 
                     @Override
                     public void onError(ANError anError) {
-                        Toast.makeText(context, anError+"", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, anError + "", Toast.LENGTH_SHORT).show();
                     }
                 });
-}
-
-
+    }
 
 
     private boolean checkInput(String scoretext) {

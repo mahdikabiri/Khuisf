@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,33 +23,23 @@ public class getCouserForSendMessageTeachFragment extends Fragment {
             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_send_message_teacher, container, false);
-        SmoothBottomBar smoothBottomBar=view.findViewById(R.id.bottomBar);
+        SmoothBottomBar smoothBottomBar = view.findViewById(R.id.bottomBar);
         //set fragment default
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_message_teacher_container,new MessageCoursesFragment()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_message_teacher_container, new MessageAllFragment()).commit();
 
         //navigatonbutton
-        smoothBottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelect(int i) {
+        smoothBottomBar.setOnItemSelectedListener(i -> {
 
-                Fragment selectedFragment=null;
-                if(i==0){
-                    selectedFragment =new MessageCoursesFragment();
-                }else if(i==1){
-                    selectedFragment =new MessageAllFragment();
-                }
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_message_teacher_container,selectedFragment).commit();
-
+            Fragment selectedFragment = null;
+            if (i == 0) {
+                selectedFragment = new MessageAllFragment();
+            } else if (i == 1) {
+                selectedFragment = new MessageCoursesFragment();
             }
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_message_teacher_container, selectedFragment).commit();
         });
 
-
-       return view;
+        return view;
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
-    }
 }

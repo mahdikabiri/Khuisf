@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:id="@+id/get_student_message_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/get_student_message_item_tvname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نام"
+            android:textSize="20sp" />
+        <net.igenius.customcheckbox.CustomCheckBox
+            android:id="@+id/get_student_message_item_checkbox"
+            android:layout_width="38dp"
+            android:layout_margin="20dp"
+            android:layout_height="42dp"
+            app:color_checked="#4CAF50"
+            />
+        <TextView
+            android:id="@+id/get_student_message_item_tvcode"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:text="کد دانشجویی"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
