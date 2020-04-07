@@ -5,19 +5,25 @@
 
 
     <item
-    android:id="@+id/itme_img_prof"
-    android:icon="@drawable/ic_user"
-    app:showAsAction="always"
+        android:id="@+id/itme_img_message"
+        android:icon="@drawable/ic_inbox1"
         android:title=""
-    />
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/itme_img_prof"
+        android:icon="@drawable/ic_user"
+        android:title=""
+        app:showAsAction="always" />
     <item
         android:id="@+id/itme_action_sendmessage"
         android:title="ارسال پیام "
         app:showAsAction="never" />
 
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/itme_action_settings"
+    <item
+        android:id="@+id/itme_action_settings"
         android:title="تنظیمات"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
 </menu>

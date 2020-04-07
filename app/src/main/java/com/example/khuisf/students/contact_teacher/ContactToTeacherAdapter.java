@@ -1,4 +1,4 @@
-package com.example.khuisf.teachers.messages.bycourses;
+package com.example.khuisf.students.contact_teacher;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,16 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.Teacher;
+import com.example.khuisf.teachers.messages.bycourses.SendMessageToStudentByCourseActivity;
 
 import java.util.ArrayList;
 
-public class CourseAdapterForTeachMessage extends RecyclerView.Adapter<CourseAdapterForTeachMessage.CourseViewHolder> {
+public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeacherAdapter.CourseViewHolder> {
     LayoutInflater inflater;
     Context context;
 
-    private ArrayList<Course> mCourses;
+    private ArrayList<Teacher> mCourses;
 
-    public CourseAdapterForTeachMessage(Context context, ArrayList<Course> courses) {
+    public ContactToTeacherAdapter(Context context, ArrayList<Teacher> courses) {
         this.context = context;
         mCourses = courses;
         this.inflater = LayoutInflater.from(context);
@@ -29,20 +31,18 @@ public class CourseAdapterForTeachMessage extends RecyclerView.Adapter<CourseAda
 
     @Override
     public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.getcours_item, parent, false);
+        View view = inflater.inflate(R.layout.teacher_list_item, parent, false);
         return new CourseViewHolder(view);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
-        Course currentItem = mCourses.get(position);
-        holder.tvTitle.setText(currentItem.getTitle());
-        holder.tvDay.setText(currentItem.getDay());
-        holder.tvTime.setText(currentItem.getTime());
-        holder.tvChar.setText(currentItem.getCharac());
+        Teacher currentItem = mCourses.get(position);
+        holder.tvTeacherName.setText(currentItem.getTeacherName());
+        holder.tvCourseName.setText(currentItem.getCourseName());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+      /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context, SendMessageToStudentByCourseActivity.class);
@@ -50,7 +50,7 @@ public class CourseAdapterForTeachMessage extends RecyclerView.Adapter<CourseAda
                 intent.putExtra("coursename",currentItem.getTitle());
                 context.startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -59,17 +59,13 @@ public class CourseAdapterForTeachMessage extends RecyclerView.Adapter<CourseAda
     }
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvTitle;
-        public TextView tvDay;
-        public TextView tvTime;
-        public TextView tvChar;
+        public TextView tvTeacherName;
+        public TextView tvCourseName;
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.item_getcourse_tv_title);
-            tvTime = itemView.findViewById(R.id.item_getcourse_tv_time);
-            tvDay = itemView.findViewById(R.id.item_getcourse_tv_day);
-            tvChar = itemView.findViewById(R.id.item_getcourse_tv_char);
+            tvTeacherName = itemView.findViewById(R.id.teacher_list_item_tv_teachername);
+            tvCourseName = itemView.findViewById(R.id.teacher_list_item_tv_course_name);
         }
     }
 

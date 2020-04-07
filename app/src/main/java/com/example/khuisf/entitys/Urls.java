@@ -19,4 +19,6 @@ public class Urls {
     public static String getStudentForMessageByCourse="get_students_formessage_bycourse.php";
     public static String insertMessageForStudent="insert_for_students_message.php";
     public static String insertMessage="insert_message.php";
+    public static String getMessageForStudent="get_messages_for_student.php";
+    public static String getTeachersForMessage="get_teachers_formessage.php";
 }

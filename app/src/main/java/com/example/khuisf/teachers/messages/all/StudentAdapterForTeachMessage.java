@@ -1,23 +1,17 @@
 package com.example.khuisf.teachers.messages.all;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.khuisf.CourseInfoActivity;
-import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Student;
-import com.example.khuisf.teachers.attendancer.AttendancerActivity;
 
 import net.igenius.customcheckbox.CustomCheckBox;
 

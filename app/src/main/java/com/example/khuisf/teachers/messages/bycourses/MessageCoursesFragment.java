@@ -22,8 +22,6 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Urls;
-import com.example.khuisf.students.watchattendance.CourseAdapterForAttendance;
-import com.example.khuisf.teachers.messages.all.StudentAdapterForTeachMessage;
 
 import org.json.JSONArray;
 import org.json.JSONException;

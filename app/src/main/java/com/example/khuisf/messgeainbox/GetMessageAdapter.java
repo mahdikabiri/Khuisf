@@ -1,62 +1,46 @@
-package com.example.khuisf.students.deletecourse.selectcourse;
+package com.example.khuisf.messgeainbox;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
+import com.example.khuisf.entitys.Message;
 
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
-
-public class DeleteCourseAdapter extends RecyclerView.Adapter<DeleteCourseAdapter.CourseViewHolder> {
+public class GetMessageAdapter extends RecyclerView.Adapter<GetMessageAdapter.CourseViewHolder> {
     LayoutInflater inflater;
     Context context;
-    private ArrayList<Course> mCourses;
+    private ArrayList<Message> mMessage;
 
-    public DeleteCourseAdapter(Context context, ArrayList<Course> courses) {
+    public GetMessageAdapter(Context context, ArrayList<Message> messages) {
         this.context = context;
-        mCourses = courses;
+        mMessage = messages;
         this.inflater = LayoutInflater.from(context);
     }
 
     @Override
     public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.getcours_delete_item, parent, false);
+        View view = inflater.inflate(R.layout.inbox_item, parent, false);
         return new CourseViewHolder(view);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
-        Course currentItem = mCourses.get(position);
-        holder.tvTitle.setText(currentItem.getTitle());
-        holder.tvDay.setText(currentItem.getDay());
-        holder.tvTime.setText(currentItem.getTime());
-        holder.tvChar.setText(currentItem.getCharac());
+        Message currentItem = mMessage.get(position);
+        holder.tvSender.setText(currentItem.getSender());
+        holder.tvText.setText(currentItem.getText());
 
 
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+       /* AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("درس را حذف می کنید؟");
         builder1.setCancelable(true);
 
@@ -85,10 +69,10 @@ public class DeleteCourseAdapter extends RecyclerView.Adapter<DeleteCourseAdapte
                 builder1.create();
                 builder1.show();
             }
-        });
+        });*/
     }
 
-    private void deleteCourse(CourseViewHolder holder, String studentCode, String characteristic, Context context) {
+   /* private void deleteCourse(CourseViewHolder holder, String studentCode, String characteristic, Context context) {
         AndroidNetworking.initialize(context);
         AndroidNetworking.post(Urls.host + Urls.deleteCourse)
                 .addBodyParameter("char", characteristic)
@@ -114,28 +98,18 @@ public class DeleteCourseAdapter extends RecyclerView.Adapter<DeleteCourseAdapte
         });
 
     }
-
+*/
     @Override
     public int getItemCount() {
-        return mCourses.size();
+        return mMessage.size();
     }
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvTitle;
-        public TextView tvDay;
-        public TextView tvTime;
-        public TextView tvChar;
-        public Button btnDelete;
-        ConstraintLayout cl;
-
+        public TextView tvSender,tvText;
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.item_delete_course_tv_title);
-            tvTime = itemView.findViewById(R.id.item_delete_course_tv_time);
-            tvDay = itemView.findViewById(R.id.item_delete_course_tv_day);
-            tvChar = itemView.findViewById(R.id.item_delete_courseـtv_char);
-            btnDelete = itemView.findViewById(R.id.item_delete_course_btn_del);
-            cl = itemView.findViewById(R.id.item_delete_layout);
+            tvSender = itemView.findViewById(R.id.inbox_item_tv_sender);
+            tvText = itemView.findViewById(R.id.inbox_item_tv_text);
         }
     }
 

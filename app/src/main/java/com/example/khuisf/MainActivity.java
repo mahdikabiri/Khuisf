@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.androidnetworking.AndroidNetworking;
+import com.example.khuisf.messgeainbox.InboxActivity;
+import com.example.khuisf.students.contact_teacher.ContactToTeacherActivity;
+import com.example.khuisf.teachers.messages.getCouserForSendMessageTeachFragment;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     Button btnInfo;
     private AppBarConfiguration mAppBarConfiguration;
+    int role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView tv_access = headView.findViewById(R.id.nav_header_access_tv);
         TextView tv_name = headView.findViewById(R.id.nav_header_name_tv);
-        int role = preferences.getInt("role", 0);
+        role = preferences.getInt("role", 0);
         //set menu
         setMenu(role);
         tv_access.setText(setAccess(role));
@@ -65,15 +70,14 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_insertscore, R.id.nav_attendaner,
-                R.id.nav_score, R.id.nav_share,R.id.select_courses,R.id.deleteCourses,R.id.see_attendace,
-                R.id.nav_send_message_teacher)
+                R.id.nav_score, R.id.nav_share, R.id.select_courses, R.id.deleteCourses, R.id.see_attendace,
+                R.id.nav_send_message_teacher, R.id.contactTeacherFragment)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
-
 
 
     private void setMenu(int role) {
@@ -96,8 +100,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ElipsisActivity.class));
         } else if (item.getItemId() == R.id.itme_img_prof) {
             startActivity(new Intent(MainActivity.this, InfoActivity.class));
-        }else if(item.getItemId()==R.id.itme_action_sendmessage){
+        } else if (item.getItemId() == R.id.itme_img_message) {
+            startActivity(new Intent(MainActivity.this, InboxActivity.class));
+        } else if (item.getItemId() == R.id.itme_action_sendmessage) {
+            if (role == 1) {
+                Toast.makeText(this, "salam", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ContactToTeacherActivity.class));
+            } else if (role == 2) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(android.R.id.content, new getCouserForSendMessageTeachFragment()).commit();
 
+            }
         }
         return super.onOptionsItemSelected(item);
     }

@@ -53,4 +53,9 @@
         android:id="@+id/nav_send_message_teacher"
         android:name="com.example.khuisf.teachers.messages.getCouserForSendMessageTeachFragment"
         android:label="ارسال پیام" />
+    <fragment
+        android:id="@+id/contactTeacherFragment"
+        android:name="com.example.khuisf.ContactTeacherFragment"
+        android:label=" ارتباط با استاد"
+        tools:layout="@layout/fragment_contact_teacher" />
 </navigation>

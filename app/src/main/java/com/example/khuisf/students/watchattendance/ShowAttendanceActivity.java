@@ -35,12 +35,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_attendance);
-        recyclerView = findViewById(R.id.activity_show_attendace_recycler);
-        tvStuName=findViewById(R.id.activity_show_attendance_tv_stuname);
-        tvCourseName=findViewById(R.id.activity_show_attendance_tv_coursename);
-
-        AndroidNetworking.initialize(this);
+        init();
         myItems = new ArrayList<>();
         adapter = new AdapterForAttendance(this, myItems);
         recyclerView.setHasFixedSize(true);
@@ -57,6 +52,14 @@ public class ShowAttendanceActivity extends AppCompatActivity {
         getCourses();
     }
 
+    private void init() {
+        setContentView(R.layout.activity_show_attendance);
+        recyclerView = findViewById(R.id.activity_show_attendace_recycler);
+        tvStuName=findViewById(R.id.activity_show_attendance_tv_stuname);
+        tvCourseName=findViewById(R.id.activity_show_attendance_tv_coursename);
+        AndroidNetworking.initialize(this);
+    }
+
     private void getCourses() {
         AndroidNetworking.initialize(this);
         AndroidNetworking.post(Urls.host + Urls.getAttendancer)
@@ -67,7 +70,6 @@ public class ShowAttendanceActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
