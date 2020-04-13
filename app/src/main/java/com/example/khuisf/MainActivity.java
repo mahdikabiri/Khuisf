@@ -104,12 +104,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, InboxActivity.class));
         } else if (item.getItemId() == R.id.itme_action_sendmessage) {
             if (role == 1) {
-                Toast.makeText(this, "salam", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, ContactToTeacherActivity.class));
             } else if (role == 2) {
                 getSupportFragmentManager().beginTransaction()
                         .add(android.R.id.content, new getCouserForSendMessageTeachFragment()).commit();
-
             }
         }
         return super.onOptionsItemSelected(item);

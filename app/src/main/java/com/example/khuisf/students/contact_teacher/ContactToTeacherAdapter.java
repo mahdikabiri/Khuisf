@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Teacher;
+import com.example.khuisf.teachers.messages.FinalSendMessageActivity;
 import com.example.khuisf.teachers.messages.bycourses.SendMessageToStudentByCourseActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeacherAdapter.CourseViewHolder> {
     LayoutInflater inflater;
@@ -42,6 +46,12 @@ public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeach
         holder.tvTeacherName.setText(currentItem.getTeacherName());
         holder.tvCourseName.setText(currentItem.getCourseName());
 
+        holder.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage(currentItem.getTeacherCode(),currentItem.getTeacherName());
+            }
+        });
       /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +63,24 @@ public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeach
         });*/
     }
 
+    private void sendMessage( String teacherCode, String teacherName) {
+       //becaus reciver side get list we have to create list and send
+        List<String> teacherCodes=new ArrayList<>();
+        List<String> teacherNames=new ArrayList<>();
+
+        Intent intent =new Intent(context, FinalSendMessageActivity.class);
+
+        teacherCodes.add(teacherCode);
+        teacherNames.add(teacherName);
+
+
+        intent.putStringArrayListExtra("codes", (ArrayList<String>) teacherCodes);
+        intent.putStringArrayListExtra("names", (ArrayList<String>) teacherNames);
+        //this code is for Authentication receiver
+        intent.putExtra("flagRole","2");
+        context.startActivity(intent);
+    }
+
     @Override
     public int getItemCount() {
         return mCourses.size();
@@ -61,11 +89,13 @@ public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeach
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
         public TextView tvTeacherName;
         public TextView tvCourseName;
+        public FloatingActionButton fab;
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTeacherName = itemView.findViewById(R.id.teacher_list_item_tv_teachername);
             tvCourseName = itemView.findViewById(R.id.teacher_list_item_tv_course_name);
+            fab = itemView.findViewById(R.id.teacher_list_item_fab_send);
         }
     }
 

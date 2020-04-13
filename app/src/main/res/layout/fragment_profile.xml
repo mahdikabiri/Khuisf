@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imageview_account_profile"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="5dp"
+                    android:src="@drawable/index"
+                    app:civ_border_color="@color/mybluecolor"
+                    app:civ_border_width="4dp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/imageview_account_profile"
+                    android:clickable="true"
+                    android:background="@drawable/ic_editprofile"
+                    android:elevation="20dp"
+                    app:backgroundTint="@color/mybluecolor"
+                    app:srcCompat="@drawable/ic_editprofile" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="محمد حسن کبیری"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:fontFamily="@font/vazirbold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazir"
+                        android:text="123456"
+                        android:textSize="@dimen/text_in_profile" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:drawableEnd="@drawable/ic_username"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/persian_username"
+                        android:textSize="@dimen/text_in_profile" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="8dp"
+                    android:alpha=".4"
+                    android:background="@color/mybluecolor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/nationnalcode"
+                        android:textSize="@dimen/text_in_profile" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:drawableEnd="@drawable/ic_fingerprint"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/persian_nationalcode"
+                        android:textSize="@dimen/text_in_profile" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="8dp"
+                    android:alpha=".4"
+                    android:background="@color/mybluecolor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/phonenumber"
+                        android:textSize="@dimen/text_in_profile" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:drawableEnd="@drawable/ic_phone"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/persian_phonenumber"
+                        android:textSize="@dimen/text_in_profile" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_margin="8dp"
+                    android:alpha=".4"
+                    android:background="@color/mybluecolor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/fathername"
+                        android:textSize="@dimen/text_in_profile" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:drawableEnd="@drawable/ic_father"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/vazir"
+                        android:text="@string/persian_fathername"
+                        android:textSize="@dimen/text_in_profile" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/fragment_profile_layout_student"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="8dp"
+                        android:alpha=".4"
+                        android:background="@color/mybluecolor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/persina_stu"
+                            android:textSize="@dimen/text_in_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:drawableEnd="@drawable/ic_student"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/persian_role"
+                            android:textSize="@dimen/text_in_profile" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="8dp"
+                        android:alpha=".4"
+                        android:background="@color/mybluecolor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/studentcode"
+                            android:textSize="@dimen/text_in_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:drawableEnd="@drawable/ic_barcode"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/persian_stucode"
+                            android:textSize="@dimen/text_in_profile" />
+
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="8dp"
+                        android:alpha=".4"
+                        android:background="@color/mybluecolor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/major"
+                            android:textSize="@dimen/text_in_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:drawableEnd="@drawable/ic_diploma"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/vazir"
+                            android:text="رشته تحصیلی"
+                            android:textSize="@dimen/text_in_profile" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+<!--
+
+                <LinearLayout
+                    android:id="@+id/fragment_profile_layout_teacher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="8dp"
+                        android:alpha=".4"
+                        android:background="@color/mybluecolor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/persina_teacher"
+                            android:textSize="@dimen/text_in_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:drawableEnd="@drawable/ic_teacher"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/persian_role"
+                            android:textSize="@dimen/text_in_profile" />
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="8dp"
+                        android:alpha=".4"
+                        android:background="@color/mybluecolor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/studentcode"
+                            android:textSize="@dimen/text_in_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:drawableEnd="@drawable/ic_diploma"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/persian_teachercode"
+                            android:textSize="@dimen/text_in_profile" />
+
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_margin="8dp"
+                        android:alpha=".4"
+                        android:background="@color/mybluecolor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/vazir"
+                            android:text="@string/major"
+                            android:textSize="@dimen/text_in_profile" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_weight="1"
+                            android:drawableEnd="@drawable/ic_barcode"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/vazir"
+                            android:text="رشته تحصیلی"
+                            android:textSize="@dimen/text_in_profile" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+-->
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

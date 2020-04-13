@@ -3,11 +3,13 @@ package com.example.khuisf.teachers.messages;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +33,7 @@ public class FinalSendMessageActivity extends AppCompatActivity {
         init();
         ArrayList<String> names = getIntent().getStringArrayListExtra("names");
         ArrayList<String> codes = getIntent().getStringArrayListExtra("codes");
+        String flagRole = getIntent().getStringExtra("flagRole");
         listViewName.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names));
         listViewCode.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, codes));
 
@@ -40,7 +43,7 @@ public class FinalSendMessageActivity extends AppCompatActivity {
             Handler handler = new Handler();
             Runnable r = () -> {
                 for (int i = 0; i < codes.size(); i++) {
-                    sendStudentData(v, codes.get(i), text.getText().toString());
+                    sendStudentData(v, codes.get(i), text.getText().toString(),flagRole);
                 }
                 btnSendMessgae.setVisibility(View.GONE);
             };
@@ -50,14 +53,17 @@ public class FinalSendMessageActivity extends AppCompatActivity {
     }
 
 
-    private void sendStudentData(View view, String code, String text) {
+    private void sendStudentData(View view, String code, String text,String flagRole) {
         AndroidNetworking.post(Urls.host + Urls.insertMessageForStudent)
                 .addBodyParameter("student_code", code)
                 .addBodyParameter("message_text", text)
+                .addBodyParameter("flag_role", flagRole)
                 .build().
                 getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
+                        Toast.makeText(FinalSendMessageActivity.this, response+"", Toast.LENGTH_SHORT).show();
+                        Log.d("salamali",response);
                         if (response.equals("1")) {
                             Snackbar.make(view, R.string.insert_success, Snackbar.LENGTH_LONG).
                                     setAction("ثبت شد", null).show();
@@ -70,7 +76,6 @@ public class FinalSendMessageActivity extends AppCompatActivity {
                                 setAction("Action", null).show();
                     }
                 });
-
     }
 
 

@@ -25,23 +25,21 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btnLogin;
     EditText edtUsername, edtPassword;
-    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activiry);
         init();
-
         SessionManager manager=new SessionManager(this);
         if(manager.isLogedIn()){
             startActivity(new Intent(LoginActivity.this,MainActivity.class));
             finish();
         }
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_array, android.R.layout.simple_spinner_item);
+       /* ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinner_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
+*/
 
         btnLogin.setOnClickListener((View v) -> {
 
@@ -55,19 +53,6 @@ public class LoginActivity extends AppCompatActivity {
                 .addBodyParameter("password", password)
                 .setTag("LOGIN")
                 .build().
-                /*getAsString(new StringRequestListener() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("sss",response);
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.d("sss",anError.toString());
-
-                    }
-                });*/
-
     getAsJSONObject(new JSONObjectRequestListener() {
             @Override
             public void onResponse(JSONObject response) {
@@ -101,13 +86,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-
     private void init() {
         btnLogin = findViewById(R.id.login_btn_login);
         edtUsername = findViewById(R.id.login_edt_username);
         edtPassword = findViewById(R.id.login_edt_password);
-        spinner = findViewById(R.id.spinner);
     }
 
     public void opentest(View view) {

@@ -1,4 +1,4 @@
-package com.example.khuisf.students.deletecourse.selectcourse;
+package com.example.khuisf.students.deletecourse;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

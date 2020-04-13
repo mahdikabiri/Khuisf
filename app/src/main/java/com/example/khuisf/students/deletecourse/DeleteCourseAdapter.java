@@ -1,4 +1,4 @@
-package com.example.khuisf.students.deletecourse.selectcourse;
+package com.example.khuisf.students.deletecourse;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

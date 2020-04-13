@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.khuisf.students.weeklyplan.weeklyPlanFragment"
-        android:label="برنامه هفتگی"
-        tools:layout="@layout/fragment_home" />
+        android:label="برنامه هفتگی" />
 
     <fragment
         android:id="@+id/nav_attendaner"
@@ -33,7 +32,7 @@
         android:id="@+id/nav_share"
         android:name="com.example.khuisf.ui.share.ShareFragment"
         android:label="اطلاعات فردی"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/select_courses"
         android:name="com.example.khuisf.students.selectcourse.SelectCourses"
@@ -42,7 +41,7 @@
 
     <fragment
         android:id="@+id/deleteCourses"
-        android:name="com.example.khuisf.students.deletecourse.selectcourse.DeleteCourses"
+        android:name="com.example.khuisf.students.deletecourse.DeleteCourses"
         android:label="حدف درس"
         tools:layout="@layout/fragment_delete_courses" />
     <fragment

@@ -19,7 +19,7 @@ public class ShareFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         int role = preferences.getInt("role", 0);
 

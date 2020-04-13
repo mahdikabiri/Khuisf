@@ -1,5 +1,6 @@
 package com.example.khuisf.students.contact_teacher;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -7,7 +8,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -38,9 +38,9 @@ public class ContactToTeacherActivity extends AppCompatActivity {
         adapter = new ContactToTeacherAdapter(this, courseItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new GridLayoutManager(this,1));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         recyclerView.setAdapter(adapter);
-        getTeachers("123456789");
+        getTeachers(getCodeFromSharedRefs());
     }
 
     private void getTeachers(String studentCode) {
@@ -50,15 +50,15 @@ public class ContactToTeacherActivity extends AppCompatActivity {
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
-                            Log.d("salam",response.toString());
                         try {
                             //this loop repeating to count of course list
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject object = response.getJSONObject(i);
                                 String cTeacgerName = object.getString("teacher_name");
                                 String cCourseName = object.getString("course_name");
+                                String cTeacherCode = object.getString("teacher_code");
                                 // add items from db and save to arraylist
-                                courseItems.add(new Teacher(cTeacgerName, cCourseName));
+                                courseItems.add(new Teacher(cTeacgerName, cCourseName, cTeacherCode));
                                 adapter.notifyDataSetChanged();
                             }
                         } catch (JSONException e) {
@@ -75,5 +75,10 @@ public class ContactToTeacherActivity extends AppCompatActivity {
 
                     }
                 });
+}
+
+    private String getCodeFromSharedRefs() {
+        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        return preferences.getString("code", "");
     }
 }

@@ -1,7 +1,9 @@
 package com.example.khuisf.entitys;
 
 public class Urls {
-    public static String host="http://192.168.1.104/project/khuisf/";
+    //public static String host="http://mkabiri.ir/khuisf/";
+    public static String host="http://192.168.1.100/project/khuisf/";
+    //public static String host="http://192.168.43.49/project/khuisf/";
     public static String login="login.php";
     public static String getCourses="get_courses.php";
     public static String getStudent="get_students.php";

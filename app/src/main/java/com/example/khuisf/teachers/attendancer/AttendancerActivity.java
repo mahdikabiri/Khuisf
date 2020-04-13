@@ -1,10 +1,5 @@
 package com.example.khuisf.teachers.attendancer;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +7,11 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -39,7 +39,7 @@ public class AttendancerActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     String charac, courseTitle;
     private PersianDatePickerDialog picker;
-    TextView tvDatePicker,tvCourseName;
+    TextView tvDatePicker, tvCourseName;
     FloatingActionButton fab;
     JSONObject myObj = new JSONObject();
 
@@ -78,7 +78,7 @@ public class AttendancerActivity extends AppCompatActivity {
 
     private void init() {
         recyclerView = findViewById(R.id.recycler_attendance1);
-        tvCourseName=findViewById(R.id.attendancer_activity_tv_coursenaem);
+        tvCourseName = findViewById(R.id.attendancer_activity_tv_coursenaem);
         tvDatePicker = findViewById(R.id.attendancer_activity_btn_select);
         fab = findViewById(R.id.attendancer_activity_fab);
     }
@@ -93,7 +93,6 @@ public class AttendancerActivity extends AppCompatActivity {
             //String name = tvName.getText().toString();
             String code = tvCode.getText().toString();
             String status = generateStateFromId(rgState.getCheckedRadioButtonId());
-            //Toast.makeText(this, status+"", Toast.LENGTH_SHORT).show();
             sendDate(tvDatePicker.getText().toString(), v, code, charac, status);
         }
 
@@ -102,10 +101,10 @@ public class AttendancerActivity extends AppCompatActivity {
     }
 
     private String generateStateFromId(int id) {
-        if (id == 2131296543) {
+        if (id == R.id.rb_hozoor) {
             //hozoor darad
             return "1";
-        } else if (id == 2131296542) {
+        } else if (id == R.id.rb_gheybat) {
             //hozoor nadared
             return "0";
         }

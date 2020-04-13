@@ -137,13 +137,13 @@ public class SendMessageToStudentByCourseActivity extends AppCompatActivity {
               //set data to list
                 stuname.add(selectedName);
                 stucodes.add(selectedCode);
-
             }
-
         }
         //send lis with intent
         intent.putStringArrayListExtra("codes", (ArrayList<String>) stucodes);
         intent.putStringArrayListExtra("names", (ArrayList<String>) stuname);
+        //this is for authentication receiver
+        intent.putExtra("flagRole","1");
         startActivity(intent);
 
     }

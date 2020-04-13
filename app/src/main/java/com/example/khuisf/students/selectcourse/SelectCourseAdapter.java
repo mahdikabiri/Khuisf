@@ -101,7 +101,6 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                     holder.cl.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen));
                     holder.btnSelect.setVisibility(View.GONE);
                     Toast.makeText(context, "با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
-
                 }else {
                     Toast.makeText(context, "درس ثبت نشد", Toast.LENGTH_SHORT).show();
                 }

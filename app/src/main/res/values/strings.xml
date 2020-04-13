@@ -51,4 +51,18 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="insert_success">اطلاعات ثبت شد</string>
     <string name="insert_fail">اشکال در ارسال اطلاعات</string>
+    <string name="nationnalcode">۱۲۷۲۴۴۲۱۸۷</string>
+    <string name="phonenumber">۰۹۳۶۸۴۲۲۱۳۳</string>
+    <string name="fathername">صادق</string>
+    <string name="major">مهندسی تکنولوژی نرم افزار</string>
+    <string name="studentcode">۹۶۲۱۸۳۸۵۵</string>
+    <string name="persian_username">نام کابری</string>
+    <string name="persian_stucode">کد دانشجویی</string>
+    <string name="persian_teachercode">کد استادی</string>
+    <string name="persian_role">نقش</string>
+    <string name="persian_nationalcode">کدملی</string>
+    <string name="persian_phonenumber">تلفن همراه</string>
+    <string name="persian_fathername">نام پدر</string>
+    <string name="persina_stu">دانشجو</string>
+    <string name="persina_teacher">استاد</string>
 </resources>
