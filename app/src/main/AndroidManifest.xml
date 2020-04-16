@@ -12,7 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".students.contact_teacher.ContactToTeacherActivity"></activity>
+        <activity android:name=".StartActivity"
+            android:theme="@style/sss">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".students.contact_teacher.ContactToTeacherActivity" />
         <activity
             android:name=".messgeainbox.InboxActivity"
             android:label="پیام ها" />
@@ -31,13 +39,9 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".LoginActivity"
+            android:label="@string/persian_login_form"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

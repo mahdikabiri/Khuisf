@@ -65,4 +65,6 @@
     <string name="persian_fathername">نام پدر</string>
     <string name="persina_stu">دانشجو</string>
     <string name="persina_teacher">استاد</string>
+    <string name="unknown">نامشخص</string>
+    <string name="persian_login_form">فرم ورود کاربر</string>
 </resources>
