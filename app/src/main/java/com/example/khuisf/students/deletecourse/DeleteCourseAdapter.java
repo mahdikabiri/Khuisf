@@ -67,7 +67,7 @@ public class DeleteCourseAdapter extends RecyclerView.Adapter<DeleteCourseAdapte
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                         SharedPreferences preferences = context.getSharedPreferences("prefs", MODE_PRIVATE);
-                        deleteCourse(holder,preferences.getString("code",""),holder.tvChar.getText().toString(),context);
+                        deleteCourse(holder, preferences.getString("code", ""), holder.tvChar.getText().toString(), context);
                     }
                 });
 
@@ -96,13 +96,13 @@ public class DeleteCourseAdapter extends RecyclerView.Adapter<DeleteCourseAdapte
                 .build().getAsString(new StringRequestListener() {
             @Override
             public void onResponse(String response) {
-                Log.d("mures",response);
-                if(response.equals("1")){
+                Log.d("mures", response);
+                if (response.equals("1")) {
                     holder.cl.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGray));
                     holder.btnDelete.setVisibility(View.GONE);
                     Toast.makeText(context, "با موفقیت حذف شد", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
                     Toast.makeText(context, "درس حذف نشد", Toast.LENGTH_SHORT).show();
                 }
             }

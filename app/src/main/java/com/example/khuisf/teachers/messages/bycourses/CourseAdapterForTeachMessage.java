@@ -45,9 +45,9 @@ public class CourseAdapterForTeachMessage extends RecyclerView.Adapter<CourseAda
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, SendMessageToStudentByCourseActivity.class);
-                intent.putExtra("CHARACTRISTIC",currentItem.getCharac());
-                intent.putExtra("coursename",currentItem.getTitle());
+                Intent intent = new Intent(context, SendMessageToStudentByCourseActivity.class);
+                intent.putExtra("CHARACTRISTIC", currentItem.getCharac());
+                intent.putExtra("coursename", currentItem.getTitle());
                 context.startActivity(intent);
             }
         });

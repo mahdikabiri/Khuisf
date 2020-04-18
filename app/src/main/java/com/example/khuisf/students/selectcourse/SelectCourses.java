@@ -2,6 +2,11 @@ package com.example.khuisf.students.selectcourse;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,12 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -69,12 +68,12 @@ public class SelectCourses extends Fragment {
     private void getCourses() {
         AndroidNetworking.initialize(getActivity());
         AndroidNetworking.post(Urls.host + Urls.getSelectedCourses)
-                .addBodyParameter("code",getNameFromSharedRefs())
+                .addBodyParameter("code", getNameFromSharedRefs())
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss",response.toString());
+                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
@@ -84,7 +83,7 @@ public class SelectCourses extends Fragment {
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime,cChar));
+                        courseItems.add(new Course(cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -96,11 +95,12 @@ public class SelectCourses extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه دروس", Toast.LENGTH_SHORT).show();
-                Log.d("ersss",anError.toString());
+                Log.d("ersss", anError.toString());
 
             }
         });
     }
+
     private String getNameFromSharedRefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");

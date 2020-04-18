@@ -2,12 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+    <item android:title="">
+        <menu>
 
+        </menu>
+    </item>
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_share"
             android:icon="@drawable/ic_menu_camera"
-            android:title="اساتید" />
-
+            android:title="اطلاعات فردی" />
         <item
             android:id="@+id/nav_attendaner"
             android:icon="@drawable/ic_attendancer"
@@ -20,15 +24,13 @@
             android:id="@+id/nav_send_message_teacher"
             android:icon="@drawable/ic_mail"
             android:title="ارسال پیام" />
-
     </group>
-
-    <item android:title="">
+    <item android:title="@string/setting">
         <menu>
             <item
                 android:icon="@drawable/ic_logout"
                 android:onClick="logout"
-                android:title="logout" />
+                android:title="خروج" />
         </menu>
     </item>
 

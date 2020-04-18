@@ -1,11 +1,16 @@
 package com.example.khuisf.entitys;
 
 public class Urls {
-    public static String host="http://mkabiri.ir/khuisf/";
-     //public static String host="http://192.168.1.100/project/khuisf/";
-    //public static String host = "http://192.168.43.140/project/khuisf/";
+   // public static String host = "http://mkabiri.ir/khuisf/";
+    //public static String host="http://192.168.1.100/project/khuisf/";
+
+
+    //phone hotsopt
+    public static String host = "http://192.168.43.140/project/khuisf/";
+
+
     //public static String host = "http://192.168.1.101/project/khuisf/";
-    //public static String host = "http://192.168.1.101/ps/khuisf/";
+    //public static String host = "http://192.168.1.101/project/khuisf/";
     public static String login = "login.php";
     public static String getCourses = "get_courses.php";
     public static String getStudent = "get_students.php";
@@ -26,8 +31,7 @@ public class Urls {
     public static String getMessageForStudent = "get_messages_for_student.php";
     public static String getTeachersForMessage = "get_teachers_formessage.php";
 
-    public static String pic1Url = "http://192.168.1.101/project/pic/avatar.jpg";
-
+    public static String pic1Url = "http://192.168.43.140/project/pic/avatar.jpg";
 
 
 }

@@ -3,12 +3,10 @@ package com.example.khuisf;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,17 +20,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.messgeainbox.InboxActivity;
 import com.example.khuisf.students.contact_teacher.ContactToTeacherActivity;
 import com.example.khuisf.teachers.messages.getCouserForSendMessageTeachFragment;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CHARAC = "characteristic";
@@ -40,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String DAY = "courseday";
     public static final String TIME = "coursetime";
     NavigationView navigationView;
-    private AppBarConfiguration mAppBarConfiguration;
     int role;
-    LinearLayout layoutStu,layoutTeach;
-
+    LinearLayout layoutStu, layoutTeach;
+    private AppBarConfiguration mAppBarConfiguration;
+    CircleImageView circleImageViewNavProf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         init();
 
+        //Picasso.get().load(Urls.pic1Url).error(R.drawable.ic_error_load).fit().into(circleImageViewNavProf);
+
 
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-
-
 
 
         View headView = navigationView.getHeaderView(0);
@@ -93,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         navigationView = findViewById(R.id.nav_view);
+        circleImageViewNavProf = findViewById(R.id.nav_header_img_prof);
 
     }
-
 
 
     private void setMenu(int role) {

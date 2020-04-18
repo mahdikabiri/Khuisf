@@ -1,7 +1,5 @@
 package com.example.khuisf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +11,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -26,10 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InfoActivity extends AppCompatActivity {
+    public static int ROLE = 0;
     Spinner spinner;
-    TextView tvCode,tvName;
+    TextView tvCode, tvName;
     Button btnReturn;
-    public static int ROLE=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +37,19 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         spinner = findViewById(R.id.spinner2);
-        btnReturn=findViewById(R.id.info_btn_return);
-        tvCode=findViewById(R.id.info_tv_num);
-        tvName=findViewById(R.id.info_tv_name2);
-        createSpinner(preferences,spinner);
-        tvName.setText(preferences.getString("name",""));
+        btnReturn = findViewById(R.id.info_btn_return);
+        tvCode = findViewById(R.id.info_tv_num);
+        tvName = findViewById(R.id.info_tv_name2);
+        createSpinner(preferences, spinner);
+        tvName.setText(preferences.getString("name", ""));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String textFormSpinner= spinner.getSelectedItem().toString();
+                String textFormSpinner = spinner.getSelectedItem().toString();
                 //get role code form spinner and send with username to server
-                getInfo(String.valueOf(getSelectedItem(textFormSpinner)),preferences.getString("username",""));
-                ROLE=getSelectedItem(textFormSpinner);
-                preferences.edit().putInt("role",getSelectedItem(textFormSpinner)).apply();
+                getInfo(String.valueOf(getSelectedItem(textFormSpinner)), preferences.getString("username", ""));
+                ROLE = getSelectedItem(textFormSpinner);
+                preferences.edit().putInt("role", getSelectedItem(textFormSpinner)).apply();
 
             }
 
@@ -62,26 +62,26 @@ public class InfoActivity extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(InfoActivity.this,MainActivity.class));
+                startActivity(new Intent(InfoActivity.this, MainActivity.class));
             }
         });
     }
 
 
     private int getSelectedItem(String textFormSpinner) {
-        int roleForSend=0;
-        switch (textFormSpinner){
+        int roleForSend = 0;
+        switch (textFormSpinner) {
             case "دانشجو":
-                roleForSend=1;
+                roleForSend = 1;
                 break;
             case "استاد":
-                roleForSend=2;
+                roleForSend = 2;
                 break;
             case "کارمند":
-                roleForSend=3;
+                roleForSend = 3;
                 break;
             case "مدیر":
-                roleForSend=4;
+                roleForSend = 4;
                 break;
 
         }
@@ -90,14 +90,14 @@ public class InfoActivity extends AppCompatActivity {
     }
 
 
-    private void createSpinner( SharedPreferences preferences, Spinner s) {
+    private void createSpinner(SharedPreferences preferences, Spinner s) {
         int role = preferences.getInt("role", 0);
-        if(role>4){
+        if (role > 4) {
             Toast.makeText(this, "شما چند نقش دارید لطفا یکی را انتخاب کنید", Toast.LENGTH_SHORT).show();
         }
-        final List<String> list=new ArrayList<String>();
+        final List<String> list = new ArrayList<String>();
 
-        switch (role){
+        switch (role) {
             case 1:
                 list.add("دانشجو");
                 break;
@@ -129,11 +129,11 @@ public class InfoActivity extends AppCompatActivity {
         s.setAdapter(dataAdapter);
     }
 
-    private void getInfo(String role,String username) {
+    private void getInfo(String role, String username) {
 
         AndroidNetworking.post(Urls.host + Urls.getInfo)
-                .addBodyParameter("username",username)
-                .addBodyParameter("role",role)
+                .addBodyParameter("username", username)
+                .addBodyParameter("role", role)
                 .setTag("LOGIN")
                 .build().getAsJSONObject(new JSONObjectRequestListener() {
             @Override
@@ -147,12 +147,12 @@ public class InfoActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 tvCode.setText(getedCode);
-                preferences.edit().putString("code",getedCode).apply();
+                preferences.edit().putString("code", getedCode).apply();
             }
 
             @Override
             public void onError(ANError anError) {
-                Log.d("sdsd",anError.toString());
+                Log.d("sdsd", anError.toString());
             }
         });
     }

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Message;
 
 import java.util.ArrayList;
@@ -72,40 +71,41 @@ public class GetMessageAdapter extends RecyclerView.Adapter<GetMessageAdapter.Co
         });*/
     }
 
-   /* private void deleteCourse(CourseViewHolder holder, String studentCode, String characteristic, Context context) {
-        AndroidNetworking.initialize(context);
-        AndroidNetworking.post(Urls.host + Urls.deleteCourse)
-                .addBodyParameter("char", characteristic)
-                .addBodyParameter("code", studentCode)
-                .build().getAsString(new StringRequestListener() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("mures",response);
-                if(response.equals("1")){
-                    holder.cl.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGray));
-                    holder.btnDelete.setVisibility(View.GONE);
-                    Toast.makeText(context, "با موفقیت حذف شد", Toast.LENGTH_SHORT).show();
+    /* private void deleteCourse(CourseViewHolder holder, String studentCode, String characteristic, Context context) {
+         AndroidNetworking.initialize(context);
+         AndroidNetworking.post(Urls.host + Urls.deleteCourse)
+                 .addBodyParameter("char", characteristic)
+                 .addBodyParameter("code", studentCode)
+                 .build().getAsString(new StringRequestListener() {
+             @Override
+             public void onResponse(String response) {
+                 Log.d("mures",response);
+                 if(response.equals("1")){
+                     holder.cl.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGray));
+                     holder.btnDelete.setVisibility(View.GONE);
+                     Toast.makeText(context, "با موفقیت حذف شد", Toast.LENGTH_SHORT).show();
 
-                }else {
-                    Toast.makeText(context, "درس حذف نشد", Toast.LENGTH_SHORT).show();
-                }
-            }
+                 }else {
+                     Toast.makeText(context, "درس حذف نشد", Toast.LENGTH_SHORT).show();
+                 }
+             }
 
-            @Override
-            public void onError(ANError anError) {
-                Toast.makeText(context, "ارور شبکه", Toast.LENGTH_SHORT).show();
-            }
-        });
+             @Override
+             public void onError(ANError anError) {
+                 Toast.makeText(context, "ارور شبکه", Toast.LENGTH_SHORT).show();
+             }
+         });
 
-    }
-*/
+     }
+ */
     @Override
     public int getItemCount() {
         return mMessage.size();
     }
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvSender,tvText;
+        public TextView tvSender, tvText;
+
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             tvSender = itemView.findViewById(R.id.inbox_item_tv_sender);

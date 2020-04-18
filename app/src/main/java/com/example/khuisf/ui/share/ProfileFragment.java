@@ -30,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ShareFragment extends Fragment {
+public class ProfileFragment extends Fragment {
     LinearLayout layoutStu, layoutTeach;
     TextView tvName, tvNationalCode, tvUserName, tvPhone, tvFatherName;
     //Students
@@ -69,8 +69,7 @@ public class ShareFragment extends Fragment {
 
         setTexes(role, view);
 
-        Picasso.get().load(Urls.pic1Url).error(R.drawable.ic_error_load).into(ivAvatar);
-        //Picasso.get().load(Urls.pic1Url).fit().centerCrop().placeholder();
+        Picasso.get().load(Urls.pic1Url).error(R.drawable.ic_error_load).fit().into(ivAvatar);
 
 
         view.findViewById(R.id.fragment_profile_fab).setOnClickListener(v -> {

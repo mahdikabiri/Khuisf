@@ -40,11 +40,11 @@ public class InboxActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        getInbox(getCodeFromSharedPrefs(),String.valueOf(getRoleFromSharedPrefs()));
+        getInbox(getCodeFromSharedPrefs(), String.valueOf(getRoleFromSharedPrefs()));
 
     }
 
-    private void getInbox(String studentCode,String studentRole) {
+    private void getInbox(String studentCode, String studentRole) {
         AndroidNetworking.initialize(this);
         AndroidNetworking.post(Urls.host + Urls.getMessageForStudent)
                 .addBodyParameter("student_code", studentCode)
@@ -53,7 +53,7 @@ public class InboxActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    Log.d("myresponse",response.toString());
+                    Log.d("myresponse", response.toString());
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
@@ -68,6 +68,7 @@ public class InboxActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onError(ANError anError) {
                 Log.d("mahdierr", anError.toString());

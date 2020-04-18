@@ -21,7 +21,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="350dp"
                 android:layout_height="300dp"
-                android:background="@drawable/ic_login" />
+                android:background="@drawable/ic_login"
+                android:focusedByDefault="true" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -29,6 +30,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:orientation="vertical">
 
                 <TextView
@@ -95,8 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginEnd="50dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/custombuttonblue"
                 android:elevation="10dp"

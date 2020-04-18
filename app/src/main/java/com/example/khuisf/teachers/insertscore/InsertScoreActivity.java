@@ -37,11 +37,11 @@ public class InsertScoreActivity extends AppCompatActivity {
         charac = getIntent().getStringExtra("CHARACTERISTIC");
         title = getIntent().getStringExtra("title");
         recyclerView = findViewById(R.id.insertscore_recycler);
-        tvTitle=findViewById(R.id.insertscore_tv_title);
+        tvTitle = findViewById(R.id.insertscore_tv_title);
         tvTitle.setText(title);
         AndroidNetworking.initialize(this);
         studentItems = new ArrayList<>();
-        adapter = new InsertScoreAdapter(this, studentItems,charac);
+        adapter = new InsertScoreAdapter(this, studentItems, charac);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

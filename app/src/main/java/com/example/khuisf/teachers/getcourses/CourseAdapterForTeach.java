@@ -10,10 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.CourseInfoActivity;
 import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
+import com.example.khuisf.entitys.Course;
 import com.example.khuisf.teachers.attendancer.AttendancerActivity;
 
 import java.util.ArrayList;
@@ -47,11 +47,11 @@ public class CourseAdapterForTeach extends RecyclerView.Adapter<CourseAdapterFor
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Intent intent=new Intent(context, CourseInfoActivity.class);
-                intent.putExtra(MainActivity.CHARAC,currentItem.getCharac());
-                intent.putExtra(MainActivity.NAME,currentItem.getTitle());
-                intent.putExtra(MainActivity.DAY,currentItem.getDay());
-                intent.putExtra(MainActivity.TIME,currentItem.getTime());
+                Intent intent = new Intent(context, CourseInfoActivity.class);
+                intent.putExtra(MainActivity.CHARAC, currentItem.getCharac());
+                intent.putExtra(MainActivity.NAME, currentItem.getTitle());
+                intent.putExtra(MainActivity.DAY, currentItem.getDay());
+                intent.putExtra(MainActivity.TIME, currentItem.getTime());
                 context.startActivity(intent);
                 return false;
             }
@@ -59,9 +59,9 @@ public class CourseAdapterForTeach extends RecyclerView.Adapter<CourseAdapterFor
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, AttendancerActivity.class);
-                intent.putExtra("CHARACTRISTIC",currentItem.getCharac());
-                intent.putExtra("coursename",currentItem.getTitle());
+                Intent intent = new Intent(context, AttendancerActivity.class);
+                intent.putExtra("CHARACTRISTIC", currentItem.getCharac());
+                intent.putExtra("coursename", currentItem.getTitle());
                 context.startActivity(intent);
             }
         });

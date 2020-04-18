@@ -39,12 +39,12 @@ public class AdapterForAttendance extends RecyclerView.Adapter<AdapterForAttenda
         Attendance currentItem = mitems.get(position);
         holder.tvDate.setText(currentItem.getDate());
         //check what is status and set icon to image view
-        String status=currentItem.getStatus();
-        if(status.equals("1")){
+        String status = currentItem.getStatus();
+        if (status.equals("1")) {
             holder.ivStatus.setImageResource(R.drawable.ic_tick);
-        }else if(status.equals("0")){
+        } else if (status.equals("0")) {
             holder.ivStatus.setImageResource(R.drawable.ic_cancel);
-        }else if(status.equals("-1")){
+        } else if (status.equals("-1")) {
             holder.ivStatus.setImageResource(R.drawable.ic_null);
         }
 

@@ -67,4 +67,6 @@
     <string name="persina_teacher">استاد</string>
     <string name="unknown">نامشخص</string>
     <string name="persian_login_form">فرم ورود کاربر</string>
+    <string name="general">General</string>
+    <string name="setting">Setting</string>
 </resources>

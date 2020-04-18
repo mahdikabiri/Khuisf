@@ -6,16 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Teacher;
 import com.example.khuisf.teachers.messages.FinalSendMessageActivity;
-import com.example.khuisf.teachers.messages.bycourses.SendMessageToStudentByCourseActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -49,7 +46,7 @@ public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeach
         holder.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendMessage(currentItem.getTeacherCode(),currentItem.getTeacherName());
+                sendMessage(currentItem.getTeacherCode(), currentItem.getTeacherName());
             }
         });
       /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -63,12 +60,12 @@ public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeach
         });*/
     }
 
-    private void sendMessage( String teacherCode, String teacherName) {
-       //becaus reciver side get list we have to create list and send
-        List<String> teacherCodes=new ArrayList<>();
-        List<String> teacherNames=new ArrayList<>();
+    private void sendMessage(String teacherCode, String teacherName) {
+        //becaus reciver side get list we have to create list and send
+        List<String> teacherCodes = new ArrayList<>();
+        List<String> teacherNames = new ArrayList<>();
 
-        Intent intent =new Intent(context, FinalSendMessageActivity.class);
+        Intent intent = new Intent(context, FinalSendMessageActivity.class);
 
         teacherCodes.add(teacherCode);
         teacherNames.add(teacherName);
@@ -77,7 +74,7 @@ public class ContactToTeacherAdapter extends RecyclerView.Adapter<ContactToTeach
         intent.putStringArrayListExtra("codes", (ArrayList<String>) teacherCodes);
         intent.putStringArrayListExtra("names", (ArrayList<String>) teacherNames);
         //this code is for Authentication receiver
-        intent.putExtra("flagRole","2");
+        intent.putExtra("flagRole", "2");
         context.startActivity(intent);
     }
 

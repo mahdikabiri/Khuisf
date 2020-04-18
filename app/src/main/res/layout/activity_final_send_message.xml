@@ -22,20 +22,20 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.github.florent37.materialtextfield.MaterialTextField
         android:id="@+id/materialTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_final_send_message_listview_name"
         app:mtf_image="@drawable/ic_chat"
         app:mtf_labelColor="#666"
-        android:layout_margin="10dp"
         tools:ignore="MissingConstraints">
 
         <EditText

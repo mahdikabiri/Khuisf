@@ -1,7 +1,7 @@
 package com.example.khuisf.entitys;
 
 public class Teacher {
-    private String teacherName,courseName,teacherCode;
+    private String teacherName, courseName, teacherCode;
 
     public Teacher(String teacherName, String courseName, String teacherCode) {
         this.teacherName = teacherName;

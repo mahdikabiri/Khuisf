@@ -35,10 +35,9 @@ public class SendMessageToStudentByCourseActivity extends AppCompatActivity {
     String courseName, characteristic;
     TextView tvCourseName, tvStuCount;
     ArrayList<Student> studentItems;
-    private RecyclerView.Adapter adapter;
     ImageView ivSelecAll;
-
     RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,23 +117,23 @@ public class SendMessageToStudentByCourseActivity extends AppCompatActivity {
 
     public void initData(View view) {
         //this method get data from any item if checked and send to final message sending page
-        Intent intent=new Intent(this, FinalSendMessageActivity.class);
+        Intent intent = new Intent(this, FinalSendMessageActivity.class);
         List<String> stuname;
         stuname = new ArrayList<>();
         List<String> stucodes;
-        stucodes=new ArrayList<>();
+        stucodes = new ArrayList<>();
         for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
-           //get item from recycler
+            //get item from recycler
             View view1 = recyclerView.getChildAt(i);
             CustomCheckBox cb = view1.findViewById(R.id.get_student_message_item_checkbox);
-            if(cb.isChecked()){
-              //init textviews
-                TextView tvname=view1.findViewById(R.id.get_student_message_item_tvname);
-                TextView tvcode=view1.findViewById(R.id.get_student_message_item_tvcode);
-              //get data from textviews
-                String selectedName=tvname.getText().toString();
-                String selectedCode=tvcode.getText().toString();
-              //set data to list
+            if (cb.isChecked()) {
+                //init textviews
+                TextView tvname = view1.findViewById(R.id.get_student_message_item_tvname);
+                TextView tvcode = view1.findViewById(R.id.get_student_message_item_tvcode);
+                //get data from textviews
+                String selectedName = tvname.getText().toString();
+                String selectedCode = tvcode.getText().toString();
+                //set data to list
                 stuname.add(selectedName);
                 stucodes.add(selectedCode);
             }
@@ -143,7 +142,7 @@ public class SendMessageToStudentByCourseActivity extends AppCompatActivity {
         intent.putStringArrayListExtra("codes", (ArrayList<String>) stucodes);
         intent.putStringArrayListExtra("names", (ArrayList<String>) stuname);
         //this is for authentication receiver
-        intent.putExtra("flagRole","1");
+        intent.putExtra("flagRole", "1");
         startActivity(intent);
 
     }

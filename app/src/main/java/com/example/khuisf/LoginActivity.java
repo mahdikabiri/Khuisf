@@ -32,9 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_activiry);
         init();
         SessionManager manager = new SessionManager(this);
-        boolean logedIn = manager.isLogedIn();
         if (manager.isLogedIn()) {
-            Toast.makeText(this, logedIn + "", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }

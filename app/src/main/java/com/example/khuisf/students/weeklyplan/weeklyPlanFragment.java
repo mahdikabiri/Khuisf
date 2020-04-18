@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.R;
+import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
@@ -70,7 +70,7 @@ public class weeklyPlanFragment extends Fragment {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss",response.toString());
+                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
@@ -80,7 +80,7 @@ public class weeklyPlanFragment extends Fragment {
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime,cChar));
+                        courseItems.add(new Course(cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -92,7 +92,7 @@ public class weeklyPlanFragment extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
-                Log.d("sss",anError.toString());
+                Log.d("sss", anError.toString());
 
             }
         });

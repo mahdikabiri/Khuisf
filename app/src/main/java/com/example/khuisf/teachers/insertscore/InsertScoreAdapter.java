@@ -112,6 +112,7 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
+
                         Toast.makeText(context, response + "", Toast.LENGTH_SHORT).show();
 
                     }

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Student;
 
 import net.igenius.customcheckbox.CustomCheckBox;
@@ -48,7 +47,7 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
     }
 
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvStuName,tvStuCode;
+        public TextView tvStuName, tvStuCode;
         public CustomCheckBox cbCheck;
 
 

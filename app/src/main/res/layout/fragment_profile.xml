@@ -35,10 +35,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/imageview_account_profile"
-                    android:clickable="true"
-                    android:onClick="opneProfileEdit"
                     android:background="@drawable/ic_editprofile"
+                    android:clickable="true"
                     android:elevation="20dp"
+                    android:onClick="opneProfileEdit"
                     app:backgroundTint="@color/mybluecolor"
                     app:srcCompat="@drawable/ic_editprofile" />
 
@@ -87,6 +87,7 @@
 
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
@@ -190,7 +191,6 @@
                 </LinearLayout>
 
 
-
                 <LinearLayout
                     android:id="@+id/fragment_profile_layout_student"
                     android:layout_width="match_parent"
@@ -265,6 +265,7 @@
 
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"

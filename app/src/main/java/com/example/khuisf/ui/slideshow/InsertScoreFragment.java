@@ -18,9 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.CourseAdapterForTeachInsertScore;
 import com.example.khuisf.R;
+import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
@@ -32,9 +32,9 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 public class InsertScoreFragment extends Fragment {
+    ArrayList<Course> courseItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    ArrayList<Course> courseItems;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,11 +52,11 @@ public class InsertScoreFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         //geting teachers code from shared preferences
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        String code=preferences.getString("code","");
+        String code = preferences.getString("code", "");
         getCourses(code);
     }
 
@@ -69,7 +69,7 @@ public class InsertScoreFragment extends Fragment {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss",response.toString());
+                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
@@ -79,7 +79,7 @@ public class InsertScoreFragment extends Fragment {
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime,cChar));
+                        courseItems.add(new Course(cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -91,7 +91,7 @@ public class InsertScoreFragment extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
-                Log.d("sss",anError.toString());
+                Log.d("sss", anError.toString());
 
             }
         });

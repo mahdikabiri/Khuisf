@@ -47,11 +47,11 @@ public class CourseAdapterForAttendance extends RecyclerView.Adapter<CourseAdapt
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, ShowAttendanceActivity.class);
-                intent.putExtra(MainActivity.CHARAC,currentItem.getCharac());
-                intent.putExtra(MainActivity.NAME,currentItem.getTitle());
-                intent.putExtra(MainActivity.DAY,currentItem.getDay());
-                intent.putExtra(MainActivity.TIME,currentItem.getTime());
+                Intent intent = new Intent(context, ShowAttendanceActivity.class);
+                intent.putExtra(MainActivity.CHARAC, currentItem.getCharac());
+                intent.putExtra(MainActivity.NAME, currentItem.getTitle());
+                intent.putExtra(MainActivity.DAY, currentItem.getDay());
+                intent.putExtra(MainActivity.TIME, currentItem.getTime());
 
                 context.startActivity(intent);
             }

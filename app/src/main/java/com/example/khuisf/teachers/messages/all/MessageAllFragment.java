@@ -40,10 +40,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MessageAllFragment extends Fragment {
     ArrayList<Student> studentItems;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
     ImageButton btnSelectAll;
     FloatingActionButton fab;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
 
     @Nullable
     @Override
@@ -105,7 +105,7 @@ public class MessageAllFragment extends Fragment {
         intent.putStringArrayListExtra("codes", (ArrayList<String>) stucodes);
         intent.putStringArrayListExtra("names", (ArrayList<String>) stuname);
         //this is for authentication receiver
-        intent.putExtra("flagRole","1");
+        intent.putExtra("flagRole", "1");
 
         startActivity(intent);
     }

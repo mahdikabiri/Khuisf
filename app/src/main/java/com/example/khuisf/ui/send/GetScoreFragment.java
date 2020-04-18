@@ -19,8 +19,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Score;
 import com.example.khuisf.ScoreAdapter;
+import com.example.khuisf.entitys.Score;
 import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
@@ -35,6 +35,7 @@ public class GetScoreFragment extends Fragment {
     ArrayList<Score> courseItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -67,7 +68,7 @@ public class GetScoreFragment extends Fragment {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss",response.toString());
+                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
@@ -77,11 +78,11 @@ public class GetScoreFragment extends Fragment {
                         String unitAmali = object.getString("unit_practical");
                         String unitTeori = object.getString("unit_theoretical");
                         //if score not inserted
-                        if (score.equals("null")){
-                            score="خالی";
+                        if (score.equals("null")) {
+                            score = "خالی";
                         }
                         // add items from db and save to arraylist
-                        courseItems.add(new Score(cName, unitTeori, unitAmali,score));
+                        courseItems.add(new Score(cName, unitTeori, unitAmali, score));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -93,7 +94,7 @@ public class GetScoreFragment extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "اراد در دریافت نمرات", Toast.LENGTH_SHORT).show();
-                Log.d("sss",anError.toString());
+                Log.d("sss", anError.toString());
 
             }
         });
@@ -101,6 +102,6 @@ public class GetScoreFragment extends Fragment {
 
     private String getCodeFromSharedPrefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        return preferences.getString("code","");
+        return preferences.getString("code", "");
     }
 }

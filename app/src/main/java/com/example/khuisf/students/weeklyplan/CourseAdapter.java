@@ -11,10 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.CourseInfoActivity;
 import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
+import com.example.khuisf.entitys.Course;
 
 import java.util.ArrayList;
 
@@ -48,11 +48,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, CourseInfoActivity.class);
-                intent.putExtra(MainActivity.CHARAC,currentItem.getCharac());
-                intent.putExtra(MainActivity.NAME,currentItem.getTitle());
-                intent.putExtra(MainActivity.DAY,currentItem.getDay());
-                intent.putExtra(MainActivity.TIME,currentItem.getTime());
+                Intent intent = new Intent(context, CourseInfoActivity.class);
+                intent.putExtra(MainActivity.CHARAC, currentItem.getCharac());
+                intent.putExtra(MainActivity.NAME, currentItem.getTitle());
+                intent.putExtra(MainActivity.DAY, currentItem.getDay());
+                intent.putExtra(MainActivity.TIME, currentItem.getTime());
 
                 context.startActivity(intent);
                 Toast.makeText(context, holder.tvTime.getText(), Toast.LENGTH_SHORT).show();

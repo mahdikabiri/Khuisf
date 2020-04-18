@@ -43,7 +43,7 @@ public class FinalSendMessageActivity extends AppCompatActivity {
             Handler handler = new Handler();
             Runnable r = () -> {
                 for (int i = 0; i < codes.size(); i++) {
-                    sendStudentData(v, codes.get(i), text.getText().toString(),flagRole);
+                    sendStudentData(v, codes.get(i), text.getText().toString(), flagRole);
                 }
                 btnSendMessgae.setVisibility(View.GONE);
             };
@@ -53,7 +53,7 @@ public class FinalSendMessageActivity extends AppCompatActivity {
     }
 
 
-    private void sendStudentData(View view, String code, String text,String flagRole) {
+    private void sendStudentData(View view, String code, String text, String flagRole) {
         AndroidNetworking.post(Urls.host + Urls.insertMessageForStudent)
                 .addBodyParameter("student_code", code)
                 .addBodyParameter("message_text", text)
@@ -62,8 +62,8 @@ public class FinalSendMessageActivity extends AppCompatActivity {
                 getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(FinalSendMessageActivity.this, response+"", Toast.LENGTH_SHORT).show();
-                        Log.d("salamali",response);
+                        Toast.makeText(FinalSendMessageActivity.this, response + "", Toast.LENGTH_SHORT).show();
+                        Log.d("salamali", response);
                         if (response.equals("1")) {
                             Snackbar.make(view, R.string.insert_success, Snackbar.LENGTH_LONG).
                                     setAction("ثبت شد", null).show();

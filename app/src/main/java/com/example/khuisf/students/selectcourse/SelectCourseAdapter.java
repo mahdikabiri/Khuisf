@@ -67,7 +67,7 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                         SharedPreferences preferences = context.getSharedPreferences("prefs", MODE_PRIVATE);
-                        selecCourse(holder,preferences.getString("code",""),holder.tvChar.getText().toString(),context);
+                        selecCourse(holder, preferences.getString("code", ""), holder.tvChar.getText().toString(), context);
                     }
                 });
 
@@ -96,12 +96,12 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                 .build().getAsString(new StringRequestListener() {
             @Override
             public void onResponse(String response) {
-                Log.d("mures",response);
-                if(response.equals("true")){
+                Log.d("mures", response);
+                if (response.equals("true")) {
                     holder.cl.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen));
                     holder.btnSelect.setVisibility(View.GONE);
                     Toast.makeText(context, "با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(context, "درس ثبت نشد", Toast.LENGTH_SHORT).show();
                 }
             }

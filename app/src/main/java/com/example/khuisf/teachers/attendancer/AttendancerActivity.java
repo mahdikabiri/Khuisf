@@ -35,14 +35,13 @@ import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 
 public class AttendancerActivity extends AppCompatActivity {
     ArrayList<Student> studentItems;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
     String charac, courseTitle;
-    private PersianDatePickerDialog picker;
     TextView tvDatePicker, tvCourseName;
     FloatingActionButton fab;
     JSONObject myObj = new JSONObject();
-
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private PersianDatePickerDialog picker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -44,7 +44,7 @@ public class DeleteCourses extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                               Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_delete_courses, container, false);
 
@@ -54,7 +54,6 @@ public class DeleteCourses extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = getActivity().findViewById(R.id.delete_course_recycler);
-
 
 
         AndroidNetworking.initialize(getContext());
@@ -70,7 +69,7 @@ public class DeleteCourses extends Fragment {
     private void getCourses1() {
         AndroidNetworking.initialize(getActivity());
         AndroidNetworking.post(Urls.host + Urls.getSelectedCourses)
-                .addBodyParameter("code",getNameFromSharedRefs())
+                .addBodyParameter("code", getNameFromSharedRefs())
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
@@ -84,7 +83,7 @@ public class DeleteCourses extends Fragment {
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime,cChar));
+                        courseItems.add(new Course(cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -96,7 +95,7 @@ public class DeleteCourses extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه دروس", Toast.LENGTH_SHORT).show();
-                Log.d("ersss",anError.toString());
+                Log.d("ersss", anError.toString());
 
             }
         });
@@ -111,7 +110,7 @@ public class DeleteCourses extends Fragment {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss",response.toString());
+                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
@@ -121,7 +120,7 @@ public class DeleteCourses extends Fragment {
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime,cChar));
+                        courseItems.add(new Course(cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -133,13 +132,11 @@ public class DeleteCourses extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
-                Log.d("sss",anError.toString());
+                Log.d("sss", anError.toString());
 
             }
         });
     }
-
-
 
 
     private String getNameFromSharedRefs() {

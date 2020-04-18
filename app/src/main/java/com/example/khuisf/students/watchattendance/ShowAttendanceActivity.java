@@ -1,15 +1,15 @@
 package com.example.khuisf.students.watchattendance;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -17,7 +17,6 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Attendance;
-import com.example.khuisf.entitys.Course;
 import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
@@ -28,10 +27,11 @@ import java.util.ArrayList;
 
 public class ShowAttendanceActivity extends AppCompatActivity {
     ArrayList<Attendance> myItems;
+    String charac, courseTitle;
+    TextView tvStuName, tvCourseName;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    String charac,courseTitle;
-    TextView tvStuName,tvCourseName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +55,8 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     private void init() {
         setContentView(R.layout.activity_show_attendance);
         recyclerView = findViewById(R.id.activity_show_attendace_recycler);
-        tvStuName=findViewById(R.id.activity_show_attendance_tv_stuname);
-        tvCourseName=findViewById(R.id.activity_show_attendance_tv_coursename);
+        tvStuName = findViewById(R.id.activity_show_attendance_tv_stuname);
+        tvCourseName = findViewById(R.id.activity_show_attendance_tv_coursename);
         AndroidNetworking.initialize(this);
     }
 

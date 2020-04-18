@@ -45,13 +45,14 @@ public class CourseAdapterForTeachInsertScore extends RecyclerView.Adapter<Cours
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, InsertScoreActivity.class);
-                intent.putExtra("CHARACTERISTIC",currentItem.getCharac());
-                intent.putExtra("title",currentItem.getTitle());
+                Intent intent = new Intent(context, InsertScoreActivity.class);
+                intent.putExtra("CHARACTERISTIC", currentItem.getCharac());
+                intent.putExtra("title", currentItem.getTitle());
                 context.startActivity(intent);
             }
         });
     }
+
     @Override
     public int getItemCount() {
         return mCourses.size();

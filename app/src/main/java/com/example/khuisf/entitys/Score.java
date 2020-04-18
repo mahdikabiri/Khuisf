@@ -1,7 +1,7 @@
 package com.example.khuisf.entitys;
 
 public class Score {
-    String courseName,unitTeori,unitAmali,score;
+    String courseName, unitTeori, unitAmali, score;
 
     public Score(String courseName, String unitTeori, String unitAmali, String score) {
         this.courseName = courseName;

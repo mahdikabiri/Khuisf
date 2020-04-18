@@ -6,21 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:gravity="right"
+    tools:openDrawer="start"
+
+    >
 
     <include
         layout="@layout/app_bar_main2"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.google.android.material.navigation.NavigationView
+    <com.shreyaspatil.material.navigationview.MaterialNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main2">
+        android:background="@drawable/bg_nav_menu"
+        android:fitsSystemWindows="false"
 
-    </com.google.android.material.navigation.NavigationView>
+        app:headerLayout="@layout/nav_header_main2"
+        app:itemStyle="rounded_right">
+
+    </com.shreyaspatil.material.navigationview.MaterialNavigationView>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

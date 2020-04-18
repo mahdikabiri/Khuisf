@@ -75,7 +75,7 @@ public class ContactToTeacherActivity extends AppCompatActivity {
 
                     }
                 });
-}
+    }
 
     private String getCodeFromSharedRefs() {
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);

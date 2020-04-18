@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StartActivity"
+        <activity
+            android:name=".StartActivity"
             android:theme="@style/sss">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,8 +40,9 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity"
-            android:label="@string/persian_login_form"/>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/persian_login_form" />
 
     </application>
 
