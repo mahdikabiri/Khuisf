@@ -7,4 +7,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="title_profile">16dp</dimen>
     <dimen name="text_in_profile">16dp</dimen>
+    <dimen name="cornerradius_items">20dp</dimen>
 </resources>

@@ -58,11 +58,12 @@ public class DeleteCourses extends Fragment {
 
         AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
-        adapter = new DeleteCourseAdapter(getContext(), courseItems);
-        recyclerView.setHasFixedSize(true);
+        adapter = new SampleAdapter(getContext(), courseItems);
+       // recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(new SampleAdapter(getContext(),recyclerView));
         getCourses();
     }
 
@@ -110,7 +111,6 @@ public class DeleteCourses extends Fragment {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
