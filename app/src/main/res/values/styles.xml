@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:fontFamily">@font/vazir</item>
 
-       //this color is for navigation menu selected items
+        //this color is for navigation menu selected items
         <item name="colorSecondary">@color/mybluecolor2</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>

@@ -1,7 +1,7 @@
 package com.example.khuisf.entitys;
 
 public class Urls {
-   // public static String host = "http://mkabiri.ir/khuisf/";
+    //public static String host = "http://mkabiri.ir/khuisf/";
     //public static String host="http://192.168.1.100/project/khuisf/";
 
 
