@@ -38,7 +38,7 @@ public class ContactToTeacherActivity extends AppCompatActivity {
         adapter = new ContactToTeacherAdapter(this, courseItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
         getTeachers(getCodeFromSharedRefs());
     }

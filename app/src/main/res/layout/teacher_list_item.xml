@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    android:padding="10dp">
+    >
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/teacher_list_item_fab_send"
@@ -24,14 +24,16 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@android:color/transparent"
+        app:cardCornerRadius="25dp"
+        android:layout_height="wrap_content"
+        android:elevation="30dp"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:padding="10dp"
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -44,24 +46,23 @@
             tools:layout_editor_absoluteX="5dp">
 
             <TextView
-                android:id="@+id/teacher_list_item_tv_course_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="40dp"
+                android:id="@+id/teacher_list_item_tv_teachername"
+                android:layout_width="match_parent"
+
+               android:drawableRight="@drawable/ic_person" android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="name"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/teacher_list_item_tv_teachername"
-                android:layout_width="wrap_content"
+                android:id="@+id/teacher_list_item_tv_course_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:textAlignment="center"
                 android:text="cours title"
-                android:textSize="30sp"
+                android:drawableRight="@drawable/ic_coues"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

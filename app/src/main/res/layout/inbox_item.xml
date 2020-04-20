@@ -12,7 +12,7 @@
         android:id="@+id/select_course_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FDD835"
+        android:background="@color/mybluecolor2"
         android:padding="5dp">
 
         <TextView
@@ -21,8 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="138dp"
             android:layout_marginTop="4dp"
+
             android:layout_marginEnd="112dp"
             android:text="cours title"
+            android:textColor="@color/colorWiteg"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +36,7 @@
             android:layout_width="299dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:textColor="@color/colorWiteg"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="5dp"
