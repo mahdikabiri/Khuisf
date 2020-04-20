@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,12 +28,15 @@ import com.example.khuisf.entitys.Urls;
 
 import java.util.ArrayList;
 
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapter.CourseViewHolder> {
     LayoutInflater inflater;
     Context context;
-    private ArrayList<Course> mCourses;
+        private ArrayList<Course> mCourses;
 
     public SelectCourseAdapter(Context context, ArrayList<Course> courses) {
         this.context = context;
@@ -55,6 +59,7 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
         holder.tvTime.setText(currentItem.getTime());
         holder.tvChar.setText(currentItem.getCharac());
 
+/*
 
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("درس را انتخاب می کنید؟");
@@ -66,9 +71,7 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                     @SuppressLint("ResourceAsColor")
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
-                        SharedPreferences preferences = context.getSharedPreferences("prefs", MODE_PRIVATE);
-                        selecCourse(holder, preferences.getString("code", ""), holder.tvChar.getText().toString(), context);
-                    }
+                        }
                 });
 
         builder1.setNegativeButton(
@@ -78,12 +81,32 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                         dialog.cancel();
                     }
                 });
+*/
 
         holder.btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder1.create();
-                builder1.show();
+
+
+                new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("درس  " +currentItem.getTitle() +" را انتخاب می کنید؟")
+                        .setConfirmText("بله")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+
+                                SharedPreferences preferences = context.getSharedPreferences("prefs", MODE_PRIVATE);
+                                selecCourse(holder, preferences.getString("code", ""), holder.tvChar.getText().toString(), context);
+
+                                sDialog
+                                        .setTitleText("مشخصه ثبت شد!")
+                                        .setContentText("درس  " +currentItem.getTitle() +" با مشخصه "+currentItem.getCharac()+" با موفقیت ثبت شد")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
             }
         });
     }
@@ -100,7 +123,6 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                 if (response.equals("true")) {
                     holder.cl.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGreen));
                     holder.btnSelect.setVisibility(View.GONE);
-                    Toast.makeText(context, "با موفقیت ثبت شد", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "درس ثبت نشد", Toast.LENGTH_SHORT).show();
                 }

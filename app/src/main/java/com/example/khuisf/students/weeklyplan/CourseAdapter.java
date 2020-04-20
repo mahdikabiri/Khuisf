@@ -1,27 +1,25 @@
 package com.example.khuisf.students.weeklyplan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.khuisf.CourseInfoActivity;
-import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
-
+    BottomSheetDialog bottomSheetDialog;
     LayoutInflater inflater;
     Context context;
+    TextView tvCourseName, tvCourseChar, tvCourseDay, tvCourseTeacher, tvCourseTime;
     private ArrayList<Course> mCourses;
 
     public CourseAdapter(Context context, ArrayList<Course> courses) {
@@ -48,17 +46,32 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, CourseInfoActivity.class);
-                intent.putExtra(MainActivity.CHARAC, currentItem.getCharac());
-                intent.putExtra(MainActivity.NAME, currentItem.getTitle());
-                intent.putExtra(MainActivity.DAY, currentItem.getDay());
-                intent.putExtra(MainActivity.TIME, currentItem.getTime());
 
-                context.startActivity(intent);
-                Toast.makeText(context, holder.tvTime.getText(), Toast.LENGTH_SHORT).show();
+                createBottomShetDialog(currentItem.getTitle(), currentItem.getDay(), currentItem.getCharac(), currentItem.getTime());
+                tvCourseChar.setText(currentItem.getCharac());
+                tvCourseTime.setText(currentItem.getTime());
+                tvCourseDay.setText(currentItem.getDay());
+                tvCourseName.setText(currentItem.getTitle());
+                bottomSheetDialog.show();
+
             }
         });
     }
+
+
+    private void createBottomShetDialog(String courseTitle, String courseDay, String courseChar, String courseTime) {
+        if (bottomSheetDialog == null) {
+            View view = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_dialog_course_info, null);
+            tvCourseName = view.findViewById(R.id.courseinfo_tv_coursename);
+            tvCourseTeacher = view.findViewById(R.id.courseinfo_teachername);
+            tvCourseDay = view.findViewById(R.id.courseinfo_tv_day);
+            tvCourseChar = view.findViewById(R.id.courseinfo_char);
+            tvCourseTime = view.findViewById(R.id.courseinfo_tv_time);
+            bottomSheetDialog = new BottomSheetDialog(context);
+            bottomSheetDialog.setContentView(view);
+        }
+    }
+
 
     @Override
     public int getItemCount() {

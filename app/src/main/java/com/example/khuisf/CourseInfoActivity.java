@@ -22,7 +22,7 @@ public class CourseInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_info);
-        init();
+        //init();
         charac = getIntent().getStringExtra(MainActivity.CHARAC);
         name = getIntent().getStringExtra(MainActivity.NAME);
         time = getIntent().getStringExtra(MainActivity.TIME);
@@ -65,7 +65,7 @@ public class CourseInfoActivity extends AppCompatActivity {
             }
         });
     }
-
+/*
     private void init() {
         tvCourseName = findViewById(R.id.courseinfo_tv_coursename);
         tvTeacherName = findViewById(R.id.courseinfo_teachername);
@@ -74,6 +74,6 @@ public class CourseInfoActivity extends AppCompatActivity {
         tvCharac = findViewById(R.id.courseinfo_course_char);
         tvDay = findViewById(R.id.courseinfo_tv_day);
         tvTime = findViewById(R.id.courseinfo_tv_time);
-    }
+    }*/
 
 }

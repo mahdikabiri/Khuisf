@@ -8,4 +8,5 @@
     <dimen name="title_profile">16dp</dimen>
     <dimen name="text_in_profile">16dp</dimen>
     <dimen name="cornerradius_items">20dp</dimen>
+    <dimen name="text_size_course_info">20sp</dimen>
 </resources>
