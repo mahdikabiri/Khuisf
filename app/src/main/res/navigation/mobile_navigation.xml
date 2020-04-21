@@ -12,21 +12,21 @@
 
     <fragment
         android:id="@+id/nav_attendaner"
-        android:name="com.example.khuisf.ui.attendancer.AttendacerFragment"
+        android:name="com.example.khuisf.teachers.attendancer.AttendacerFragmentForTeacher"
         android:label="حضور و غیاب" />
 
     <fragment
         android:id="@+id/nav_insertscore"
-        android:name="com.example.khuisf.ui.slideshow.InsertScoreFragment"
+        android:name="com.example.khuisf.teachers.insertscore.InsertScoreFragment"
         android:label="ثبت نمرات" />
 
     <fragment
         android:id="@+id/nav_score"
-        android:name="com.example.khuisf.ui.send.GetScoreFragment"
+        android:name="com.example.khuisf.students.getscore.GetScoreFragment"
         android:label="کارنامه" />
     <fragment
         android:id="@+id/nav_score12"
-        android:name="com.example.khuisf.ui.send.GetScoreFragment"
+        android:name="com.example.khuisf.students.getscore.GetScoreFragment"
         android:label="کارنامه" />
     <fragment
         android:id="@+id/nav_share"
@@ -41,7 +41,7 @@
 
     <fragment
         android:id="@+id/deleteCourses"
-        android:name="com.example.khuisf.students.deletecourse.DeleteCourses"
+        android:name="com.example.khuisf.students.deletecourse.DeleteCoursesFragment"
         android:label="حدف درس"
         tools:layout="@layout/fragment_delete_courses" />
     <fragment

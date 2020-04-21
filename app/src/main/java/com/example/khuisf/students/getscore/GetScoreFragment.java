@@ -1,8 +1,9 @@
-package com.example.khuisf.ui.attendancer;
+package com.example.khuisf.students.getscore;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.Score;
 import com.example.khuisf.entitys.Urls;
-import com.example.khuisf.teachers.getcourses.CourseAdapterForTeach;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,63 +29,76 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
+
 import static android.content.Context.MODE_PRIVATE;
 
-public class AttendacerFragment extends Fragment {
-    ArrayList<Course> studentItems;
-    ArrayList<Course> courseItems;
+public class GetScoreFragment extends Fragment {
+    ArrayList<Score> courseItems;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private WaveSwipeRefreshLayout swipeRefreshLayout;
 
-    public AttendacerFragment() {
-    }
+    private RecyclerView.Adapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_attendance, container, false);
+        View root = inflater.inflate(R.layout.fragment_getscore, container, false);
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setLayoutParams(layoutParams);
-        return view;
+        root.setLayoutParams(layoutParams);
+        return root;
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.recycler_attendance);
+        recyclerView = getActivity().findViewById(R.id.frag_getscore_recycler);
+        AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
-        adapter = new CourseAdapterForTeach(getContext(), courseItems);
+        adapter = new ScoreAdapter(getContext(), courseItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-        //geting teachers code from shared preferences
-        SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        String code = preferences.getString("code", "");
-        getCourses(code);
+        initSwipeRefreashLayout(view);
+        getScore();
+
     }
 
+    private void initSwipeRefreashLayout(View view) {
+        swipeRefreshLayout = view.findViewById(R.id.get_score_swipe_refresh);
+        swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
+        swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
+            getScore();
+            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+        });
 
-    private void getCourses(String teacherCode) {
+    }
+
+    private void getScore() {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getCourseTeacher)
-                .addBodyParameter("code", teacherCode)
-                .setTag("getCourses")
+        AndroidNetworking.post(Urls.host + Urls.getScore)
+                .addBodyParameter("code", getCodeFromSharedPrefs())
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
-                        String cName = object.getString("name");
-                        String cDay = object.getString("day");
-                        String cTime = object.getString("time");
-                        String cChar = object.getString("charac");
+                        String score = object.getString("score");
+                        String cName = object.getString("course_name");
+                        String unitAmali = object.getString("unit_practical");
+                        String unitTeori = object.getString("unit_theoretical");
+                        //if score not inserted
+                        if (score.equals("null")) {
+                            score = "خالی";
+                        }
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime, cChar));
+                        courseItems.add(new Score(cName, unitTeori, unitAmali, score));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -96,21 +109,19 @@ public class AttendacerFragment extends Fragment {
 
             @Override
             public void onError(ANError anError) {
-                Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
-                Log.d("sss", anError.toString());
-
+                Toast.makeText(getActivity(), "اراد در دریافت نمرات", Toast.LENGTH_SHORT).show();
             }
         });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        },1000);
     }
 
-    private String getNameFromSharedRefs() {
+    private String getCodeFromSharedPrefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");
     }
-
-
-    private String getCharFromSharedPrefs() {
-        return "2222";
-    }
-
 }

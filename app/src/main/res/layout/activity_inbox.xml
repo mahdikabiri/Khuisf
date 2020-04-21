@@ -6,15 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".messgeainbox.InboxActivity">
 
+    <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
+        android:id="@+id/inbox_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        android:outlineSpotShadowColor="@color/mybluecolor">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/activity_inbox_recycler"
         android:layout_width="match_parent"
-        android:elevation="10dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
     <ImageView
         android:id="@+id/imageView2"

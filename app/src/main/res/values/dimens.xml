@@ -9,4 +9,5 @@
     <dimen name="text_in_profile">16dp</dimen>
     <dimen name="cornerradius_items">20dp</dimen>
     <dimen name="text_size_course_info">20sp</dimen>
+    <dimen name="delay_for_swipe_refresh">3</dimen>
 </resources>

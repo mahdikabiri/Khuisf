@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
             if (role == 1) {
                 startActivity(new Intent(this, ContactToTeacherActivity.class));
             } else if (role == 2) {
-                getSupportFragmentManager().beginTransaction()
-                        .add(android.R.id.content, new getCouserForSendMessageTeachFragment()).commit();
+               /* getSupportFragmentManager().beginTransaction()
+                        .add(android.R.id.content, new getCouserForSendMessageTeachFragment()).commit();*/
             }
         }
         return super.onOptionsItemSelected(item);

@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorWiteg"
     android:layout_height="match_parent"
+    android:background="@color/colorWiteg"
     android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_getcourse"
+    <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
+        android:id="@+id/get_course_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="20dp"
-        android:padding="4dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:outlineSpotShadowColor="@color/mybluecolor">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_getcourse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -28,10 +34,10 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:alpha=".3"
+        android:elevation="1dp"
+        android:src="@drawable/ic_book"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_book"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

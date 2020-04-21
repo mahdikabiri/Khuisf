@@ -1,4 +1,4 @@
-package com.example.khuisf;
+package com.example.khuisf.students.getscore;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.khuisf.R;
 import com.example.khuisf.entitys.Score;
 
 import java.util.ArrayList;

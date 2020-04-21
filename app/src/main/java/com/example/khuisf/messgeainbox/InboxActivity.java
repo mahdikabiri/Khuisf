@@ -1,8 +1,11 @@
 package com.example.khuisf.messgeainbox;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,10 +26,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
+
 public class InboxActivity extends AppCompatActivity {
     ArrayList<Message> myItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +46,29 @@ public class InboxActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        getInbox(getCodeFromSharedPrefs(), String.valueOf(getRoleFromSharedPrefs()));
+        initSwipeRefreashLayout();
+        getInbox();
 
     }
 
-    private void getInbox(String studentCode, String studentRole) {
+    private void initSwipeRefreashLayout() {
+        swipeRefreshLayout = findViewById(R.id.inbox_swipe_refresh);
+        swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
+        swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Toast.makeText(this, "refreshed", Toast.LENGTH_SHORT).show();
+            getInbox();
+            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+        });
+
+    }
+    private void getInbox( ) {
+        String studentCode=getCodeFromSharedPrefs();
+        String userRole= String.valueOf(getRoleFromSharedPrefs());
         AndroidNetworking.initialize(this);
         AndroidNetworking.post(Urls.host + Urls.getMessageForStudent)
                 .addBodyParameter("student_code", studentCode)
-                .addBodyParameter("role_code", studentRole)
+                .addBodyParameter("role_code", userRole)
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
@@ -68,13 +88,19 @@ public class InboxActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onError(ANError anError) {
-                Log.d("mahdierr", anError.toString());
                 Toast.makeText(InboxActivity.this, anError + "s", Toast.LENGTH_SHORT).show();
             }
         });
+        if (swipeRefreshLayout.isRefreshing()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 1000);
+        }
     }
 
     private String getCodeFromSharedPrefs() {

@@ -1,6 +1,8 @@
 package com.example.khuisf.teachers.insertscore;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 
 public class InsertScoreActivity extends AppCompatActivity {
     String charac, title;
@@ -92,5 +96,6 @@ public class InsertScoreActivity extends AppCompatActivity {
 
             }
         });
+
     }
 }

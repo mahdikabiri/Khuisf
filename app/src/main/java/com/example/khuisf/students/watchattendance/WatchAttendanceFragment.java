@@ -1,7 +1,9 @@
 package com.example.khuisf.students.watchattendance;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,19 +32,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class WatchAttendanceFragment extends Fragment {
     ArrayList<Course> courseItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     public WatchAttendanceFragment() {
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_getcourse, container, false);
         return view;
     }
 
@@ -58,7 +63,19 @@ public class WatchAttendanceFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        initSwipeRefreashLayout(view);
         getCourses();
+    }
+    private void initSwipeRefreashLayout(View view) {
+        swipeRefreshLayout = view.findViewById(R.id.get_course_swipe_refresh);
+        swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
+        swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
+            getCourses();
+            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+        });
+
     }
 
     private void getCourses() {
@@ -95,6 +112,14 @@ public class WatchAttendanceFragment extends Fragment {
 
             }
         });
+        if (swipeRefreshLayout.isRefreshing()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 1000);
+        }
     }
 
     private String getNameFromSharedRefs() {

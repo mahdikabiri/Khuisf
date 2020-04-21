@@ -4,8 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
+        android:id="@+id/get_course_atendance_for_teacher_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        android:outlineSpotShadowColor="@color/mybluecolor">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_attendance"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
+
 </LinearLayout>

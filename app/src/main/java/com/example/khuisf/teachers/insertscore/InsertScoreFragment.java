@@ -1,7 +1,9 @@
-package com.example.khuisf.ui.slideshow;
+package com.example.khuisf.teachers.insertscore;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,12 +31,15 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class InsertScoreFragment extends Fragment {
     ArrayList<Course> courseItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,13 +60,26 @@ public class InsertScoreFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         //geting teachers code from shared preferences
-        SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
-        String code = preferences.getString("code", "");
-        getCourses(code);
+
+        initSwipeRefreashLayout(view);
+        getCourses();
     }
 
 
-    private void getCourses(String teacherCode) {
+    private void initSwipeRefreashLayout(View view) {
+        swipeRefreshLayout = view.findViewById(R.id.inser_score_for_teacher_swipe_refresh);
+        swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
+        swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
+            getCourses();
+            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+        });
+
+    }
+    private void getCourses() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
+        String teacherCode = preferences.getString("code", "");
         AndroidNetworking.initialize(getActivity());
         AndroidNetworking.post(Urls.host + Urls.getCourseTeacher)
                 .addBodyParameter("code", teacherCode)
@@ -95,5 +113,13 @@ public class InsertScoreFragment extends Fragment {
 
             }
         });
+        if (swipeRefreshLayout.isRefreshing()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 1000);
+        }
     }
 }

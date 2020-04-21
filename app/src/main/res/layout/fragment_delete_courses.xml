@@ -3,17 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".students.selectcourse.SelectCourses">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/delete_course_recycler"
+    <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
+        android:id="@+id/delete_score_swipe_refresh"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:elevation="20dp"
-        android:layout_height="match_parent">
+        android:outlineSpotShadowColor="@color/mybluecolor">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/delete_course_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
 
 </LinearLayout>

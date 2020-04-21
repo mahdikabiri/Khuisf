@@ -66,7 +66,7 @@ public class MessageAllFragment extends Fragment {
         adapter = new StudentAdapterForTeachMessage(getContext(), studentItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         getStudnet();
         btnSelectAll.setOnClickListener(v -> {

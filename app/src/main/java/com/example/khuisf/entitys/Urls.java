@@ -1,12 +1,15 @@
 package com.example.khuisf.entitys;
 
 public class Urls {
-    //public static String host = "http://mkabiri.ir/khuisf/";
+   // public static String host = "http://mkabiri.ir/khuisf/";
     //public static String host="http://192.168.1.100/project/khuisf/";
+
+    //new static ip
+    public static String host="http://192.168.63.1//project/khuisf/";
 
 
     //phone hotsopt
-    public static String host = "http://192.168.43.140/project/khuisf/";
+    //public static String host = "http://192.168.43.140/project/khuisf/";
 
 
     //public static String host = "http://192.168.1.101/project/khuisf/";
