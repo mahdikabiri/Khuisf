@@ -1,6 +1,7 @@
 package com.example.khuisf.teachers.attendancer;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -62,6 +63,10 @@ public class AttendancerActivity extends AppCompatActivity {
 
         tvCourseName.setText(courseTitle);
 
+        //get date auto matic
+        PersianCalendar persianCalendar=new PersianCalendar();
+        String date1 = persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay();
+        tvDatePicker.setText(date1);
         fab.setOnClickListener(v -> {
             String date = (String) tvDatePicker.getText();
             if (!date.equals("تاریخ را انتخاب کنید")) {
@@ -71,8 +76,6 @@ public class AttendancerActivity extends AppCompatActivity {
             }
         });
         getStudnets();
-
-
     }
 
     private void init() {
@@ -83,7 +86,6 @@ public class AttendancerActivity extends AppCompatActivity {
     }
 
     private void gatReadyValues(View v) {
-
         for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
             View view = recyclerView.getChildAt(i);
             // TextView tvName = view.findViewById(R.id.attendancer_tv_name);
@@ -94,8 +96,6 @@ public class AttendancerActivity extends AppCompatActivity {
             String status = generateStateFromId(rgState.getCheckedRadioButtonId());
             sendDate(tvDatePicker.getText().toString(), v, code, charac, status);
         }
-
-
         // Log.d("mylog1","code="+code +"   name="+name+"   /"+status);
     }
 
@@ -177,11 +177,9 @@ public class AttendancerActivity extends AppCompatActivity {
     }
 
     public void showCalendar(View v) {
-        //Typeface typeface = Typeface.createFromAsset(getAssets(), "Shabnam-Light-FD.ttf");
-
+        //Typeface typeface = Typeface.createFromAsset(getAssets(), "vazir.ttf");
         PersianCalendar initDate = new PersianCalendar();
         //initDate.setPersianDate(1370, 3, 13);
-
         picker = new PersianDatePickerDialog(this)
                 .setPositiveButtonString("انتخاب")
                 .setNegativeButton("بستن")

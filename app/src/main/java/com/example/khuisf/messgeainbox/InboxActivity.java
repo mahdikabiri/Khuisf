@@ -56,9 +56,8 @@ public class InboxActivity extends AppCompatActivity {
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            Toast.makeText(this, "refreshed", Toast.LENGTH_SHORT).show();
-            getInbox();
-            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+            Toast.makeText(this, R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
         });
 
     }
@@ -101,6 +100,12 @@ public class InboxActivity extends AppCompatActivity {
                 }
             }, 1000);
         }
+    }
+
+
+    private void update() {
+        myItems.clear();
+        getInbox();
     }
 
     private String getCodeFromSharedPrefs() {

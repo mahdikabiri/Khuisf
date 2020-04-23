@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".students.selectcourse.SelectCourses">
+    tools:context=".students.selectcourse.SelectCoursesFragment">
 
     <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
         android:id="@+id/select_course_swipe_refresh"

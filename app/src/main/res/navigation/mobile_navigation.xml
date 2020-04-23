@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/select_courses"
-        android:name="com.example.khuisf.students.selectcourse.SelectCourses"
+        android:name="com.example.khuisf.students.selectcourse.SelectCoursesFragment"
         android:label="انتخاب واحد"
         tools:layout="@layout/fragment_select_courses" />
 

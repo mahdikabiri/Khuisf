@@ -86,8 +86,6 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
         holder.btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("درس  " +currentItem.getTitle() +" را انتخاب می کنید؟")
                         .setConfirmText("بله")
@@ -97,7 +95,6 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
 
                                 SharedPreferences preferences = context.getSharedPreferences("prefs", MODE_PRIVATE);
                                 selecCourse(holder, preferences.getString("code", ""), holder.tvChar.getText().toString(), context);
-
                                 sDialog
                                         .setTitleText("مشخصه ثبت شد!")
                                         .setContentText("درس  " +currentItem.getTitle() +" با مشخصه "+currentItem.getCharac()+" با موفقیت ثبت شد")

@@ -31,7 +31,9 @@
         <activity android:name=".teachers.messages.bycourses.SendMessageToStudentByCourseActivity" />
         <activity android:name=".students.watchattendance.ShowAttendanceActivity" />
         <activity android:name=".teachers.insertscore.InsertScoreActivity" />
-        <activity android:name=".teachers.attendancer.AttendancerActivity" />
+        <activity android:name=".teachers.attendancer.AttendancerActivity"
+            android:theme="@style/sss"
+        />
         <activity
             android:name=".CourseInfoActivity"
             android:label="@string/title_activity_course_info"

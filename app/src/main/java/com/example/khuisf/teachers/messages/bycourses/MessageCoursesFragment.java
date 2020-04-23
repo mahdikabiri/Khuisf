@@ -75,12 +75,13 @@ public class MessageCoursesFragment extends Fragment {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
+                        int cId = object.getInt("id");
                         String cName = object.getString("name");
                         String cDay = object.getString("day");
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime, cChar));
+                        courseItems.add(new Course(cId,cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {

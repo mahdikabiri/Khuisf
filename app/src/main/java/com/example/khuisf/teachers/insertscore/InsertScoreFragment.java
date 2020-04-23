@@ -47,7 +47,6 @@ public class InsertScoreFragment extends Fragment {
         return root;
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -65,18 +64,16 @@ public class InsertScoreFragment extends Fragment {
         getCourses();
     }
 
-
     private void initSwipeRefreashLayout(View view) {
         swipeRefreshLayout = view.findViewById(R.id.inser_score_for_teacher_swipe_refresh);
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
-            getCourses();
-            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+            Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
         });
-
     }
+
     private void getCourses() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         String teacherCode = preferences.getString("code", "");
@@ -87,7 +84,6 @@ public class InsertScoreFragment extends Fragment {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
@@ -121,5 +117,10 @@ public class InsertScoreFragment extends Fragment {
                 }
             }, 1000);
         }
+    }
+
+    private void update() {
+        courseItems.clear();
+        getCourses();
     }
 }

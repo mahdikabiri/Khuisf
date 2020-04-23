@@ -76,8 +76,8 @@ public class AttendacerFragmentForTeacher extends Fragment {
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
-            getCourses();
+            Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
         });
 
     }
@@ -126,6 +126,12 @@ public class AttendacerFragmentForTeacher extends Fragment {
                 }
             }, 1000);
         }
+    }
+
+
+    private void update() {
+        courseItems.clear();
+        getCourses();
     }
 
     private String getNameFromSharedRefs() {

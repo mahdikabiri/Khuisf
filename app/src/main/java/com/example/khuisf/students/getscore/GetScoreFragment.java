@@ -71,11 +71,16 @@ public class GetScoreFragment extends Fragment {
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
-            getScore();
-            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+            Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
         });
 
+    }
+
+
+    private void update() {
+        courseItems.clear();
+        getScore();
     }
 
     private void getScore() {
@@ -117,7 +122,7 @@ public class GetScoreFragment extends Fragment {
             public void run() {
                 swipeRefreshLayout.setRefreshing(false);
             }
-        },1000);
+        }, 1000);
     }
 
     private String getCodeFromSharedPrefs() {

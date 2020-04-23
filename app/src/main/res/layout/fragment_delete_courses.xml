@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".students.selectcourse.SelectCourses">
+    tools:context=".students.selectcourse.SelectCoursesFragment">
 
     <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
         android:id="@+id/delete_score_swipe_refresh"

@@ -70,4 +70,5 @@
     <string name="general">General</string>
     <string name="setting">Setting</string>
     <string name="action_deleted"> درحال حذف درس ...</string>
+    <string name="updating">بروز رسانی</string>
 </resources>

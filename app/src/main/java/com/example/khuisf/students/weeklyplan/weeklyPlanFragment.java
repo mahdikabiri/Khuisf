@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,11 +73,9 @@ public class weeklyPlanFragment extends Fragment {
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
-            getCourses();
-            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+            Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
         });
-
     }
 
     private void getCourses() {
@@ -93,12 +90,13 @@ public class weeklyPlanFragment extends Fragment {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
+                        int cId = object.getInt("id");
                         String cName = object.getString("name");
                         String cDay = object.getString("day");
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime, cChar));
+                        courseItems.add(new Course(cId, cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -110,8 +108,6 @@ public class weeklyPlanFragment extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
-                Log.d("sss", anError.toString());
-
             }
         });
         if (swipeRefreshLayout.isRefreshing()) {
@@ -122,6 +118,11 @@ public class weeklyPlanFragment extends Fragment {
                 }
             }, 1000);
         }
+    }
+
+    private void update() {
+        courseItems.clear();
+        getCourses();
     }
 
     private String getNameFromSharedRefs() {

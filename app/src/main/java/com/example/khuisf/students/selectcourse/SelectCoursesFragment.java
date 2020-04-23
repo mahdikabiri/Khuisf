@@ -35,7 +35,7 @@ import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class SelectCourses extends Fragment {
+public class SelectCoursesFragment extends Fragment {
     ArrayList<Course> courseItems;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -76,9 +76,8 @@ public class SelectCourses extends Fragment {
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
-            getCourses();
-            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+            Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
         });
     }
 
@@ -90,17 +89,18 @@ public class SelectCourses extends Fragment {
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("sss", response.toString());
+                Log.d("selectCourseLog", response.toString());
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
+                        int cId = object.getInt("id");
                         String cName = object.getString("name");
                         String cDay = object.getString("day");
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime, cChar));
+                        courseItems.add(new Course(cId, cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -126,6 +126,10 @@ public class SelectCourses extends Fragment {
         }
     }
 
+    public  void update() {
+        courseItems.clear();
+        getCourses();
+    }
     private String getNameFromSharedRefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");

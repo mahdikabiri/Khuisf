@@ -66,14 +66,14 @@ public class WatchAttendanceFragment extends Fragment {
         initSwipeRefreashLayout(view);
         getCourses();
     }
+
     private void initSwipeRefreashLayout(View view) {
         swipeRefreshLayout = view.findViewById(R.id.get_course_swipe_refresh);
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            Toast.makeText(getContext(), "refreshed", Toast.LENGTH_SHORT).show();
-            getCourses();
-            //swipeRefreshLayout.setWaveColor(R.color.mybluecolor2);
+            Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
         });
 
     }
@@ -91,12 +91,13 @@ public class WatchAttendanceFragment extends Fragment {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
+                        int cId = object.getInt("id");
                         String cName = object.getString("name");
                         String cDay = object.getString("day");
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cName, cDay, cTime, cChar));
+                        courseItems.add(new Course(cId, cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -120,6 +121,11 @@ public class WatchAttendanceFragment extends Fragment {
                 }
             }, 1000);
         }
+    }
+
+    private void update() {
+        courseItems.clear();
+        getCourses();
     }
 
     private String getNameFromSharedRefs() {
