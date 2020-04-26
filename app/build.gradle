@@ -52,8 +52,7 @@ dependencies {
     implementation 'com.github.TR4Android:Swipeable-RecyclerView:0.2.0'
     implementation 'com.github.f0ris.sweetalert:library:1.5.1'
     implementation 'com.github.recruit-lifestyle:WaveSwipeRefreshLayout:1.6'
-
     implementation 'com.github.leinardi:FloatingActionButtonSpeedDial:master-SNAPSHOT'
-
-
-    implementation 'com.polyak:icon-switch:1.0.0'}
+    implementation 'com.polyak:icon-switch:1.0.0'
+    implementation 'com.najva.sdk:najva-android-sdk:1.2.3'
+}

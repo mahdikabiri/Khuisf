@@ -16,10 +16,13 @@ import com.example.khuisf.R;
 import com.example.khuisf.entitys.Student;
 import com.example.khuisf.entitys.StudentAttendancer;
 import com.polyak.iconswitch.IconSwitch;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.CourseViewHolder> {
     public JSONObject jsonObject = new JSONObject();
@@ -49,6 +52,11 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
         StudentAttendancer currentItem = mstudents.get(position);
         holder.tvName.setText(currentItem.getName());
         holder.tvCode.setText(currentItem.getCode());
+        Picasso.get().load(currentItem.getPic()).into(holder.imgProf);
+
+
+
+
         generateStatus(currentItem.getStatus(),holder);
         holder.iconSwitch.setCheckedChangeListener(current -> {
             if (current==IconSwitch.Checked.LEFT){
@@ -77,7 +85,6 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
             holder.iconSwitch.setChecked(IconSwitch.Checked.LEFT);
             holder.iconSwitch.setAlpha((float) .2);
         }
-
     }
 
 
@@ -90,15 +97,15 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
         public TextView tvName;
         public TextView tvCode;
         public IconSwitch iconSwitch;
+        public CircleImageView imgProf;
+
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.attendancer_tv_name);
             tvCode = itemView.findViewById(R.id.attendancer_tv_code);
             iconSwitch = itemView.findViewById(R.id.attendance_item_icon_switch);
-
-
-
+            imgProf=itemView.findViewById(R.id.circleImageView);
         }
 
 

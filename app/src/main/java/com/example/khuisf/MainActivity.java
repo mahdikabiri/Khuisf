@@ -25,6 +25,7 @@ import com.example.khuisf.messgeainbox.InboxActivity;
 import com.example.khuisf.students.contact_teacher.ContactToTeacherActivity;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
+import com.najva.sdk.Najva;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+
         navigationView = findViewById(R.id.img_prof_drawer_menu);
         //  circleImageViewNavProf = findViewById(R.id.nav_header_img_prof);
     }

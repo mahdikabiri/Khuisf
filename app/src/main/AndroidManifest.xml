@@ -4,16 +4,25 @@
     package="com.example.khuisf">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:name=".NajvaApplication"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
+
+        <meta-data
+            android:name="com.najva.sdk.metadata.API_KEY"
+            android:value="d685cc67-5b85-4bff-8747-7c522026531e" />
+        <meta-data
+            android:name="com.najva.sdk.metadata.WEBSITE_ID"
+            android:value="11989" />
+
         <activity
             android:name=".StartActivity"
             android:theme="@style/sss">
