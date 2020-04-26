@@ -16,7 +16,7 @@
         android:layout_height="match_parent" />
 
     <com.shreyaspatil.material.navigationview.MaterialNavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/img_prof_drawer_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"

@@ -21,6 +21,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.tools.SessionManager;
+import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -53,7 +54,6 @@ public class ProfileFragment extends Fragment {
         int role = preferences.getInt("role", 0);
         String username = preferences.getString("username", "null");
 
-
         SessionManager manager = new SessionManager(getActivity());
         if (!manager.isLogedIn()) {
             //get profile data from web
@@ -69,12 +69,22 @@ public class ProfileFragment extends Fragment {
 
         setTexes(role, view);
 
-        Picasso.get().load(Urls.pic1Url).error(R.drawable.ic_error_load).fit().into(ivAvatar);
-
+        String picUrl = preferences.getString("pic", "");
+        setImageProf(picUrl);
 
         view.findViewById(R.id.fragment_profile_fab).setOnClickListener(v -> {
             Toast.makeText(getActivity(), "به زودی", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void setImageProf(String picUrl) {
+
+
+        if (picUrl.isEmpty()) {
+            ivAvatar.setImageResource(R.drawable.ic_error_load);
+        } else {
+            Picasso.get().load(picUrl).into(ivAvatar);
+        }
     }
 
     private void setTexes(int role, View view) {
@@ -127,12 +137,19 @@ public class ProfileFragment extends Fragment {
                 String getedFatherName = null;
                 String getedPhone = null;
                 String getedField = null;
+                String getedpicUrl = null;
                 try {
                     getedCode = response.getString("code");
                     getedNationalCode = response.getString("national_code");
                     getedFatherName = response.getString("father_name");
                     getedPhone = response.getString("phone");
                     getedField = response.getString("field");
+                    getedpicUrl = response.getString("pic");
+
+
+                    setImageProf(getedpicUrl);
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -141,6 +158,8 @@ public class ProfileFragment extends Fragment {
                 preferences.edit().putString("father_name", getedFatherName).apply();
                 preferences.edit().putString("phone", getedPhone).apply();
                 preferences.edit().putString("field", getedField).apply();
+                preferences.edit().putString("pic", getedpicUrl).apply();
+
             }
 
             @Override
@@ -149,6 +168,5 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-
 
 }

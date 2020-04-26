@@ -17,7 +17,6 @@
         android:layout_height="100dp"
         android:layout_margin="15dp"
         android:elevation="5dp"
-        android:src="@drawable/index"
         app:civ_border_color="@color/mybluecolor"
         app:civ_border_width="4dp" />
 <LinearLayout

@@ -1,11 +1,9 @@
 package com.example.khuisf.teachers.attendancer;
 
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +17,12 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Student;
+import com.example.khuisf.entitys.StudentAttendancer;
 import com.example.khuisf.entitys.Urls;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.leinardi.android.speeddial.SpeedDialActionItem;
+import com.leinardi.android.speeddial.SpeedDialView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +35,7 @@ import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 
 public class AttendancerActivity extends AppCompatActivity {
-    ArrayList<Student> studentItems;
+    ArrayList<StudentAttendancer> studentItems, studentItems1;
     String charac, courseTitle;
     TextView tvDatePicker, tvCourseName;
     FloatingActionButton fab;
@@ -43,6 +43,8 @@ public class AttendancerActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private PersianDatePickerDialog picker;
+    SpeedDialView speedDialView;
+    LinearLayoutManager layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +53,18 @@ public class AttendancerActivity extends AppCompatActivity {
         charac = getIntent().getStringExtra("CHARACTRISTIC");
         courseTitle = getIntent().getStringExtra("coursename");
         init();
-
-        AndroidNetworking.initialize(this);
         studentItems = new ArrayList<>();
+        studentItems1 = new ArrayList<>();
         adapter = new AttendancerAdapter(this, studentItems, myObj);
-
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        layout = (LinearLayoutManager) recyclerView.getLayoutManager();
         recyclerView.setAdapter(adapter);
-
         tvCourseName.setText(courseTitle);
 
         //get date auto matic
-        PersianCalendar persianCalendar=new PersianCalendar();
+        PersianCalendar persianCalendar = new PersianCalendar();
         String date1 = persianCalendar.getPersianYear() + "/" + persianCalendar.getPersianMonth() + "/" + persianCalendar.getPersianDay();
         tvDatePicker.setText(date1);
         fab.setOnClickListener(v -> {
@@ -75,7 +75,8 @@ public class AttendancerActivity extends AppCompatActivity {
                 Toast.makeText(AttendancerActivity.this, "تاریخ را مشخص کنید", Toast.LENGTH_SHORT).show();
             }
         });
-        getStudnets();
+        getStudnets(0);
+
     }
 
     private void init() {
@@ -83,27 +84,69 @@ public class AttendancerActivity extends AppCompatActivity {
         tvCourseName = findViewById(R.id.attendancer_activity_tv_coursenaem);
         tvDatePicker = findViewById(R.id.attendancer_activity_btn_select);
         fab = findViewById(R.id.attendancer_activity_fab);
+        //set items to tools
+        speedDialView = findViewById(R.id.speedDial);
+        speedDialView.inflate(R.menu.menu_tools_attendancer);
+        speedDialView.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
+            @Override
+            public boolean onActionSelected(SpeedDialActionItem actionItem) {
+                // tools items selected
+                switch (actionItem.getId()) {
+                    case R.id.attendancer_item_tools_tickall:
+                        //tick item selected
+                        setAllTick();
+                        break;
+                    case R.id.attendancer_item_tools_cancel:
+                        //cancel item selected
+                        setAllCancel();
+                        break;
+                    case R.id.attendancer_item_tools_null:
+                        //cancel item selected
+                        setAllNull();
+                        break;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void setAllCancel() {
+        studentItems.clear();
+        getStudnets(0);
+    }
+
+    private void setAllNull() {
+        studentItems.clear();
+        getStudnets(2);
+    }
+    private void setAllTick() {
+        /*for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
+            View view = recyclerView.getChildAt(i);
+            // TextView tvName = view.findViewById(R.id.attendancer_tv_name);
+            IconSwitch iconSwitch = view.findViewById(R.id.attendance_item_icon_switch);
+            iconSwitch.setChecked(IconSwitch.Checked.RIGHT);
+        }*/
+        studentItems.clear();
+        getStudnets(1);
     }
 
     private void gatReadyValues(View v) {
-        for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
-            View view = recyclerView.getChildAt(i);
-            // TextView tvName = view.findViewById(R.id.attendancer_tv_name);
-            TextView tvCode = view.findViewById(R.id.attendancer_tv_code);
-            RadioGroup rgState = view.findViewById(R.id.attendancer_rg);
-            //String name = tvName.getText().toString();
-            String code = tvCode.getText().toString();
-            String status = generateStateFromId(rgState.getCheckedRadioButtonId());
-            sendDate(tvDatePicker.getText().toString(), v, code, charac, status);
+        for (int i = 0; i <= adapter.getItemCount()-1; i++) {
+            String name = studentItems.get(i).getName();
+            int status = studentItems.get(i).getStatus();
+            String code = studentItems.get(i).getCode();
+            Log.d("test",name+"  :"+status);
+            sendDate(tvDatePicker.getText().toString(), v, code, charac, String.valueOf(status));
         }
-        // Log.d("mylog1","code="+code +"   name="+name+"   /"+status);
+
     }
 
-    private String generateStateFromId(int id) {
-        if (id == R.id.rb_hozoor) {
+
+    private String generateState(String state) {
+        if (state.equals("RIGHT")) {
             //hozoor darad
             return "1";
-        } else if (id == R.id.rb_gheybat) {
+        } else if (state.equals("LEFT")) {
             //hozoor nadared
             return "0";
         }
@@ -135,11 +178,10 @@ public class AttendancerActivity extends AppCompatActivity {
                                 setAction("Action", null).show();
                     }
                 });
-
     }
 
 
-    private void getStudnets() {
+    private void getStudnets(int status) {
         AndroidNetworking.initialize(this);
         AndroidNetworking.post(Urls.host + Urls.getStudent)
                 .addBodyParameter("char", charac)
@@ -155,7 +197,7 @@ public class AttendancerActivity extends AppCompatActivity {
                         String cName = object.getString("name");
                         String cCode = object.getString("codestudent");
                         // add items from db and save to arraylist
-                        studentItems.add(new Student(cName, cCode));
+                        studentItems.add(new StudentAttendancer(cName, cCode, status));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -167,7 +209,6 @@ public class AttendancerActivity extends AppCompatActivity {
             @Override
             public void onError(ANError anError) {
                 Log.d("salam", anError.toString());
-
             }
         });
     }
@@ -206,7 +247,6 @@ public class AttendancerActivity extends AppCompatActivity {
 
                     @Override
                     public void onDismissed() {
-
                     }
                 });
 

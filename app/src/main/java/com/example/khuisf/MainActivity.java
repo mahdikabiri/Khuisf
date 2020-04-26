@@ -3,6 +3,7 @@ package com.example.khuisf;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,9 +23,9 @@ import androidx.navigation.ui.NavigationUI;
 import com.androidnetworking.AndroidNetworking;
 import com.example.khuisf.messgeainbox.InboxActivity;
 import com.example.khuisf.students.contact_teacher.ContactToTeacherActivity;
-import com.example.khuisf.teachers.messages.getCouserForSendMessageTeachFragment;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,10 +50,16 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         init();
 
-        //Picasso.get().load(Urls.pic1Url).error(R.drawable.ic_error_load).fit().into(circleImageViewNavProf);
-
-
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+
+
+/*
+        if (picUrl.isEmpty()) {
+            imageView.setImageResource(R.drawable.ic_error_load);
+        } else {
+            Picasso.get().load(picUrl).error(R.drawable.ic_error_load).fit().into(imageView);
+        }
+        */
 
 
         View headView = navigationView.getHeaderView(0);
@@ -83,14 +90,33 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        circleImageViewNavProf = navigationView.getHeaderView(0).findViewById(R.id.nav_header_img_prof);
+
+
+        //for delay in get data from web and save in prefreces use the hanler class to run after 3 secondes
+        android.os.Handler handler = new Handler();
+        Runnable r = () -> {
+            String picUrl = preferences.getString("pic", "");
+            setImageProf(picUrl);
+        };
+        handler.postDelayed(r, 3000);
+
+    }
+
+
+    private void setImageProf(String picUrl) {
+        if (picUrl.isEmpty()) {
+            circleImageViewNavProf.setImageResource(R.drawable.ic_error_load);
+        } else {
+            Picasso.get().load(picUrl).into(circleImageViewNavProf);
+        }
     }
 
     private void init() {
-        navigationView = findViewById(R.id.nav_view);
-        circleImageViewNavProf = findViewById(R.id.nav_header_img_prof);
-
+        navigationView = findViewById(R.id.img_prof_drawer_menu);
+        //  circleImageViewNavProf = findViewById(R.id.nav_header_img_prof);
     }
-
 
     private void setMenu(int role) {
         //this menu sett menu by user roles
@@ -124,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {
