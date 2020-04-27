@@ -55,4 +55,7 @@ dependencies {
     implementation 'com.github.leinardi:FloatingActionButtonSpeedDial:master-SNAPSHOT'
     implementation 'com.polyak:icon-switch:1.0.0'
     implementation 'com.najva.sdk:najva-android-sdk:1.2.3'
+
+    implementation 'com.yarolegovich:lovely-dialog:1.1.0'
+    implementation 'com.github.marcoscgdev:DialogSheet:2.0.9'
 }

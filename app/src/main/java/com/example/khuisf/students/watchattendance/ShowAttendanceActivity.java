@@ -1,11 +1,20 @@
 package com.example.khuisf.students.watchattendance;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +27,8 @@ import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Attendance;
 import com.example.khuisf.entitys.Urls;
+import com.marcoscg.dialogsheet.DialogSheet;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +59,6 @@ public class ShowAttendanceActivity extends AppCompatActivity {
 
         tvStuName.setText(getStuNameFromSharedRefs());
         tvCourseName.setText(courseTitle);
-
         getCourses();
     }
 
@@ -58,6 +68,64 @@ public class ShowAttendanceActivity extends AppCompatActivity {
         tvStuName = findViewById(R.id.activity_show_attendance_tv_stuname);
         tvCourseName = findViewById(R.id.activity_show_attendance_tv_coursename);
         AndroidNetworking.initialize(this);
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_help_watch_attendancer, menu);
+        return true;
+    }
+
+    @SuppressLint("ResourceAsColor")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.info_icon_watch_attendancer){
+          /*  new LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
+                    .setTopColorRes(R.color.colorGray)
+                    .setIcon(R.drawable.ic_info)
+                    .setTitle("ssssss")
+                    .setMessage("salaaaam")
+                    .setPositiveButton(android.R.string.ok, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(ShowAttendanceActivity.this, "", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null)
+                    .show();*/
+
+
+
+
+
+           /* final Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.layout_dialog_info_watchattendaner);
+
+            dialog.setCanceledOnTouchOutside(true);
+            dialog.show();*/
+
+
+            new DialogSheet(this)
+                    .setTitle(R.string.help_text)
+                    .setColoredNavigationBar(true)
+                    .setTitleTextSize(20) // In SP
+                    .setCancelable(true)
+                    .setView(R.layout.layout_dialog_info_watchattendaner)
+                    .setPositiveButton(android.R.string.ok, new DialogSheet.OnPositiveClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // Your action
+                        }
+                    })
+                    .setButtonsColorRes(R.color.colorAccent) // You can use dialogSheetAccent style attribute instead
+                    .show();
+        }
+
+
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void getCourses() {

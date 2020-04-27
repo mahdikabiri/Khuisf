@@ -15,8 +15,7 @@ public class NajvaApplication extends Application {
         client = new NajvaClient(this);
         registerActivityLifecycleCallbacks(client);
 
-
-
+/*
         NajvaConfiguration configuration = new NajvaConfiguration();
         configuration.setUserSubscriptionListener(new UserSubscriptionListener() {
             @Override
@@ -27,7 +26,7 @@ public class NajvaApplication extends Application {
             }
         });
         client = new NajvaClient(this, configuration);
-        registerActivityLifecycleCallbacks(client);
+        registerActivityLifecycleCallbacks(client);*/
     }
 
     @Override
