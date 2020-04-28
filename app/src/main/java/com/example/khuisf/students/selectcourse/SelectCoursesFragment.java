@@ -128,6 +128,7 @@ public class SelectCoursesFragment extends Fragment {
 
     public  void update() {
         courseItems.clear();
+        recyclerView.scheduleLayoutAnimation();
         getCourses();
     }
     private String getNameFromSharedRefs() {

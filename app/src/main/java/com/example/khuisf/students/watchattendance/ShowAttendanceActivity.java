@@ -46,6 +46,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_show_attendance);
         init();
         myItems = new ArrayList<>();
         adapter = new AdapterForAttendance(this, myItems);
@@ -63,7 +64,6 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     }
 
     private void init() {
-        setContentView(R.layout.activity_show_attendance);
         recyclerView = findViewById(R.id.activity_show_attendace_recycler);
         tvStuName = findViewById(R.id.activity_show_attendance_tv_stuname);
         tvCourseName = findViewById(R.id.activity_show_attendance_tv_coursename);
@@ -95,10 +95,6 @@ public class ShowAttendanceActivity extends AppCompatActivity {
                     .setNegativeButton(android.R.string.no, null)
                     .show();*/
 
-
-
-
-
            /* final Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.layout_dialog_info_watchattendaner);
 
@@ -111,6 +107,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
                     .setColoredNavigationBar(true)
                     .setTitleTextSize(20) // In SP
                     .setCancelable(true)
+                    .setIconResource(R.drawable.ic_info_blue)
                     .setView(R.layout.layout_dialog_info_watchattendaner)
                     .setPositiveButton(android.R.string.ok, new DialogSheet.OnPositiveClickListener() {
                         @Override
@@ -121,9 +118,6 @@ public class ShowAttendanceActivity extends AppCompatActivity {
                     .setButtonsColorRes(R.color.colorAccent) // You can use dialogSheetAccent style attribute instead
                     .show();
         }
-
-
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -152,7 +146,6 @@ public class ShowAttendanceActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getApplication(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();

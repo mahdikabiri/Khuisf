@@ -36,16 +36,11 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
         this.inflater = LayoutInflater.from(context);
     }
 
-
-
     @Override
     public CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.attendanec_item, parent, false);
         return new CourseViewHolder(view);
     }
-
-
-
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
@@ -53,8 +48,6 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
         holder.tvName.setText(currentItem.getName());
         holder.tvCode.setText(currentItem.getCode());
         Picasso.get().load(currentItem.getPic()).into(holder.imgProf);
-
-
 
 
         generateStatus(currentItem.getStatus(),holder);

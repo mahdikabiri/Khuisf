@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
@@ -72,9 +73,15 @@
                 android:textStyle="bold" />
         </LinearLayout>-->
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.mlsdev.animatedrv.AnimatedRecyclerView
             android:id="@+id/frag_getscore_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:animationDuration="600"
+            app:layoutAnimation="@anim/layout_animation_from_bottom"
+            app:layoutManagerOrientation="vertical"
+            app:layoutManagerReverse="false"
+            app:layoutManagerType="linear" />
+
     </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 </LinearLayout>

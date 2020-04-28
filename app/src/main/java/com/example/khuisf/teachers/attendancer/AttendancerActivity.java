@@ -2,6 +2,7 @@ package com.example.khuisf.teachers.attendancer;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import ir.hamsaa.persiandatepicker.Listener;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
+import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 
 public class AttendancerActivity extends AppCompatActivity {
     ArrayList<StudentAttendancer> studentItems, studentItems1;
@@ -45,6 +47,7 @@ public class AttendancerActivity extends AppCompatActivity {
     private PersianDatePickerDialog picker;
     SpeedDialView speedDialView;
     LinearLayoutManager layout;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,27 @@ public class AttendancerActivity extends AppCompatActivity {
         });
         getStudnets(0);
 
+        initSwipeRefreashLayout();
+
+
+    }
+
+
+    private void initSwipeRefreashLayout() {
+        swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.BLUE);
+        swipeRefreshLayout.setWaveColor(Color.rgb(240, 240, 240));
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Toast.makeText(this, R.string.updating, Toast.LENGTH_SHORT).show();
+            update();
+        });
+
+    }
+
+
+    private void update() {
+        studentItems.clear();
+        getStudnets(0);
+        recyclerView.scheduleLayoutAnimation();
     }
 
     private void init() {
@@ -84,6 +108,7 @@ public class AttendancerActivity extends AppCompatActivity {
         tvCourseName = findViewById(R.id.attendancer_activity_tv_coursenaem);
         tvDatePicker = findViewById(R.id.attendancer_activity_btn_select);
         fab = findViewById(R.id.attendancer_activity_fab);
+        swipeRefreshLayout = findViewById(R.id.get_student_attendance_for_teacher_swipe_refresh);
         //set items to tools
         speedDialView = findViewById(R.id.speedDial);
         speedDialView.inflate(R.menu.menu_tools_attendancer);
@@ -184,6 +209,14 @@ public class AttendancerActivity extends AppCompatActivity {
                 Log.d("salam", anError.toString());
             }
         });
+        if (swipeRefreshLayout.isRefreshing()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 1000);
+        }
     }
 
     private void sendDate(String date, View view, String studentCode, String charac, String state) {
@@ -211,8 +244,6 @@ public class AttendancerActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
 
     public void openCalender(View view) {
         showCalendar(view);

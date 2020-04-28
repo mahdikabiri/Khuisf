@@ -6,25 +6,29 @@
     android:layout_height="match_parent"
     android:elevation="20dp"
     android:orientation="vertical"
-    app:cardCornerRadius="40dp">
+    android:paddingRight="30dp"
+    >
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp">
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="0dp"
             app:srcCompat="@drawable/ic_tick" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:fontFamily="@font/vazirbold"
-            android:text="حضور"
-            android:textAlignment="center"
+            android:text="@string/existstudnet"
+            android:textAlignment="viewStart"
+            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             tools:ignore="RtlCompat" />
     </LinearLayout>
@@ -44,10 +48,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/vazirbold"
-            android:text="عدم حضور دانشجو"
-            android:textAlignment="center"
+            android:text="@string/notexist_student"
+            android:textAlignment="viewStart"
+            android:layout_marginLeft="10dp"
             android:textSize="20sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,8 +69,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/vazirbold"
-            android:text="عدم اعلام حضور توسط استاد"
-            android:textAlignment="center"
+            android:text="@string/not_set_studnet_attendancer"
+            android:textAlignment="viewStart"
+            android:lines="1"
+            android:layout_marginLeft="10dp"
             android:textSize="20sp" />
     </LinearLayout>
 

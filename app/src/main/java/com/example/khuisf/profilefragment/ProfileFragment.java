@@ -1,4 +1,4 @@
-package com.example.khuisf.ui.share;
+package com.example.khuisf.profilefragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,7 +21,6 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.tools.SessionManager;
-import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -83,7 +82,7 @@ public class ProfileFragment extends Fragment {
         if (picUrl.isEmpty()) {
             ivAvatar.setImageResource(R.drawable.ic_error_load);
         } else {
-            Picasso.get().load(picUrl).into(ivAvatar);
+            Picasso.get().load(picUrl).placeholder(R.drawable.ic_avatar_placeholfrt).into(ivAvatar);
         }
     }
 

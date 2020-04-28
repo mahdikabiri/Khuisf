@@ -8,93 +8,96 @@
     android:background="@color/colorWiteg"
     android:orientation="vertical"
     tools:context=".teachers.attendancer.AttendancerActivity">
+
     <androidx.cardview.widget.CardView
-        android:layout_margin="5dp"
-        android:elevation="10dp"
-        android:background="@drawable/custom_withe_bg_border_blue"
-        app:cardCornerRadius="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWiteg"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_margin="5dp"
+        android:background="@drawable/custom_withe_bg_border_blue"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_book" />
-
-                <TextView
-                    android:id="@+id/attendancer_activity_tv_coursenaem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/vazir"
-                    android:lines="1"
-                    android:text="نام درس"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="@color/colorWiteg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_date_picker"
-                    android:onClick="openCalender" />
-
-                <TextView
-                    android:id="@+id/attendancer_activity_btn_select"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/vazir"
-                    android:text="تاریخ را انتخاب کنید"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <com.leinardi.android.speeddial.SpeedDialView
-                    android:id="@+id/speedDial"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|right"
-                    android:elevation="10dp"
-                    app:sdExpansionMode="bottom"
-                    app:sdMainFabAnimationRotateAngle="90"
-                    app:sdMainFabClosedBackgroundColor="#fff"
-                    app:sdMainFabClosedSrc="@drawable/ic_settings"
-                    app:sdMainFabOpenedBackgroundColor="#fff" />
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_book" />
+
+                    <TextView
+                        android:id="@+id/attendancer_activity_tv_coursenaem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/vazir"
+                        android:lines="1"
+                        android:text="نام درس"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_date_picker"
+                        android:onClick="openCalender" />
+
+                    <TextView
+                        android:id="@+id/attendancer_activity_btn_select"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/vazir"
+                        android:text="تاریخ را انتخاب کنید"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.leinardi.android.speeddial.SpeedDialView
+                        android:id="@+id/speedDial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:elevation="10dp"
+                        app:sdExpansionMode="bottom"
+                        app:sdMainFabAnimationRotateAngle="90"
+                        app:sdMainFabClosedBackgroundColor="#fff"
+                        app:sdMainFabClosedSrc="@drawable/ic_settings"
+                        app:sdMainFabOpenedBackgroundColor="#fff" />
+                </LinearLayout>
             </LinearLayout>
+
+
         </LinearLayout>
-
-
-    </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
@@ -102,14 +105,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
+            android:id="@+id/get_student_attendance_for_teacher_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="20dp"
+            android:outlineSpotShadowColor="@color/mybluecolor">
+
+        <com.mlsdev.animatedrv.AnimatedRecyclerView
             android:id="@+id/recycler_attendance1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="2dp"
-            android:layout_weight="1"
-            android:background="@color/new_gray_color"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent"
+            app:animationDuration="600"
+            app:layoutAnimation="@anim/layout_animation_from_bottom"
+            app:layoutManagerOrientation="vertical"
+            app:layoutManagerReverse="false"
+            app:layoutManagerType="linear" />
+        </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/attendancer_activity_fab"

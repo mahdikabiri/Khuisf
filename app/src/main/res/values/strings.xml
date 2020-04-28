@@ -72,4 +72,8 @@
     <string name="action_deleted"> درحال حذف درس ...</string>
     <string name="updating">بروز رسانی</string>
     <string name="help_text">راهنما</string>
+    <string name="existstudnet">حضور دانشجو</string>
+    <string name="notexist_student">عدم حضور دانشجو</string>
+    <string name="not_set_studnet_attendancer">عدم اعلام حضور</string>
+    <string name="insert">ثبت</string>
 </resources>

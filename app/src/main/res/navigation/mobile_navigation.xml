@@ -6,8 +6,9 @@
     app:startDestination="@+id/nav_share">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/weekly_plan_student"
         android:name="com.example.khuisf.students.weeklyplan.weeklyPlanFragment"
+        tools:layout="@layout/fragment_getcourse"
         android:label="برنامه هفتگی" />
 
     <fragment
@@ -30,7 +31,7 @@
         android:label="کارنامه" />
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.khuisf.ui.share.ProfileFragment"
+        android:name="com.example.khuisf.profilefragment.ProfileFragment"
         android:label="اطلاعات فردی"
         tools:layout="@layout/fragment_profile" />
     <fragment

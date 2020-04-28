@@ -13,14 +13,16 @@
         android:elevation="20dp"
         android:outlineSpotShadowColor="@color/mybluecolor">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/activity_inbox_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.mlsdev.animatedrv.AnimatedRecyclerView
+            android:id="@+id/activity_inbox_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:animationDuration="600"
+            app:layoutAnimation="@anim/layout_animation_from_bottom"
+            app:layoutManagerOrientation="vertical"
+            app:layoutManagerReverse="false"
+            app:layoutManagerType="linear" />
+
     </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
     <ImageView
@@ -36,5 +38,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_talk" />
+        app:srcCompat="@drawable/graphic_inbox" />
 </androidx.constraintlayout.widget.ConstraintLayout>

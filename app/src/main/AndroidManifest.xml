@@ -38,7 +38,8 @@
             android:label="پیام ها" />
         <activity android:name=".teachers.messages.FinalSendMessageActivity" />
         <activity android:name=".teachers.messages.bycourses.SendMessageToStudentByCourseActivity" />
-        <activity android:name=".students.watchattendance.ShowAttendanceActivity" />
+        <activity android:name=".students.watchattendance.ShowAttendanceActivity"
+            android:label="حضور غیاب"/>
         <activity android:name=".teachers.insertscore.InsertScoreActivity" />
         <activity android:name=".teachers.attendancer.AttendancerActivity"
             android:theme="@style/sss"

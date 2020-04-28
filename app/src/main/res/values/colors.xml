@@ -23,6 +23,18 @@
 
     <color name="color_delete">#ff5722</color>
     <color name="color_mark">#4caf50</color>
+
+
+
+
+
+
+
+
+
+
+
+    <color name="fbutton_color_wisteria">#8e44ad</color>
 <!--
     &lt;!&ndash; Randomized colors &ndash;&gt;
     <color name="color_red">#f44336</color>

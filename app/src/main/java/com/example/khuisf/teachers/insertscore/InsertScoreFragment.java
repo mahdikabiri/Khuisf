@@ -121,6 +121,7 @@ public class InsertScoreFragment extends Fragment {
 
     private void update() {
         courseItems.clear();
+        recyclerView.scheduleLayoutAnimation();
         getCourses();
     }
 }

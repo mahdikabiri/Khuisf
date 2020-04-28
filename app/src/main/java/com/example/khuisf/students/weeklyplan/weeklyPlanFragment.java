@@ -122,6 +122,7 @@ public class weeklyPlanFragment extends Fragment {
 
     private void update() {
         courseItems.clear();
+        recyclerView.scheduleLayoutAnimation();
         getCourses();
     }
 

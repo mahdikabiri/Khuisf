@@ -25,7 +25,6 @@ import com.example.khuisf.messgeainbox.InboxActivity;
 import com.example.khuisf.students.contact_teacher.ContactToTeacherActivity;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
-import com.najva.sdk.Najva;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_insertscore, R.id.nav_attendaner,
+                R.id.weekly_plan_student, R.id.nav_insertscore, R.id.nav_attendaner,
                 R.id.nav_score, R.id.nav_share, R.id.select_courses, R.id.deleteCourses, R.id.see_attendace,
                 R.id.nav_send_message_teacher, R.id.contactTeacherFragment)
                 .setDrawerLayout(drawer)
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         if (picUrl.isEmpty()) {
             circleImageViewNavProf.setImageResource(R.drawable.ic_error_load);
         } else {
-            Picasso.get().load(picUrl).into(circleImageViewNavProf);
+            Picasso.get().load(picUrl).placeholder(R.drawable.ic_avatar_placeholfrt).into(circleImageViewNavProf);
         }
     }
 

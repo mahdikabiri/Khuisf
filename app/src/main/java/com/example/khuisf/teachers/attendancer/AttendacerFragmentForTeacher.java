@@ -114,8 +114,6 @@ public class AttendacerFragmentForTeacher extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();
-                Log.d("sss", anError.toString());
-
             }
         });
         if (swipeRefreshLayout.isRefreshing()) {
@@ -131,6 +129,7 @@ public class AttendacerFragmentForTeacher extends Fragment {
 
     private void update() {
         courseItems.clear();
+        recyclerView.scheduleLayoutAnimation();
         getCourses();
     }
 

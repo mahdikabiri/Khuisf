@@ -47,7 +47,7 @@ public class WatchAttendanceFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_getcourse, container, false);
+        View view = inflater.inflate(R.layout.fragment_getcourse_for_attendancer, container, false);
         return view;
     }
 
@@ -125,6 +125,7 @@ public class WatchAttendanceFragment extends Fragment {
 
     private void update() {
         courseItems.clear();
+        recyclerView.scheduleLayoutAnimation();
         getCourses();
     }
 

@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:alpha=".3"
+        android:src="@drawable/graphic_attendancer_teacher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
         android:id="@+id/get_course_atendance_for_teacher_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="20dp"
         android:outlineSpotShadowColor="@color/mybluecolor">
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <com.mlsdev.animatedrv.AnimatedRecyclerView
+            android:id="@+id/recycler_attendance"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:animationDuration="600"
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
-                android:alpha=".3"
-                android:src="@drawable/graphic_attendancer_teacher"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_attendance"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            app:layoutAnimation="@anim/layout_animation_from_scale"
+            app:layoutManagerOrientation="vertical"
+            app:layoutManagerReverse="false"
+            app:layoutManagerType="linear" />
     </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
