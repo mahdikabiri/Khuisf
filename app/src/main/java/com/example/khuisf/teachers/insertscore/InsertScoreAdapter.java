@@ -51,6 +51,7 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
         holder.tvName.setText(currentItem.getName());
         holder.tvCode.setText(currentItem.getCode());
 
+
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("ایا نمره را ثبت میکنید؟");
         builder1.setCancelable(true);

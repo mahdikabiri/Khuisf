@@ -15,18 +15,7 @@ public class NajvaApplication extends Application {
         client = new NajvaClient(this);
         registerActivityLifecycleCallbacks(client);
 
-/*
-        NajvaConfiguration configuration = new NajvaConfiguration();
-        configuration.setUserSubscriptionListener(new UserSubscriptionListener() {
-            @Override
-            public void onUserSubscribed(String token) {
-                //TODO handle token here.
 
-                Toast.makeText(NajvaApplication.this, token+"", Toast.LENGTH_SHORT).show();
-            }
-        });
-        client = new NajvaClient(this, configuration);
-        registerActivityLifecycleCallbacks(client);*/
     }
 
     @Override

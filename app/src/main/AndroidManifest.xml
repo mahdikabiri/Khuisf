@@ -4,12 +4,12 @@
     package="com.example.khuisf">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
+        android:name=".NajvaApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".NajvaApplication"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -38,12 +38,15 @@
             android:label="پیام ها" />
         <activity android:name=".teachers.messages.FinalSendMessageActivity" />
         <activity android:name=".teachers.messages.bycourses.SendMessageToStudentByCourseActivity" />
-        <activity android:name=".students.watchattendance.ShowAttendanceActivity"
-            android:label="حضور غیاب"/>
-        <activity android:name=".teachers.insertscore.InsertScoreActivity" />
-        <activity android:name=".teachers.attendancer.AttendancerActivity"
+        <activity
+            android:name=".students.watchattendance.ShowAttendanceActivity"
+            android:label="حضور غیاب" />
+        <activity android:name=".teachers.insertscore.InsertScoreActivity"
             android:theme="@style/sss"
-        />
+            />
+        <activity
+            android:name=".teachers.attendancer.AttendancerActivity"
+            android:theme="@style/sss" />
         <activity
             android:name=".CourseInfoActivity"
             android:label="@string/title_activity_course_info"

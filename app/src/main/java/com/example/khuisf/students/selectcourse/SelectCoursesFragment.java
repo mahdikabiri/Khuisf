@@ -113,7 +113,6 @@ public class SelectCoursesFragment extends Fragment {
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت برنامه دروس", Toast.LENGTH_SHORT).show();
                 Log.d("ersss", anError.toString());
-
             }
         });
         if (swipeRefreshLayout.isRefreshing()) {

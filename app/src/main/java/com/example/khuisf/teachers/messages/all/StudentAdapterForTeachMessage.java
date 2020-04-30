@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Student;
+import com.squareup.picasso.Picasso;
 
 import net.igenius.customcheckbox.CustomCheckBox;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentAdapterForTeachMessage.CourseViewHolder> {
     LayoutInflater inflater;
@@ -39,6 +42,8 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
         Student studentItem = mCourses.get(position);
         holder.tvStuName.setText(studentItem.getName());
         holder.tvStuCode.setText(studentItem.getCode());
+        Picasso.get().load(studentItem.getPic()).error(R.drawable.ic_fail).placeholder(R.drawable.ic_avatar_placeholfrt).into(holder.imageView);
+
     }
 
     @Override
@@ -49,6 +54,7 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
         public TextView tvStuName, tvStuCode;
         public CustomCheckBox cbCheck;
+        public CircleImageView imageView;
 
 
         public CourseViewHolder(@NonNull View itemView) {
@@ -56,7 +62,7 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
             tvStuName = itemView.findViewById(R.id.get_student_message_item_tvname);
             tvStuCode = itemView.findViewById(R.id.get_student_message_item_tvcode);
             cbCheck = itemView.findViewById(R.id.get_student_message_item_checkbox);
-
+            imageView=itemView.findViewById(R.id.get_student_message_item_imageview);
         }
     }
 

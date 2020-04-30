@@ -17,7 +17,7 @@
             android:id="@+id/activity_inbox_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:animationDuration="600"
+            app:animationDuration="800"
             app:layoutAnimation="@anim/layout_animation_from_bottom"
             app:layoutManagerOrientation="vertical"
             app:layoutManagerReverse="false"

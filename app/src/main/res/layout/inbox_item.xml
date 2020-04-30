@@ -4,49 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:elevation="10dp"
+    android:elevation="30dp"
     android:orientation="vertical"
     app:cardCornerRadius="15dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/select_course_item_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/mybluecolor2"
-        android:padding="5dp">
+        android:background="@drawable/custom_withe_bg_border_blue"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/inbox_item_tv_sender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="138dp"
-            android:layout_marginTop="4dp"
-
-            android:layout_marginEnd="112dp"
             android:text="cours title"
-            android:textColor="@color/colorWiteg"
             android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/inbox_item_tv_text"
-            android:layout_width="299dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:textColor="@color/colorWiteg"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="5dp"
+            android:background="#fff"
             android:text="day"
+            android:drawableRight="@drawable/ic_talk"
+            android:layout_margin="20dp"
             android:textAlignment="center"
+            android:textColor="#070707"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inbox_item_tv_sender" />
+             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +38,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class MessageAllFragment extends Fragment {
@@ -48,7 +52,7 @@ public class MessageAllFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_message_teacher_all, container, false);
+        View view = inflater.inflate(R.layout.test, container, false);
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
         return view;
@@ -61,22 +65,85 @@ public class MessageAllFragment extends Fragment {
         AndroidNetworking.initialize(getContext());
         recyclerView = getActivity().findViewById(R.id.fragment_message_teacher_all_recycler);
         studentItems = new ArrayList<>();
-        btnSelectAll = view.findViewById(R.id.fragment_mesage_all_select_all);
+        /*btnSelectAll = view.findViewById(R.id.fragment_mesage_all_select_all);
+        btnSelectAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "sss", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+*/
         fab = view.findViewById(R.id.fragment_message_teacher_all_fab);
         adapter = new StudentAdapterForTeachMessage(getContext(), studentItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
+        getStudnet();
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+
+
+
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+              if(newState==RecyclerView.SCROLL_STATE_IDLE){
+                  moveAnimation();
+              }else {
+                  moveAnimationright();
+              }
+            }
+        });
+
+
+/*
         getStudnet();
         btnSelectAll.setOnClickListener(v -> {
             selectAll();
-        });
+        });*/
+       /* fab.setOnClickListener(v -> {
 
-        fab.setOnClickListener(v -> {
-            initData();
-        });
+            new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("پیام را ارسال میکنید")
+                    .setConfirmText("بله")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
+
+                            //initData();
+
+                            sDialog
+                                    .setTitleText("مشخصه ثبت شد!")
+                                    .setConfirmText("OK")
+                                    .setConfirmClickListener(null)
+                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        }
+                    })
+                    .show();
+
+        });*/
     }
+
+
+    public void moveAnimation(){
+        Animation img=new TranslateAnimation(Animation.ABSOLUTE,-250,Animation.ABSOLUTE,Animation.ABSOLUTE);
+        img.setDuration(800);
+        img.setFillAfter(true);
+        fab.startAnimation(img);
+    }
+
+
+    public void moveAnimationright(){
+        Animation img=new TranslateAnimation(Animation.ABSOLUTE,50,Animation.ABSOLUTE,Animation.ABSOLUTE);
+        img.setDuration(800);
+        img.setFillAfter(true);
+        fab.startAnimation(img);
+    }
+
 
     public void initData() {
         //this method get data from any item if checked and send to final message sending page
@@ -106,7 +173,6 @@ public class MessageAllFragment extends Fragment {
         intent.putStringArrayListExtra("names", (ArrayList<String>) stuname);
         //this is for authentication receiver
         intent.putExtra("flagRole", "1");
-
         startActivity(intent);
     }
 
@@ -130,11 +196,13 @@ public class MessageAllFragment extends Fragment {
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
+                        Log.d("saalm",response.toString());
                         JSONObject object = response.getJSONObject(i);
                         String cName = object.getString("name");
                         String cCode = object.getString("codestudent");
+                        String cPic = object.getString("pic");
                         // add items from db and save to arraylist
-                        studentItems.add(new Student(cName, cCode));
+                        studentItems.add(new Student(cName, cCode,cPic));
                         adapter.notifyDataSetChanged();
                         Log.d("names", cName);
                     }

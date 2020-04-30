@@ -92,7 +92,6 @@ public class InsertScoreActivity extends AppCompatActivity {
 
             @Override
             public void onError(ANError anError) {
-                Log.d("salam", anError.toString());
 
             }
         });

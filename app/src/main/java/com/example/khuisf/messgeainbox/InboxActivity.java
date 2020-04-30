@@ -105,6 +105,7 @@ public class InboxActivity extends AppCompatActivity {
 
     private void update() {
         myItems.clear();
+        recyclerView.scheduleLayoutAnimation();
         getInbox();
     }
 
