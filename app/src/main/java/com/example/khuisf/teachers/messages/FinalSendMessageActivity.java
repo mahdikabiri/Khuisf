@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class FinalSendMessageActivity extends AppCompatActivity {
-    ListView listViewName, listViewCode;
+    ListView listViewName;
     EditText text;
     Button btnSendMessgae;
 
@@ -36,7 +36,6 @@ public class FinalSendMessageActivity extends AppCompatActivity {
         ArrayList<String> codes = getIntent().getStringArrayListExtra("codes");
         String flagRole = getIntent().getStringExtra("flagRole");
         listViewName.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names));
-        listViewCode.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, codes));
 
         btnSendMessgae.setOnClickListener(v -> {
 
@@ -132,7 +131,6 @@ public class FinalSendMessageActivity extends AppCompatActivity {
     private void init() {
         setContentView(R.layout.activity_final_send_message);
         listViewName = findViewById(R.id.activity_final_send_message_listview_name);
-        listViewCode = findViewById(R.id.activity_final_send_message_listview_code);
         btnSendMessgae = findViewById(R.id.activity_final_send_message_btn_send);
         text = findViewById(R.id.activity_final_send_message_edittext);
     }

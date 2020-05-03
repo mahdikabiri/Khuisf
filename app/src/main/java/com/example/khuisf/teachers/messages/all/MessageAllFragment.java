@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MessageAllFragment extends Fragment {
     ArrayList<Student> studentItems;
-    ImageButton btnSelectAll;
+    Button btnSelectAll,btnSend;
     FloatingActionButton fab2;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -60,6 +61,7 @@ public class MessageAllFragment extends Fragment {
         recyclerView = getActivity().findViewById(R.id.fragment_message_teacher_all_recycler);
         studentItems = new ArrayList<>();
         btnSelectAll = view.findViewById(R.id.fragment_mesage_all_select_all);
+        btnSend = view.findViewById(R.id.fragment_mesage_all_send);
         fab2 = view.findViewById(R.id.fagg);
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,11 +89,8 @@ public class MessageAllFragment extends Fragment {
                 }
             }
         });
-/*
-        getStudnet();
-        btnSelectAll.setOnClickListener(v -> {
-            selectAll();
-        });*/
+
+
 
         btnSelectAll.setOnClickListener(v -> {
         studentItems.clear();
@@ -100,7 +99,9 @@ public class MessageAllFragment extends Fragment {
         fab2.setOnClickListener(v -> {
             initData();
 
-
+        });
+        btnSend.setOnClickListener(v -> {
+            initData();
         });
     }
 

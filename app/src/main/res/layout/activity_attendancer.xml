@@ -91,7 +91,7 @@
                         app:sdExpansionMode="bottom"
                         app:sdMainFabAnimationRotateAngle="90"
                         app:sdMainFabClosedBackgroundColor="#fff"
-                        app:sdMainFabClosedSrc="@drawable/ic_settings"
+                        app:sdMainFabClosedSrc="@drawable/ic_mysettings"
                         app:sdMainFabOpenedBackgroundColor="#fff" />
                 </LinearLayout>
             </LinearLayout>

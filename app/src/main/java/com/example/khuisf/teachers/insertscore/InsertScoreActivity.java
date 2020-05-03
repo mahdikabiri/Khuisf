@@ -51,20 +51,7 @@ public class InsertScoreActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         getStudnets();
-
-
     }
-
-
-/*
-    private void insertScores() {
-        int s=adapter.getItemCount();
-        EditText textView;
-        textView=recyclerView.findViewById(R.id.insertscore_item_edt_insertscore);
-            String s;
-
-        Toast.makeText(this, textView.getText(), Toast.LENGTH_SHORT).show();
-    }*/
 
     private void getStudnets() {
         AndroidNetworking.initialize(this);

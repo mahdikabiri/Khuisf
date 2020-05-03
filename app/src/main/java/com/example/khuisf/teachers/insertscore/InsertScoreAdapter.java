@@ -44,13 +44,11 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
         return new CourseViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
         Student currentItem = mstudents.get(position);
         holder.tvName.setText(currentItem.getName());
         holder.tvCode.setText(currentItem.getCode());
-
 
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("ایا نمره را ثبت میکنید؟");
@@ -58,45 +56,36 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
 
         builder1.setPositiveButton(
                 "بله",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        holder.btnInsert.setVisibility(View.GONE);
-                        holder.edtScore.setBackgroundColor(Color.GREEN);
-                        holder.edtScore.setEnabled(false);
-                        //get score again for function
-                        String score = holder.edtScore.getText().toString().trim();
-                        float finalVal = Float.parseFloat(score);
-                        Toast.makeText(context, "ثبت شد" + finalVal, Toast.LENGTH_SHORT).show();
-                        // context.getIntent().getStringExtra("title");
+                (dialog, id) -> {
+                    dialog.cancel();
+                    holder.btnInsert.setVisibility(View.GONE);
+                    holder.edtScore.setBackgroundColor(Color.GREEN);
+                    holder.edtScore.setEnabled(false);
+                    //get score again for function
+                    String score = holder.edtScore.getText().toString().trim();
+                    float finalVal = Float.parseFloat(score);
+                    Toast.makeText(context, "ثبت شد" + finalVal, Toast.LENGTH_SHORT).show();
+                    // context.getIntent().getStringExtra("title");
 
 
-                        sendScoreToDb(score, holder.tvCode.getText().toString(), characteristic);
-                    }
+                    sendScoreToDb(score, holder.tvCode.getText().toString(), characteristic);
                 });
 
         builder1.setNegativeButton(
                 "خیر",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                (dialog, id) -> dialog.cancel());
 
 
-        holder.btnInsert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AndroidNetworking.initialize(context);
-                String score = holder.edtScore.getText().toString().trim();
-                if (checkInput(score)) {
-                    // the scoer passed filters
-                    //ask question from user are you sure (complate code writed in alert dialog button)
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                } else {
-                    holder.edtScore.setBackgroundColor(Color.RED);
-                }
+        holder.btnInsert.setOnClickListener(v -> {
+            AndroidNetworking.initialize(context);
+            String score = holder.edtScore.getText().toString().trim();
+            if (checkInput(score)) {
+                // the scoer passed filters
+                //ask question from user are you sure (complate code writed in alert dialog button)
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            } else {
+                holder.edtScore.setBackgroundColor(Color.RED);
             }
         });
 

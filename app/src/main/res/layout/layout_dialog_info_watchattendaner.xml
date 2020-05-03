@@ -42,7 +42,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_cancel" />
+            app:srcCompat="@drawable/ic_mycancel" />
 
         <TextView
             android:layout_width="match_parent"

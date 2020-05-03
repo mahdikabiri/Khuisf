@@ -2,6 +2,7 @@ package com.example.khuisf;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,14 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
 
-
-/*
-        if (picUrl.isEmpty()) {
-            imageView.setImageResource(R.drawable.ic_error_load);
-        } else {
-            Picasso.get().load(picUrl).error(R.drawable.ic_error_load).fit().into(imageView);
-        }
-        */
+        Toast.makeText(this, this.getResources().getString(R.string.app_name), Toast.LENGTH_SHORT).show();
 
         View headView = navigationView.getHeaderView(0);
 

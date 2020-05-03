@@ -43,7 +43,7 @@ public class AdapterForAttendance extends RecyclerView.Adapter<AdapterForAttenda
         if (status.equals("1")) {
             holder.ivStatus.setImageResource(R.drawable.ic_tick);
         } else if (status.equals("0")) {
-            holder.ivStatus.setImageResource(R.drawable.ic_cancel);
+            holder.ivStatus.setImageResource(R.drawable.ic_mycancel);
         } else if (status.equals("2")) {
             holder.ivStatus.setImageResource(R.drawable.ic_null);
         }

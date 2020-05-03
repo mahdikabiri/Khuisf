@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/attendancer_item_tools_cancel"
-        android:icon="@drawable/ic_cancel"
+        android:icon="@drawable/ic_mycancel"
         android:title="غیبت همه"/>
 
 

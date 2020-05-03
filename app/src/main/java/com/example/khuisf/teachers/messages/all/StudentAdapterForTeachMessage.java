@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.R;
@@ -50,6 +51,18 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
             }
         });
 
+        holder.layout.setOnClickListener(v -> {
+        if(holder.cbCheck.isChecked()){
+            holder.cbCheck.setChecked(false);
+            studentItem.setState(0);
+
+        }else {
+            holder.cbCheck.setChecked(true);
+            studentItem.setState(1);
+
+        }
+        });
+
 
         if (studentItem.getState() == 1) {
             //check
@@ -72,6 +85,7 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
         public TextView tvStuName, tvStuCode;
         public CustomCheckBox cbCheck;
         public CircleImageView imageView;
+        public ConstraintLayout layout;
 
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +93,7 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
             tvStuCode = itemView.findViewById(R.id.get_student_message_item_tvcode);
             cbCheck = itemView.findViewById(R.id.get_student_message_item_checkbox);
             imageView = itemView.findViewById(R.id.get_student_message_item_imageview);
+            layout=itemView.findViewById(R.id.item_get_all_constrant);
         }
     }
 
