@@ -2,8 +2,24 @@ package com.example.khuisf.entitys;
 
 public class Student {
     String name,code,pic;
+    int state;
 
-    public Student(String name, String code,String pic) {
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public Student(String name, String code, String pic,int state) {
+        this.name = name;
+        this.code = code;
+        this.pic=pic;
+        this.state=state;
+    }
+
+    public Student(String name, String code, String pic) {
         this.name = name;
         this.code = code;
         this.pic=pic;

@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="130dp"
     app:cardCornerRadius="20dp"
-    android:layout_margin="10dp"
+    android:layout_margin="12dp"
+    android:background="@android:color/transparent"
     android:elevation="15dp"
    >
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/get_student_message_item_imageview"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:elevation="20dp"
+        android:elevation="5dp"
         android:outlineSpotShadowColor="@android:color/transparent"
         android:src="@drawable/ic_avatar_placeholfrt"
+        android:outlineAmbientShadowColor="@android:color/transparent"
         app:civ_border_color="@color/mybluecolor"
         app:civ_border_width="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout9"
@@ -24,7 +26,6 @@
 <androidx.cardview.widget.CardView
     app:cardCornerRadius="20dp"
     android:id="@+id/linearLayout9"
-    android:elevation="20dp"
     android:layout_marginEnd="50dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">

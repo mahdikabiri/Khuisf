@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +20,8 @@ import com.example.khuisf.entitys.Urls;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class FinalSendMessageActivity extends AppCompatActivity {
     ListView listViewName, listViewCode;
@@ -38,16 +39,37 @@ public class FinalSendMessageActivity extends AppCompatActivity {
         listViewCode.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, codes));
 
         btnSendMessgae.setOnClickListener(v -> {
-            sendMessage(v, text.getText().toString());
-            //for a delay to inserting data we neet to time
-            Handler handler = new Handler();
-            Runnable r = () -> {
-                for (int i = 0; i < codes.size(); i++) {
-                    sendStudentData(v, codes.get(i), text.getText().toString(), flagRole);
-                }
-                btnSendMessgae.setVisibility(View.GONE);
-            };
-            handler.postDelayed(r, 500);
+
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("پیام را ارسال میکنید")
+                    .setConfirmText("بله")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+
+
+                            sendMessage(v, text.getText().toString());
+                            //for a delay to inserting data we neet to time
+                            Handler handler = new Handler();
+                            Runnable r = () -> {
+                                for (int i = 0; i < codes.size(); i++) {
+                                    sendStudentData(v, codes.get(i), text.getText().toString(), flagRole);
+                                }
+                                btnSendMessgae.setVisibility(View.GONE);
+                            };
+                            handler.postDelayed(r, 500);
+
+
+                            sDialog
+                                    .setTitleText("پیام با موفقیت ارسال شد!")
+                                    .setConfirmText("OK")
+                                    .setConfirmClickListener(null)
+                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        }
+                    })
+                    .show();
+
 
         });
     }
@@ -62,7 +84,6 @@ public class FinalSendMessageActivity extends AppCompatActivity {
                 getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(FinalSendMessageActivity.this, response + "", Toast.LENGTH_SHORT).show();
                         Log.d("salamali", response);
                         if (response.equals("1")) {
                             Snackbar.make(view, R.string.insert_success, Snackbar.LENGTH_LONG).

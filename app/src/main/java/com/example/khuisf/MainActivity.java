@@ -28,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import me.cheshmak.android.sdk.core.Cheshmak;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CHARAC = "characteristic";
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     CircleImageView circleImageViewNavProf;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         AndroidNetworking.initialize(this);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
+
         init();
 
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
@@ -60,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             Picasso.get().load(picUrl).error(R.drawable.ic_error_load).fit().into(imageView);
         }
         */
-
 
         View headView = navigationView.getHeaderView(0);
 
@@ -172,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         preferences.edit().putString("code", "null").apply();
         manager.setLogedIn(false);
+        Cheshmak.deleteAllTags();
         preferences.edit().clear().commit();
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
         finish();

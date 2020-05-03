@@ -42,8 +42,25 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
         Student studentItem = mCourses.get(position);
         holder.tvStuName.setText(studentItem.getName());
         holder.tvStuCode.setText(studentItem.getCode());
-        Picasso.get().load(studentItem.getPic()).error(R.drawable.ic_fail).placeholder(R.drawable.ic_avatar_placeholfrt).into(holder.imageView);
+        holder.cbCheck.setOnCheckedChangeListener((checkBox, isChecked) -> {
+            if (isChecked) {
+                studentItem.setState(1);
+            } else if (!isChecked) {
+                studentItem.setState(0);
+            }
+        });
 
+
+        if (studentItem.getState() == 1) {
+            //check
+            holder.cbCheck.setChecked(true);
+        } else if (studentItem.getState() == 0) {
+            //uncheck
+            holder.cbCheck.setChecked(false);
+        }
+
+
+        Picasso.get().load(studentItem.getPic()).error(R.drawable.ic_fail).placeholder(R.drawable.ic_avatar_placeholfrt).into(holder.imageView);
     }
 
     @Override
@@ -56,13 +73,12 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
         public CustomCheckBox cbCheck;
         public CircleImageView imageView;
 
-
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             tvStuName = itemView.findViewById(R.id.get_student_message_item_tvname);
             tvStuCode = itemView.findViewById(R.id.get_student_message_item_tvcode);
             cbCheck = itemView.findViewById(R.id.get_student_message_item_checkbox);
-            imageView=itemView.findViewById(R.id.get_student_message_item_imageview);
+            imageView = itemView.findViewById(R.id.get_student_message_item_imageview);
         }
     }
 

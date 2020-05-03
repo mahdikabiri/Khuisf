@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import me.cheshmak.android.sdk.core.Cheshmak;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -100,18 +101,20 @@ public class ProfileFragment extends Fragment {
             tvFieldStu = view.findViewById(R.id.fragment_profile_tv_field);
             tvStuCode.setText(preferences.getString("code", getString(R.string.unknown)));
             tvFieldStu.setText(preferences.getString("field", getString(R.string.unknown)));
+            Cheshmak.sendTag("student");
         } else if (role == 2) {
             //is teacher
             layoutStu.setVisibility(View.GONE);
             tvTeacherCode = view.findViewById(R.id.fragment_profile_tv_teachercode);
             tvTeacherCode.setText(preferences.getString("code", getString(R.string.unknown)));
+            Cheshmak.sendTag("teacher");
+
         }
     }
 
     private void init(View view) {
         layoutStu = view.findViewById(R.id.fragment_profile_layout_student);
         layoutTeach = view.findViewById(R.id.fragment_profile_layout_teacher);
-
         tvName = view.findViewById(R.id.fragment_profile_tv_name);
         tvUserName = view.findViewById(R.id.fragment_profile_tv_username);
         tvNationalCode = view.findViewById(R.id.fragment_profile_tv_nationalcode);

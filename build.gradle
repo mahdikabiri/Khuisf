@@ -19,8 +19,23 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        maven {
+            url 'https://repository.cheshmak.me'
+        }
+
     }
 }
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://repository.cheshmak.me'
+        }
+    }
+}
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

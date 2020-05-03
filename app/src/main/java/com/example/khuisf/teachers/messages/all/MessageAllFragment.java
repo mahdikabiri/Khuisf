@@ -7,10 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,26 +35,23 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class MessageAllFragment extends Fragment {
     ArrayList<Student> studentItems;
     ImageButton btnSelectAll;
-    FloatingActionButton fab;
+    FloatingActionButton fab2;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.test, container, false);
+        View view = inflater.inflate(R.layout.get_all_stu_formessage_teacher, container, false);
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
         return view;
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -65,85 +59,58 @@ public class MessageAllFragment extends Fragment {
         AndroidNetworking.initialize(getContext());
         recyclerView = getActivity().findViewById(R.id.fragment_message_teacher_all_recycler);
         studentItems = new ArrayList<>();
-        /*btnSelectAll = view.findViewById(R.id.fragment_mesage_all_select_all);
-        btnSelectAll.setOnClickListener(new View.OnClickListener() {
+        btnSelectAll = view.findViewById(R.id.fragment_mesage_all_select_all);
+        fab2 = view.findViewById(R.id.fagg);
+        fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "sss", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "ss", Toast.LENGTH_SHORT).show();
             }
         });
 
-*/
-        fab = view.findViewById(R.id.fragment_message_teacher_all_fab);
         adapter = new StudentAdapterForTeachMessage(getContext(), studentItems);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
-        getStudnet();
+        getStudnet(0);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-
 
 
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-
-              if(newState==RecyclerView.SCROLL_STATE_IDLE){
-                  moveAnimation();
-              }else {
-                  moveAnimationright();
-              }
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    moveAnimation();
+                } else {
+                    moveAnimationright();
+                }
             }
         });
-
-
 /*
         getStudnet();
         btnSelectAll.setOnClickListener(v -> {
             selectAll();
         });*/
-       /* fab.setOnClickListener(v -> {
 
-            new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("پیام را ارسال میکنید")
-                    .setConfirmText("بله")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
+        btnSelectAll.setOnClickListener(v -> {
+        studentItems.clear();
+            getStudnet(1);
+        });
+        fab2.setOnClickListener(v -> {
+            initData();
 
-                            //initData();
 
-                            sDialog
-                                    .setTitleText("مشخصه ثبت شد!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
-                    })
-                    .show();
-
-        });*/
+        });
     }
 
-
-    public void moveAnimation(){
-        Animation img=new TranslateAnimation(Animation.ABSOLUTE,-250,Animation.ABSOLUTE,Animation.ABSOLUTE);
-        img.setDuration(800);
-        img.setFillAfter(true);
-        fab.startAnimation(img);
+    public void moveAnimation() {
+        fab2.animate().translationX(-300).setDuration(500);
     }
 
-
-    public void moveAnimationright(){
-        Animation img=new TranslateAnimation(Animation.ABSOLUTE,50,Animation.ABSOLUTE,Animation.ABSOLUTE);
-        img.setDuration(800);
-        img.setFillAfter(true);
-        fab.startAnimation(img);
+    public void moveAnimationright() {
+        fab2.animate().translationX(+300).setDuration(500);
     }
-
 
     public void initData() {
         //this method get data from any item if checked and send to final message sending page
@@ -153,7 +120,17 @@ public class MessageAllFragment extends Fragment {
         List<String> stucodes;
         stucodes = new ArrayList<>();
         for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
-            //get item from recycler
+            Log.d("ssa", studentItems.get(i).getName());
+            Log.d("ssa", String.valueOf(studentItems.get(i).getState()));
+            int selectedState = studentItems.get(i).getState();
+            if (selectedState == 1) {
+                String selectedName = studentItems.get(i).getName();
+                String selectedCode = studentItems.get(i).getCode();
+                stuname.add(selectedName);
+                stucodes.add(selectedCode);
+            }
+
+          /*  //get item from recycler
             View view1 = recyclerView.getChildAt(i);
             CustomCheckBox cb = view1.findViewById(R.id.get_student_message_item_checkbox);
             if (cb.isChecked()) {
@@ -166,7 +143,7 @@ public class MessageAllFragment extends Fragment {
                 //set data to list
                 stuname.add(selectedName);
                 stucodes.add(selectedCode);
-            }
+            }*/
         }
         //send lis with intent
         intent.putStringArrayListExtra("codes", (ArrayList<String>) stucodes);
@@ -176,17 +153,15 @@ public class MessageAllFragment extends Fragment {
         startActivity(intent);
     }
 
-
     private void selectAll() {
         for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
-            View view = recyclerView.getChildAt(i);
+           /* View view = recyclerView.getChildAt(i);
             CustomCheckBox cb = view.findViewById(R.id.get_student_message_item_checkbox);
-            cb.setChecked(true);
+            cb.setChecked(true);*/
         }
-
     }
 
-    private void getStudnet() {
+    private void getStudnet(int status) {
         AndroidNetworking.initialize(getActivity());
         AndroidNetworking.post(Urls.host + Urls.getStudentForMessage)
                 .addBodyParameter("teacher_code", getNameFromSharedRefs())
@@ -196,13 +171,12 @@ public class MessageAllFragment extends Fragment {
                 try {
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
-                        Log.d("saalm",response.toString());
                         JSONObject object = response.getJSONObject(i);
                         String cName = object.getString("name");
                         String cCode = object.getString("codestudent");
                         String cPic = object.getString("pic");
                         // add items from db and save to arraylist
-                        studentItems.add(new Student(cName, cCode,cPic));
+                        studentItems.add(new Student(cName, cCode, cPic,status));
                         adapter.notifyDataSetChanged();
                         Log.d("names", cName);
                     }
@@ -215,7 +189,6 @@ public class MessageAllFragment extends Fragment {
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getActivity(), "ایراد در دریافت اسامی", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -224,5 +197,4 @@ public class MessageAllFragment extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");
     }
-
 }

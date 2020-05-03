@@ -103,6 +103,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
@@ -112,25 +113,27 @@
             android:elevation="20dp"
             android:outlineSpotShadowColor="@color/mybluecolor">
 
-        <com.mlsdev.animatedrv.AnimatedRecyclerView
-            android:id="@+id/recycler_attendance1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:animationDuration="600"
-            app:layoutAnimation="@anim/layout_animation_from_bottom"
-            app:layoutManagerOrientation="vertical"
-            app:layoutManagerReverse="false"
-            app:layoutManagerType="linear" />
+            <com.mlsdev.animatedrv.AnimatedRecyclerView
+                android:id="@+id/recycler_attendance1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:animationDuration="600"
+                app:layoutAnimation="@anim/layout_animation_from_bottom"
+                app:layoutManagerOrientation="vertical"
+                app:layoutManagerReverse="false"
+                app:layoutManagerType="linear" />
         </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/attendancer_activity_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:src="@drawable/ic_done" />
-
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/attendancer_activity_fab"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:clickable="true"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_exist_white" />
+
 </LinearLayout>

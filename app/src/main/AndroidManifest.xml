@@ -4,9 +4,9 @@
     package="com.example.khuisf">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
-        android:name=".NajvaApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,16 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
 
-        <meta-data
-            android:name="com.najva.sdk.metadata.API_KEY"
-            android:value="d685cc67-5b85-4bff-8747-7c522026531e" />
-        <meta-data
-            android:name="com.najva.sdk.metadata.WEBSITE_ID"
-            android:value="11989" />
+
+
+
 
         <activity
             android:name=".StartActivity"
             android:theme="@style/sss">
+            <meta-data android:name="cheshmakPush" android:value="openActivityOnPush"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +34,8 @@
         <activity
             android:name=".messgeainbox.InboxActivity"
             android:label="پیام ها" />
-        <activity android:name=".teachers.messages.FinalSendMessageActivity" />
+        <activity android:name=".teachers.messages.FinalSendMessageActivity"
+            android:label="ارسال پیام" />
         <activity android:name=".teachers.messages.bycourses.SendMessageToStudentByCourseActivity" />
         <activity
             android:name=".students.watchattendance.ShowAttendanceActivity"

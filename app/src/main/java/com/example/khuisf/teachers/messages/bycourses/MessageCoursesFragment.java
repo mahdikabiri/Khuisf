@@ -59,7 +59,9 @@ public class MessageCoursesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         //geting teachers code from shared preferences
-        getCourses(getNameFromSharedRefs());
+
+        Toast.makeText(getContext(), "به زودی ...", Toast.LENGTH_SHORT).show();
+        //getCourses(getNameFromSharedRefs());
     }
 
     private void getCourses(String teacherCode) {

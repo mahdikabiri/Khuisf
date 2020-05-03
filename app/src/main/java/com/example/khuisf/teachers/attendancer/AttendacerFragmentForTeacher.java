@@ -44,7 +44,6 @@ public class AttendacerFragmentForTeacher extends Fragment {
 
     public AttendacerFragmentForTeacher() {
     }
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -53,7 +52,6 @@ public class AttendacerFragmentForTeacher extends Fragment {
         view.setLayoutParams(layoutParams);
         return view;
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -70,7 +68,6 @@ public class AttendacerFragmentForTeacher extends Fragment {
         getCourses();
     }
 
-
     private void initSwipeRefreashLayout(View view) {
         swipeRefreshLayout = view.findViewById(R.id.get_course_atendance_for_teacher_swipe_refresh);
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
@@ -79,7 +76,6 @@ public class AttendacerFragmentForTeacher extends Fragment {
             Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
             update();
         });
-
     }
 
     private void getCourses() {
@@ -126,7 +122,6 @@ public class AttendacerFragmentForTeacher extends Fragment {
         }
     }
 
-
     private void update() {
         courseItems.clear();
         recyclerView.scheduleLayoutAnimation();
@@ -137,7 +132,6 @@ public class AttendacerFragmentForTeacher extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");
     }
-
 
     private String getCharFromSharedPrefs() {
         return "2222";

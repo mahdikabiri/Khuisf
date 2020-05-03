@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -81,9 +82,31 @@ public class AttendancerActivity extends AppCompatActivity {
         getStudnets(0);
 
         initSwipeRefreashLayout();
+       /* recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
 
+
+///this is good func
+                if (!recyclerView.canScrollVertically(1) && newState==RecyclerView.SCROLL_STATE_IDLE) {
+                    Toast.makeText(AttendancerActivity.this, "Last", Toast.LENGTH_LONG).show();
+                    moveAnimation();
+                }
+            }
+        });*/
 
     }
+
+
+    public void moveAnimation() {
+        fab.animate().translationY(-300).translationX(400).setDuration(500);
+    }
+
+    public void moveAnimationright() {
+        fab.animate().translationX(+300).setDuration(500);
+    }
+
 
 
     private void initSwipeRefreashLayout() {
@@ -160,10 +183,8 @@ public class AttendancerActivity extends AppCompatActivity {
             String name = studentItems.get(i).getName();
             int status = studentItems.get(i).getStatus();
             String code = studentItems.get(i).getCode();
-            Log.d("test",name+"  :"+status);
             sendDate(tvDatePicker.getText().toString(), v, code, charac, String.valueOf(status));
         }
-
     }
 
 
