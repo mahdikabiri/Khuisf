@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,11 +22,8 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Student;
-import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.teachers.messages.FinalSendMessageActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import net.igenius.customcheckbox.CustomCheckBox;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +36,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MessageAllFragment extends Fragment {
     ArrayList<Student> studentItems;
-    Button btnSelectAll,btnSend;
+    Button btnSelectAll, btnSend;
     FloatingActionButton fab2;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -91,9 +87,8 @@ public class MessageAllFragment extends Fragment {
         });
 
 
-
         btnSelectAll.setOnClickListener(v -> {
-        studentItems.clear();
+            studentItems.clear();
             getStudnet(1);
         });
         fab2.setOnClickListener(v -> {
@@ -121,8 +116,6 @@ public class MessageAllFragment extends Fragment {
         List<String> stucodes;
         stucodes = new ArrayList<>();
         for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
-            Log.d("ssa", studentItems.get(i).getName());
-            Log.d("ssa", String.valueOf(studentItems.get(i).getState()));
             int selectedState = studentItems.get(i).getState();
             if (selectedState == 1) {
                 String selectedName = studentItems.get(i).getName();
@@ -130,28 +123,17 @@ public class MessageAllFragment extends Fragment {
                 stuname.add(selectedName);
                 stucodes.add(selectedCode);
             }
-
-          /*  //get item from recycler
-            View view1 = recyclerView.getChildAt(i);
-            CustomCheckBox cb = view1.findViewById(R.id.get_student_message_item_checkbox);
-            if (cb.isChecked()) {
-                //init textviews
-                TextView tvname = view1.findViewById(R.id.get_student_message_item_tvname);
-                TextView tvcode = view1.findViewById(R.id.get_student_message_item_tvcode);
-                //get data from textviews
-                String selectedName = tvname.getText().toString();
-                String selectedCode = tvcode.getText().toString();
-                //set data to list
-                stuname.add(selectedName);
-                stucodes.add(selectedCode);
-            }*/
         }
         //send lis with intent
         intent.putStringArrayListExtra("codes", (ArrayList<String>) stucodes);
         intent.putStringArrayListExtra("names", (ArrayList<String>) stuname);
         //this is for authentication receiver
         intent.putExtra("flagRole", "1");
-        startActivity(intent);
+        if(!stuname.isEmpty()){
+            startActivity(intent);
+        }else {
+            Toast.makeText(getContext(), "حد اقل یک نفر را انتخاب کنید", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void selectAll() {
@@ -164,7 +146,7 @@ public class MessageAllFragment extends Fragment {
 
     private void getStudnet(int status) {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getStudentForMessage)
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getStudentForMessage))
                 .addBodyParameter("teacher_code", getNameFromSharedRefs())
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
@@ -177,7 +159,7 @@ public class MessageAllFragment extends Fragment {
                         String cCode = object.getString("codestudent");
                         String cPic = object.getString("pic");
                         // add items from db and save to arraylist
-                        studentItems.add(new Student(cName, cCode, cPic,status));
+                        studentItems.add(new Student(cName, cCode, cPic, status));
                         adapter.notifyDataSetChanged();
                         Log.d("names", cName);
                     }

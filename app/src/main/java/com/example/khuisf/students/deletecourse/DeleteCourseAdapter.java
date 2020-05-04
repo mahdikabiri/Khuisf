@@ -23,7 +23,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 
 import java.util.ArrayList;
 
@@ -90,7 +89,7 @@ public class DeleteCourseAdapter extends RecyclerView.Adapter<DeleteCourseAdapte
 
     private void deleteCourse(CourseViewHolder holder, String studentCode, String characteristic, Context context) {
         AndroidNetworking.initialize(context);
-        AndroidNetworking.post(Urls.host + Urls.deleteCourse)
+        AndroidNetworking.post(context.getString(R.string.host) + context.getString(R.string.deleteCourse))
                 .addBodyParameter("char", characteristic)
                 .addBodyParameter("code", studentCode)
                 .build().getAsString(new StringRequestListener() {
@@ -101,7 +100,6 @@ public class DeleteCourseAdapter extends RecyclerView.Adapter<DeleteCourseAdapte
                     holder.cl.setBackgroundColor(ContextCompat.getColor(context, R.color.colorGray));
                     holder.btnDelete.setVisibility(View.GONE);
                     Toast.makeText(context, "با موفقیت حذف شد", Toast.LENGTH_SHORT).show();
-
                 } else {
                     Toast.makeText(context, "درس حذف نشد", Toast.LENGTH_SHORT).show();
                 }

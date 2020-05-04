@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -108,7 +107,6 @@ public class AttendancerActivity extends AppCompatActivity {
     }
 
 
-
     private void initSwipeRefreashLayout() {
         swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.BLUE);
         swipeRefreshLayout.setWaveColor(Color.rgb(240, 240, 240));
@@ -167,6 +165,7 @@ public class AttendancerActivity extends AppCompatActivity {
         studentItems.clear();
         getStudnets(2);
     }
+
     private void setAllTick() {
         /*for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
             View view = recyclerView.getChildAt(i);
@@ -179,7 +178,7 @@ public class AttendancerActivity extends AppCompatActivity {
     }
 
     private void gatReadyValues(View v) {
-        for (int i = 0; i <= adapter.getItemCount()-1; i++) {
+        for (int i = 0; i <= adapter.getItemCount() - 1; i++) {
             String name = studentItems.get(i).getName();
             int status = studentItems.get(i).getStatus();
             String code = studentItems.get(i).getCode();
@@ -201,7 +200,7 @@ public class AttendancerActivity extends AppCompatActivity {
 
     private void getStudnets(int status) {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(Urls.host + Urls.getStudent)
+        AndroidNetworking.post(getString(R.string.host) +getString(R.string.getStudent))
                 .addBodyParameter("char", charac)
                 .setTag("getCourse")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
@@ -216,7 +215,7 @@ public class AttendancerActivity extends AppCompatActivity {
                         String cCode = object.getString("codestudent");
                         String cPic = object.getString("pic");
                         // add items from db and save to arraylist
-                        studentItems.add(new StudentAttendancer(cName, cCode, status,cPic));
+                        studentItems.add(new StudentAttendancer(cName, cCode, status, cPic));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -241,7 +240,7 @@ public class AttendancerActivity extends AppCompatActivity {
     }
 
     private void sendDate(String date, View view, String studentCode, String charac, String state) {
-        AndroidNetworking.post(Urls.host + Urls.insertAttendancer)
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.insertAttendancer))
                 .addBodyParameter("date", date)
                 .addBodyParameter("studentcode", studentCode)
                 .addBodyParameter("charac", charac)

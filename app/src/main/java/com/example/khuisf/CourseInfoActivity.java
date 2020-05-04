@@ -40,7 +40,7 @@ public class CourseInfoActivity extends AppCompatActivity {
 
     // for more performance  get some data form previus activity
     private void getCourseInfo(String charac) {
-        AndroidNetworking.post(Urls.host + Urls.getCourseInfo)
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getCourseInfo))
                 .addBodyParameter("char", charac)
                 .setTag("LOGIN")
                 .build().getAsJSONObject(new JSONObjectRequestListener() {

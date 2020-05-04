@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,44 +39,50 @@ public class FinalSendMessageActivity extends AppCompatActivity {
         listViewName.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names));
 
         btnSendMessgae.setOnClickListener(v -> {
-
-            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("پیام را ارسال میکنید")
-                    .setConfirmText("بله")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-
-
-                            sendMessage(v, text.getText().toString());
-                            //for a delay to inserting data we neet to time
-                            Handler handler = new Handler();
-                            Runnable r = () -> {
-                                for (int i = 0; i < codes.size(); i++) {
-                                    sendStudentData(v, codes.get(i), text.getText().toString(), flagRole);
-                                }
-                                btnSendMessgae.setVisibility(View.GONE);
-                            };
-                            handler.postDelayed(r, 500);
-
-
-                            sDialog
-                                    .setTitleText("پیام با موفقیت ارسال شد!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
-                    })
-                    .show();
-
+            if(!text.getText().toString().trim().equals("")) {
+                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("پیام را ارسال میکنید")
+                        .setConfirmText("بله")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sendMessage(v, text.getText().toString());
+                                //for a delay to inserting data we neet to time
+                                Handler handler = new Handler();
+                                Runnable r = () -> {
+                                    for (int i = 0; i < codes.size(); i++) {
+                                        sendStudentData(v, codes.get(i), text.getText().toString(), flagRole);
+                                    }
+                                    btnSendMessgae.setVisibility(View.GONE);
+                                };
+                                handler.postDelayed(r, 500);
+                                sDialog
+                                        .setTitleText("پیام با موفقیت ارسال شد!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
+                        })
+                        .show();
+            }else {
+                /// text is empty
+                SweetAlertDialog pDialog= new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+                pDialog.setTitleText(getString(R.string.empty_text))
+                        .setConfirmText(getString(R.string.ok))
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                            pDialog.cancel();
+                            }
+                        })
+                        .show();            }
 
         });
     }
 
 
     private void sendStudentData(View view, String code, String text, String flagRole) {
-        AndroidNetworking.post(Urls.host + Urls.insertMessageForStudent)
+        AndroidNetworking.post(getString(R.string.host)+getString(R.string.insertMessageForStudent))
                 .addBodyParameter("student_code", code)
                 .addBodyParameter("message_text", text)
                 .addBodyParameter("flag_role", flagRole)
@@ -100,7 +107,7 @@ public class FinalSendMessageActivity extends AppCompatActivity {
 
 
     private void sendMessage(View view, String text) {
-        AndroidNetworking.post(Urls.host + Urls.insertMessage)
+        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.insertMessage))
                 .addBodyParameter("message_text", text)
                 .addBodyParameter("sender_message", getNameFromSharedRefs())
                 .build().

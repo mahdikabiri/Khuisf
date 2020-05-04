@@ -22,7 +22,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,7 +82,7 @@ public class SelectCoursesFragment extends Fragment {
 
     private void getCourses() {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getSelectedCourses)
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getSelectedCourses))
                 .addBodyParameter("code", getNameFromSharedRefs())
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
@@ -125,11 +124,12 @@ public class SelectCoursesFragment extends Fragment {
         }
     }
 
-    public  void update() {
+    public void update() {
         courseItems.clear();
         recyclerView.scheduleLayoutAnimation();
         getCourses();
     }
+
     private String getNameFromSharedRefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");

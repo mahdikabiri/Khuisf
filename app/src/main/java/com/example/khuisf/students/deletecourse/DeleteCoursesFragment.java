@@ -84,7 +84,7 @@ public class DeleteCoursesFragment extends Fragment {
 
     private void getCourses() {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getCourses)
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getCourses))
                 .addBodyParameter("code", getNameFromSharedRefs())
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {

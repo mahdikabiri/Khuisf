@@ -94,7 +94,7 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
 
 
     private void sendScoreToDb(String score, String studentCode, String charac) {
-        AndroidNetworking.post(Urls.host + Urls.setScore)
+        AndroidNetworking.post(context.getString(R.string.host)+context.getString(R.string.setScore))
                 .addBodyParameter("characteristic", charac)
                 .addBodyParameter("code", studentCode)
                 .addBodyParameter("score", score)

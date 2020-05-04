@@ -78,7 +78,7 @@ public class InsertScoreFragment extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         String teacherCode = preferences.getString("code", "");
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getCourseTeacher)
+        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.getCourseTeacher))
                 .addBodyParameter("code", teacherCode)
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {

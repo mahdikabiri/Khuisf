@@ -2,7 +2,6 @@ package com.example.khuisf;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -31,7 +30,6 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.cheshmak.android.sdk.core.Cheshmak;
-
 public class MainActivity extends AppCompatActivity {
     public static final String CHARAC = "characteristic";
     public static final String NAME = "coursename";
@@ -43,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     CircleImageView circleImageViewNavProf;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,15 +50,9 @@ public class MainActivity extends AppCompatActivity {
         AndroidNetworking.initialize(this);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
-
         init();
-
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-
-        Toast.makeText(this, this.getResources().getString(R.string.app_name), Toast.LENGTH_SHORT).show();
-
         View headView = navigationView.getHeaderView(0);
-
         TextView tv_access = headView.findViewById(R.id.nav_header_access_tv);
         TextView tv_name = headView.findViewById(R.id.nav_header_name_tv);
         role = preferences.getInt("role", 0);
@@ -101,9 +90,7 @@ public class MainActivity extends AppCompatActivity {
             setImageProf(picUrl);
         };
         handler.postDelayed(r, 3000);
-
     }
-
 
     private void setImageProf(String picUrl) {
         if (picUrl.isEmpty()) {
@@ -114,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-
         navigationView = findViewById(R.id.img_prof_drawer_menu);
         //  circleImageViewNavProf = findViewById(R.id.nav_header_img_prof);
     }
@@ -158,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
 
     private String setAccess(int access) {
         if (access == 1) return "دانشجو";

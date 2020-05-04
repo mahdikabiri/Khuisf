@@ -76,5 +76,30 @@
     <string name="notexist_student">عدم حضور دانشجو</string>
     <string name="not_set_studnet_attendancer">عدم اعلام حضور</string>
     <string name="insert">ثبت</string>
+
+
+
+    <string name="host">http://192.168.67.1//project/khuisf/</string>
+    <string name="hosts">http://mkabiri.ir/khuisf/</string>
     <string name="login_url">login.php</string>
+    <string name="getTeachersForMessage">get_teachers_formessage.php</string>
+    <string name="getMessageForStudent">get_messages_for_student.php</string>
+    <string name="insertMessage">insert_message.php</string>
+    <string name="insertMessageForStudent">insert_for_students_message.php</string>
+    <string name="getStudentForMessageByCourse">get_students_formessage_bycourse.php</string>
+    <string name="getStudentForMessage">get_students_formessage.php</string>
+    <string name="getAttendancer">get_attendancer.php</string>
+    <string name="insertAttendancer">insert_attendancer.php</string>
+    <string name="deleteCourse">delete_courses.php</string>
+    <string name="selectCourse">select_courses.php</string>
+    <string name="getSelectedCourses">get_selected_courses.php</string>
+    <string name="setScore">insert_score.php</string>
+    <string name="getScore">get_courses_score.php</string>
+    <string name="getCourseInfo">get_courses_info.php</string>
+    <string name="getInfo">get_info.php</string>
+    <string name="getCourseTeacher">get_courses_forteacher.php</string>
+    <string name="getStudent">get_students.php</string>
+    <string name="getCourses">get_courses.php</string>
+    <string name="ok">ok</string>
+    <string name="empty_text">متن پیام نمی تواند خالی باشد</string>
 </resources>

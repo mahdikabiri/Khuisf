@@ -125,7 +125,7 @@ public class ProfileFragment extends Fragment {
 
     private void getInfo(String role, String username) {
         //get all info from web server
-        AndroidNetworking.post(Urls.host + Urls.getInfo)
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getInfo))
                 .addBodyParameter("username", username)
                 .addBodyParameter("role", role)
                 .setTag("LOGIN")

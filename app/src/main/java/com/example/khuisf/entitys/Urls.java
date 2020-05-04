@@ -1,14 +1,11 @@
 package com.example.khuisf.entitys;
 
-import android.os.Build;
-
-import com.example.khuisf.BuildConfig;
-import com.example.khuisf.R;
+import android.content.Context;
 
 public class Urls {
-   //public static String host = "http://mkabiri.ir/khuisf/";
+    private Context context;
+    //public static String host = "http://mkabiri.ir/khuisf/";
 
-    public static String host="http://192.168.67.1//project/khuisf/";
 
     public static String login = "login.php";
     public static String getCourses = "get_courses.php";
@@ -29,7 +26,4 @@ public class Urls {
     public static String insertMessage = "insert_message.php";
     public static String getMessageForStudent = "get_messages_for_student.php";
     public static String getTeachersForMessage = "get_teachers_formessage.php";
-
-
-
 }

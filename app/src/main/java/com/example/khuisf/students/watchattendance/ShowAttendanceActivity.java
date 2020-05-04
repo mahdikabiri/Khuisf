@@ -124,7 +124,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
 
     private void getCourses() {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(Urls.host + Urls.getAttendancer)
+        AndroidNetworking.post(getString(R.string.host) +getString(R.string.getAttendancer))
                 .addBodyParameter("studentcode", getCodeFromSharedRefs())
                 .addBodyParameter("charac", charac)
                 .setTag("getAttendance")

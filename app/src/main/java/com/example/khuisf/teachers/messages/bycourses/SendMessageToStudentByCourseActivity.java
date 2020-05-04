@@ -84,7 +84,7 @@ public class SendMessageToStudentByCourseActivity extends AppCompatActivity {
 
     private void getStudnet() {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(Urls.host + Urls.getStudentForMessageByCourse)
+        AndroidNetworking.post(getString(R.string.host)+getString(R.string.getStudentForMessageByCourse))
                 .addBodyParameter("char", characteristic)
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override

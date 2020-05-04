@@ -86,7 +86,7 @@ public class GetScoreFragment extends Fragment {
 
     private void getScore() {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getScore)
+        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.getScore))
                 .addBodyParameter("code", getCodeFromSharedPrefs())
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override

@@ -65,7 +65,7 @@ public class InboxActivity extends AppCompatActivity {
         String studentCode=getCodeFromSharedPrefs();
         String userRole= String.valueOf(getRoleFromSharedPrefs());
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(Urls.host + Urls.getMessageForStudent)
+        AndroidNetworking.post(getString(R.string.host)+getString(R.string.getMessageForStudent))
                 .addBodyParameter("student_code", studentCode)
                 .addBodyParameter("role_code", userRole)
                 .build().getAsJSONArray(new JSONArrayRequestListener() {

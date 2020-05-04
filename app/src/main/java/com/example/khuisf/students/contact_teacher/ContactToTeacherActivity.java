@@ -44,7 +44,7 @@ public class ContactToTeacherActivity extends AppCompatActivity {
     }
 
     private void getTeachers(String studentCode) {
-        AndroidNetworking.post(Urls.host + Urls.getTeachersForMessage)
+        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.getTeachersForMessage))
                 .addBodyParameter("student_code", studentCode)
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {

@@ -125,7 +125,7 @@ public class SampleAdapter extends SwipeAdapter implements View.OnClickListener 
 
     private void deleteCourse(String studentCode, String characteristic, Context context, String courseName) {
         AndroidNetworking.initialize(context);
-        AndroidNetworking.post(Urls.host + Urls.deleteCourse)
+        AndroidNetworking.post(context.getString(R.string.host)+context.getString(R.string.deleteCourse))
                 .addBodyParameter("char", characteristic)
                 .addBodyParameter("code", studentCode)
                 .build().getAsString(new StringRequestListener() {

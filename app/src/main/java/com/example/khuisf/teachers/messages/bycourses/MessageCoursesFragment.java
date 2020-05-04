@@ -66,7 +66,7 @@ public class MessageCoursesFragment extends Fragment {
 
     private void getCourses(String teacherCode) {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(Urls.host + Urls.getCourseTeacher)
+        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.getCourseTeacher))
                 .addBodyParameter("code", teacherCode)
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {

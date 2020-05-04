@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(final String username, String password, final SessionManager manager) {
-        AndroidNetworking.post(Urls.host + Urls.login)
+        AndroidNetworking.post(getString(R.string.host)+getString(R.string.login_url))
                 .addBodyParameter("username", username)
                 .addBodyParameter("password", password)
                 .setTag("LOGIN")

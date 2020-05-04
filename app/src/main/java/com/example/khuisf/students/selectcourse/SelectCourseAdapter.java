@@ -1,10 +1,7 @@
 package com.example.khuisf.students.selectcourse;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,10 +20,8 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 
 import java.util.ArrayList;
-
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -36,7 +30,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapter.CourseViewHolder> {
     LayoutInflater inflater;
     Context context;
-        private ArrayList<Course> mCourses;
+    private ArrayList<Course> mCourses;
 
     public SelectCourseAdapter(Context context, ArrayList<Course> courses) {
         this.context = context;
@@ -87,7 +81,7 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
             @Override
             public void onClick(View v) {
                 new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("درس  " +currentItem.getTitle() +" را انتخاب می کنید؟")
+                        .setTitleText("درس  " + currentItem.getTitle() + " را انتخاب می کنید؟")
                         .setConfirmText("بله")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
@@ -97,7 +91,7 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                                 selecCourse(holder, preferences.getString("code", ""), holder.tvChar.getText().toString(), context);
                                 sDialog
                                         .setTitleText("مشخصه ثبت شد!")
-                                        .setContentText("درس  " +currentItem.getTitle() +" با مشخصه "+currentItem.getCharac()+" با موفقیت ثبت شد")
+                                        .setContentText("درس  " + currentItem.getTitle() + " با مشخصه " + currentItem.getCharac() + " با موفقیت ثبت شد")
                                         .setConfirmText("OK")
                                         .setConfirmClickListener(null)
                                         .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
@@ -110,7 +104,7 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
 
     private void selecCourse(CourseViewHolder holder, String studentCode, String characteristic, Context context) {
         AndroidNetworking.initialize(context);
-        AndroidNetworking.post(Urls.host + Urls.selectCourse)
+        AndroidNetworking.post(context.getString(R.string.host) + context.getString(R.string.selectCourse))
                 .addBodyParameter("char", characteristic)
                 .addBodyParameter("code", studentCode)
                 .build().getAsString(new StringRequestListener() {
@@ -130,7 +124,6 @@ public class SelectCourseAdapter extends RecyclerView.Adapter<SelectCourseAdapte
                 Toast.makeText(context, "ارور شبکه", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override

@@ -55,7 +55,7 @@ public class InsertScoreActivity extends AppCompatActivity {
 
     private void getStudnets() {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(Urls.host + Urls.getStudent)
+        AndroidNetworking.post(getString(R.string.host) +getString(R.string.getStudent))
                 .addBodyParameter("char", charac)
                 .setTag("getCourse")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
