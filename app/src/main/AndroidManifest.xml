@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -16,33 +17,38 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
 
+        <activity
+            android:name="com.example.khuisf.IntroSlider"
+            android:theme="@style/sss">
 
-
-
-
+        </activity>
         <activity
             android:name=".StartActivity"
-            android:theme="@style/sss">
-            <meta-data android:name="cheshmakPush" android:value="openActivityOnPush"/>
+            android:theme="@style/sss"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="cheshmakPush"
+                android:value="openActivityOnPush" />
         </activity>
         <activity android:name=".students.contact_teacher.ContactToTeacherActivity" />
         <activity
             android:name=".messgeainbox.InboxActivity"
             android:label="پیام ها" />
-        <activity android:name=".teachers.messages.FinalSendMessageActivity"
+        <activity
+            android:name=".teachers.messages.FinalSendMessageActivity"
             android:label="ارسال پیام" />
         <activity android:name=".teachers.messages.bycourses.SendMessageToStudentByCourseActivity" />
         <activity
             android:name=".students.watchattendance.ShowAttendanceActivity"
             android:label="حضور غیاب" />
-        <activity android:name=".teachers.insertscore.InsertScoreActivity"
-            android:theme="@style/sss"
-            />
+        <activity
+            android:name=".teachers.insertscore.InsertScoreActivity"
+            android:theme="@style/sss" />
         <activity
             android:name=".teachers.attendancer.AttendancerActivity"
             android:theme="@style/sss" />

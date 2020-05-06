@@ -6,9 +6,11 @@
     <color name="colorGreen">#4CAF50</color>
     <color name="colorRed">#F44336</color>
     <color name="colorGray">#6E6C6C</color>
+    <color name="colordark">#4A4949</color>
     <color name="colorWite">#F6ECEC</color>
     <color name="colorWiteg">#f0f0f0</color>
     <color name="color_yellow">#ffcf00</color>
+    <color name="color_yesllow">#e7e253</color>
 
 
     <color name="new_gray_color">#f2f2f2</color>

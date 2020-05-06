@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.khuisf.tools.SessionManager;
+
 public class StartActivity extends AppCompatActivity {
     ImageView ivLogo;
 
@@ -21,12 +23,15 @@ public class StartActivity extends AppCompatActivity {
         animation1.setDuration(2000);
         ivLogo.startAnimation(animation1);
 
+
+        SessionManager manager = new SessionManager(this);
+
+
         android.os.Handler handler = new Handler();
         Runnable r = () -> {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         };
         handler.postDelayed(r, 2500);
-
     }
 }
