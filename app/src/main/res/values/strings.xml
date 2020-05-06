@@ -79,8 +79,8 @@
 
 
 
-    <string name="host">http://192.168.67.1//project/khuisf/</string>
-    <string name="hosts">http://mkabiri.ir/khuisf/</string>
+    <string name="hosts">http://192.168.67.1//project/khuisf/</string>
+    <string name="host">http://mkabiri.ir/khuisf/</string>
     <string name="login_url">login.php</string>
     <string name="getTeachersForMessage">get_teachers_formessage.php</string>
     <string name="getMessageForStudent">get_messages_for_student.php</string>
@@ -102,4 +102,5 @@
     <string name="getCourses">get_courses.php</string>
     <string name="ok">ok</string>
     <string name="empty_text">متن پیام نمی تواند خالی باشد</string>
+    <string name="key_cheshmak">tAnvYBWkghIb388FEGI1PQ==</string>
 </resources>

@@ -17,6 +17,7 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.textfield.TextInputLayout;
+import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import org.json.JSONObject;
 
@@ -36,6 +37,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
+
+
+        PushDownAnim.setPushDownAnimTo( btnLogin )
+        .setScale( PushDownAnim.MODE_SCALE, 0.89f);
 
 
 

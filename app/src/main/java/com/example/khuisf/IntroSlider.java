@@ -45,6 +45,6 @@ public class IntroSlider extends AppIntro2 {
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
-        //openApp();
+        openApp();
     }
 }

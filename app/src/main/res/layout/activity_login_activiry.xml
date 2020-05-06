@@ -103,7 +103,7 @@
                 android:layout_marginEnd="50dp"
                 android:shadowColor="@color/mybluecolor"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/custombuttonblue"
+                android:background="@drawable/ripple_foe_loginbtn"
                 android:elevation="20dp"
                 android:fontFamily="@font/vazirbold"
                 android:text="ورود"

@@ -21,24 +21,20 @@ public class StartActivity extends AppCompatActivity {
         ivLogo = findViewById(R.id.iv_logo);
 
         AlphaAnimation animation1 = new AlphaAnimation(0f, 1.0f);
-        animation1.setDuration(2000);
+        animation1.setDuration(1500);
         ivLogo.startAnimation(animation1);
-
-
         SessionManager manager = new SessionManager(this);
         if(!manager.isLogedInforIntro()){
             finish();
             startActivity(new Intent(this, IntroSlider.class));
         }else {
 
-
-
         android.os.Handler handler = new Handler();
         Runnable r = () -> {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         };
-        handler.postDelayed(r, 2000);
+        handler.postDelayed(r, 1800);
         }
 
     }
