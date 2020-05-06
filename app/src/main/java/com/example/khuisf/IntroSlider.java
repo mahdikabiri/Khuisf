@@ -32,15 +32,15 @@ public class IntroSlider extends AppIntro2 {
     @Override
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
-       // openApp();
+        openApp();
     }
 
-   /* private void openApp() {
+    private void openApp() {
         SessionManager sessionManager = new SessionManager(this);
         sessionManager.setLogedInforIntro(true);
         finish();
         startActivity(new Intent(this, StartActivity.class));
-    }*/
+    }
 
     @Override
     public void onSkipPressed(Fragment currentFragment) {

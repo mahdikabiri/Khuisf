@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +26,11 @@ public class StartActivity extends AppCompatActivity {
 
 
         SessionManager manager = new SessionManager(this);
+        if(!manager.isLogedInforIntro()){
+            finish();
+            startActivity(new Intent(this, IntroSlider.class));
+        }else {
+
 
 
         android.os.Handler handler = new Handler();
@@ -32,6 +38,8 @@ public class StartActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         };
-        handler.postDelayed(r, 2500);
+        handler.postDelayed(r, 2000);
+        }
+
     }
 }
