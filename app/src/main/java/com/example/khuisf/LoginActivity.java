@@ -52,6 +52,16 @@ public class LoginActivity extends AppCompatActivity {
         inputLayoutUsername = findViewById(R.id.text_input_username);
         inputLayoutPass = findViewById(R.id.text_input_pass);
 
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N){
+            btnLogin.setBackground(getResources().getDrawable(R.drawable.custom_tv_blue_bg));
+            Toast.makeText(this, "zire", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(this, "balas", Toast.LENGTH_SHORT).show();
+            btnLogin.setBackground(getResources().getDrawable(R.drawable.ripple_foe_loginbtn));
+
+        }
+
+
         btnLogin.setOnClickListener((View v) -> {
                     if (validInput(inputLayoutUsername) && validInput(inputLayoutPass)) {
                         login(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim(), manager);

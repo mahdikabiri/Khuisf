@@ -2,8 +2,10 @@ package com.example.khuisf;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -84,12 +86,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         //for delay in get data from web and save in prefreces use the hanler class to run after 3 secondes
-        android.os.Handler handler = new Handler();
+        Handler handler = new Handler();
         Runnable r = () -> {
             String picUrl = preferences.getString("pic", "");
             setImageProf(picUrl);
         };
         handler.postDelayed(r, 3000);
+
+
     }
 
     private void setImageProf(String picUrl) {
@@ -115,22 +119,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_main, menu);
+       // menuInflater.inflate(R.menu.menu_main_student, menu);
+        if(role==1){
+            menuInflater.inflate(R.menu.menu_main_student, menu);
+        }else if(role==2){
+            menuInflater.inflate(R.menu.menu_main_teacher, menu);
+        }
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itme_action_settings) {
-            startActivity(new Intent(MainActivity.this, ElipsisActivity.class));
+            Toast.makeText(this, "به زودی ...", Toast.LENGTH_SHORT).show();
+           // startActivity(new Intent(MainActivity.this, ElipsisActivity.class));
         } else if (item.getItemId() == R.id.itme_img_prof) {
             startActivity(new Intent(MainActivity.this, InfoActivity.class));
         } else if (item.getItemId() == R.id.itme_img_message) {
             startActivity(new Intent(MainActivity.this, InboxActivity.class));
-        } else if (item.getItemId() == R.id.itme_action_sendmessage) {
+        } else  if(item.getItemId() == R.id.itme_action_sendmessage){
             if (role == 1) {
                 startActivity(new Intent(this, ContactToTeacherActivity.class));
-            } else if (role == 2) {
                /* getSupportFragmentManager().beginTransaction()
                         .add(android.R.id.content, new getCouserForSendMessageTeachFragment()).commit();*/
             }

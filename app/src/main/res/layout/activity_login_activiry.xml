@@ -103,12 +103,18 @@
                 android:layout_marginEnd="50dp"
                 android:shadowColor="@color/mybluecolor"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/ripple_foe_loginbtn"
                 android:elevation="20dp"
                 android:fontFamily="@font/vazirbold"
                 android:text="ورود"
+                android:clickable="true"
                 android:textColor="#fff"
                 android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="رمز عبورم را فراموش کرده ام"/>
         </LinearLayout>
 </ScrollView>
 </LinearLayout>

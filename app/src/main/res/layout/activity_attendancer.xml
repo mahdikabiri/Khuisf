@@ -132,6 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0"
+        android:background="@drawable/ripple_foe_loginbtn"
         android:clickable="true"
         android:layout_marginBottom="5dp"
         android:src="@drawable/ic_exist_white" />

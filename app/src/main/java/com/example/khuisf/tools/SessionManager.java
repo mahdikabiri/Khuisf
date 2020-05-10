@@ -9,7 +9,6 @@ public class SessionManager {
     String pr_name = "prefs";
     boolean logedIn = false;
     String prl = "logedin";
-    String prlforintro = "logedin_intro";
 
 
     public SessionManager(Context context) {
@@ -21,16 +20,9 @@ public class SessionManager {
         return preferences.getBoolean(prl, false);
     }
 
-    public boolean isLogedInforIntro() {
-        return preferences.getBoolean(prlforintro, false);
-    }
 
     public void setLogedIn(boolean logedIn) {
         preferences.edit().putBoolean(prl, logedIn).apply();
-    }
-
-    public void setLogedInforIntro(boolean logedIn) {
-        preferences.edit().putBoolean(prlforintro, logedIn).apply();
     }
 
 

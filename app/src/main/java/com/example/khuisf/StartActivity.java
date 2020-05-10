@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.khuisf.tools.SessionManager;
+import com.example.khuisf.tools.SessionManagerIntroSlider;
 
 public class StartActivity extends AppCompatActivity {
     ImageView ivLogo;
@@ -23,7 +24,7 @@ public class StartActivity extends AppCompatActivity {
         AlphaAnimation animation1 = new AlphaAnimation(0f, 1.0f);
         animation1.setDuration(1500);
         ivLogo.startAnimation(animation1);
-        SessionManager manager = new SessionManager(this);
+        SessionManagerIntroSlider manager = new SessionManagerIntroSlider(this);
         if(!manager.isLogedInforIntro()){
             finish();
             startActivity(new Intent(this, IntroSlider.class));

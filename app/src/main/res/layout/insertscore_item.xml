@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:fbutton="http://schemas.android.com/tools"
     android:layout_margin="10dp"
     android:elevation="20dp"
     app:cardCornerRadius="20dp">
@@ -12,15 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWiteg"
-
         android:orientation="vertical"
         android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            >
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/insertscore_item_tv_code"
@@ -50,14 +48,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
+
             <EditText
                 android:id="@+id/insertscore_item_edt_insertscore"
                 android:layout_width="103dp"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="92dp"
                 android:layout_marginEnd="93dp"
+                android:digits="1,2,3,4,5,6,7,8,9,."
                 android:ems="10"
                 android:hint="نمره"
                 android:inputType="phone"
@@ -67,9 +67,9 @@
                 android:id="@+id/insertscore_item_btn_insert"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
-                fbutton:shadowEnabled="true"
-                android:text="@string/insert"                fbutton:buttonColor="@color/fbutton_color_wisteria"
-                />
+                android:text="@string/insert"
+                fbutton:buttonColor="@color/fbutton_color_wisteria"
+                fbutton:shadowEnabled="true" />
         </LinearLayout>
 
     </LinearLayout>
