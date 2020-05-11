@@ -66,7 +66,7 @@
     <string name="persina_stu">دانشجو</string>
     <string name="persina_teacher">استاد</string>
     <string name="unknown">نامشخص</string>
-    <string name="persian_login_form">فرم ورود کاربر</string>
+    <string name="persian_login_form"> ورود </string>
     <string name="general">General</string>
     <string name="setting">Setting</string>
     <string name="action_deleted"> درحال حذف درس ...</string>
@@ -114,4 +114,5 @@
     <string name="select_courses_des">انتخاب درس و لیست دروس ارائه شده</string>
     <string name="deletecourse_des">حذف دروس "</string>
     <string name="notify_des">اطلاع رسانی هدفمند</string>
+    <string name="recover_pass_presian">بازیابی رمزعبور</string>
 </resources>

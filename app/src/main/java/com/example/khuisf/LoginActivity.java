@@ -3,18 +3,24 @@ package com.example.khuisf;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thekhaeng.pushdownanim.PushDownAnim;
@@ -25,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btnLogin;
     EditText edtUsername, edtPassword;
+    TextView tvforgetPass;
     TextInputLayout inputLayoutUsername, inputLayoutPass;
 
     @Override
@@ -39,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-        PushDownAnim.setPushDownAnimTo( btnLogin )
-        .setScale( PushDownAnim.MODE_SCALE, 0.89f);
+        PushDownAnim.setPushDownAnimTo(btnLogin)
+                .setScale(PushDownAnim.MODE_SCALE, 0.89f);
 
 
 
@@ -52,13 +59,17 @@ public class LoginActivity extends AppCompatActivity {
         inputLayoutUsername = findViewById(R.id.text_input_username);
         inputLayoutPass = findViewById(R.id.text_input_pass);
 
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N){
-            btnLogin.setBackground(getResources().getDrawable(R.drawable.custom_tv_blue_bg));
-            Toast.makeText(this, "zire", Toast.LENGTH_SHORT).show();
-        } else{
-            Toast.makeText(this, "balas", Toast.LENGTH_SHORT).show();
-            btnLogin.setBackground(getResources().getDrawable(R.drawable.ripple_foe_loginbtn));
+        tvforgetPass = findViewById(R.id.login_tv_forgetpass);
 
+        setClickableText();
+
+
+
+        //this is for low versions andorid can not show ripple
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
+            btnLogin.setBackground(getResources().getDrawable(R.drawable.custom_tv_blue_bg));
+        } else {
+            btnLogin.setBackground(getResources().getDrawable(R.drawable.ripple_foe_loginbtn));
         }
 
 
@@ -70,8 +81,31 @@ public class LoginActivity extends AppCompatActivity {
         );
     }
 
+    private void setClickableText() {
+        String fotgetText="رمز عبور خود را فراموش کرده ام";
+
+        SpannableString ss=new SpannableString(fotgetText);
+        ClickableSpan clickableSpan=new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+            startActivity(new Intent(LoginActivity.this,FotgetPassActivity.class));
+            }
+
+            @Override
+            public void updateDrawState(@NonNull TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(getResources().getColor(R.color.mybluecolor));
+            }
+        };
+        ss.setSpan(clickableSpan,16,22, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        tvforgetPass.setText(ss);
+        tvforgetPass.setMovementMethod(LinkMovementMethod.getInstance());
+
+    }
+
     private void login(final String username, String password, final SessionManager manager) {
-        AndroidNetworking.post(getString(R.string.host)+getString(R.string.login_url))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.login_url))
                 .addBodyParameter("username", username)
                 .addBodyParameter("password", password)
                 .setTag("LOGIN")
@@ -129,11 +163,5 @@ public class LoginActivity extends AppCompatActivity {
             tvUsername.setError(null);
             return true;
         }
-    }
-
-
-    public void opentest(View view) {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
     }
 }

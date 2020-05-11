@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,21 +76,19 @@
                     android:layout_marginRight="15dp"
                     app:counterMaxLength="15"
                     app:errorEnabled="true"
-                    app:passwordToggleEnabled="true"
-                    >
+                    app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/login_edt_pass"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_pass"
-                        android:paddingRight="30dp"
                         android:fontFamily="@font/vazirbold"
                         android:gravity="center_horizontal"
                         android:hint="رمزعبور"
-                        android:theme="@style/AppTheme"
                         android:inputType="textPassword"
-                        />
+                        android:paddingRight="30dp"
+                        android:theme="@style/AppTheme" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -101,20 +100,29 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="50dp"
-                android:shadowColor="@color/mybluecolor"
                 android:layout_marginBottom="20dp"
+                android:clickable="true"
                 android:elevation="20dp"
                 android:fontFamily="@font/vazirbold"
+                android:shadowColor="@color/mybluecolor"
                 android:text="ورود"
-                android:clickable="true"
                 android:textColor="#fff"
                 android:textSize="20sp" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="رمز عبورم را فراموش کرده ام"/>
+                android:layout_marginBottom="15dp">
+
+
+                <TextView
+                    android:id="@+id/login_tv_forgetpass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
         </LinearLayout>
-</ScrollView>
+    </ScrollView>
 </LinearLayout>

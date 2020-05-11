@@ -13,25 +13,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
-
         <activity
-            android:name="com.example.khuisf.IntroSlider"
-            android:theme="@style/sss">
-
-        </activity>
+            android:name=".FotgetPassActivity"
+            android:label="@string/recover_pass_presian"/>
+        <activity
+            android:name=".IntroSlider"
+            android:theme="@style/sss"/>
         <activity
             android:name=".StartActivity"
-            android:theme="@style/sss"
-            >
+            android:theme="@style/sss">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="cheshmakPush"
                 android:value="openActivityOnPush" />
@@ -66,7 +65,6 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/persian_login_form" />
-
     </application>
 
 </manifest>
