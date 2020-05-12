@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
         <activity
-            android:name=".FotgetPassActivity"
+            android:name=".FortgetPassActivity"
             android:label="@string/recover_pass_presian"/>
         <activity
             android:name=".IntroSlider"

@@ -99,6 +99,10 @@
     <string name="getCourseTeacher">get_courses_forteacher.php</string>
     <string name="getStudent">get_students.php</string>
     <string name="getCourses">get_courses.php</string>
+    <string name="checkPhoneNumberForSms">checkPhoneNumberForSms.php</string>
+
+
+
     <string name="ok">ok</string>
     <string name="empty_text">متن پیام نمی تواند خالی باشد</string>
     <string name="key_cheshmak">tAnvYBWkghIb388FEGI1PQ==</string>
@@ -115,4 +119,8 @@
     <string name="deletecourse_des">حذف دروس "</string>
     <string name="notify_des">اطلاع رسانی هدفمند</string>
     <string name="recover_pass_presian">بازیابی رمزعبور</string>
+    <string name="insert_phone_number">شماره همراه خود را وارد کنید</string>
+    <string name="instert_national_code">کد ملی خود را وارد کنید</string>
+    <string name="access_to_simcard">آیا به این سیمکارت دسترسی دارید؟</string>
+    <string name="phone_number_not_found">شماره ای پیدا نشد</string>
 </resources>

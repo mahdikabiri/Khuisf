@@ -1,64 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center|top"
     android:orientation="vertical"
-    tools:context=".FotgetPassActivity">
+    tools:context=".FortgetPassActivity">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="74dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="75dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/graphic_forgetpass" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginBottom="20dp"
-        android:drawableRight="@drawable/ic_phone"
-        android:text="همراه خود را وارد کنید"
-        android:textAlignment="viewStart"
-        app:layout_constraintBottom_toTopOf="@+id/codeInput"
-        app:layout_constraintEnd_toEndOf="@+id/codeInput"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.github.glomadrian.codeinputlib.CodeInput
-        android:id="@+id/codeInput"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="40dp"
-        app:codes="11"
-        app:layout_constraintBottom_toTopOf="@+id/forget_pass_btn_send_number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:underline_color="@color/mybluecolor" />
-
-    <Button
-        android:id="@+id/forget_pass_btn_send_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="185dp"
-        android:layout_marginEnd="186dp"
-        android:layout_marginBottom="62dp"
-        android:text="ارسال"
-        android:padding="10dp"
-        android:textColor="@color/colorWiteg"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/graphic_forgetpass" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView4"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.github.florent37.materialtextfield.MaterialTextField
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="40dp"
+                    app:mtf_backgroundColor="@color/colorWiteg"
+                    app:mtf_image="@drawable/ic_fingerprint"
+                    app:mtf_labelColor="#666">
+
+                    <EditText
+                        android:id="@+id/forget_pass_edt_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusedByDefault="false"
+                        android:hint="@string/instert_national_code"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:textAlignment="center"
+                        android:textColor="#333"
+                        android:textSize="18sp" />
+
+                </com.github.florent37.materialtextfield.MaterialTextField>
+
+                <Button
+                    android:id="@+id/forget_pass_btn_send_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="ارسال"
+                    android:textColor="@color/colorWiteg" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

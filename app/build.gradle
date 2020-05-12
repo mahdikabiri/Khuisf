@@ -68,6 +68,7 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging:17.6.0"
     implementation "com.google.firebase:firebase-ads:17.2.0"
     implementation 'com.github.thekhaeng:pushdown-anim-click:1.1.1'
+
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
     implementation 'com.github.glomadrian:CodeInput:1.1@aar'
 }
