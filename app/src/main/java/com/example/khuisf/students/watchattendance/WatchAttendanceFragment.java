@@ -22,7 +22,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,9 +37,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class WatchAttendanceFragment extends Fragment {
     ArrayList<Course> courseItems;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     public WatchAttendanceFragment() {
     }

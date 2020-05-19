@@ -16,9 +16,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:elevation="10dp"
             app:cardBackgroundColor="@color/colorWiteg"
             app:cardCornerRadius="20dp">
@@ -32,17 +32,17 @@
                 <TextView
                     android:id="@+id/activity_show_attendance_tv_coursename"
                     android:layout_width="wrap_content"
-                    android:layout_marginRight="20dp"
                     android:layout_height="wrap_content"
-                    android:text="درس"
+                    android:layout_marginRight="20dp"
                     android:drawableRight="@drawable/ic_book"
+                    android:text="درس"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/activity_show_attendance_tv_stuname"
                     android:layout_width="wrap_content"
-                    android:drawableRight="@drawable/ic_school"
                     android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_school"
                     android:text="دانشجو"
                     android:textSize="20sp" />
 
@@ -65,8 +65,8 @@
                 <com.mlsdev.animatedrv.AnimatedRecyclerView
                     android:id="@+id/activity_show_attendace_recycler"
                     android:layout_width="match_parent"
-                    android:elevation="20dp"
                     android:layout_height="match_parent"
+                    android:elevation="20dp"
                     app:animationDuration="600"
                     app:layoutAnimation="@anim/layout_animation_from_bottom"
                     app:layoutManagerOrientation="vertical"
@@ -76,10 +76,9 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/graphic_watch_attendancer"
                     android:layout_margin="50dp"
                     android:alpha=".4"
-                    />
+                    android:src="@drawable/graphic_watch_attendancer" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

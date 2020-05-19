@@ -36,9 +36,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SelectCoursesFragment extends Fragment {
     ArrayList<Course> courseItems;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWiteg"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".AuthenticationActiviry">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/fff"
+        android:elevation="20dp"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/float_transparent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/vazirbold"
+                android:text="احراز هویت"
+                android:textColor="@color/mybluecolor"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:alpha=".9"
+                app:srcCompat="@drawable/ic_authentication" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="کد دریافت شده را وارد کنید"
+                android:textSize="15sp" />
+
+            <com.raycoarana.codeinputview.CodeInputView
+                android:id="@+id/authentication_code_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:animate_on_complete="true"
+                app:input_type="numeric"
+                app:underline_color="#5368E7" />
+
+            <TextView
+                android:id="@+id/authentication_tv_sendaagain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="@string/if_not_recive_sms"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

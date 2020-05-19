@@ -22,7 +22,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,9 +36,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class DeleteCoursesFragment extends Fragment {
     ArrayList<Course> courseItems;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class DeleteCoursesFragment extends Fragment {
         AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
         adapter = new SampleAdapter(getContext(), courseItems);
-       // recyclerView.setHasFixedSize(true);
+        // recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
@@ -77,7 +76,7 @@ public class DeleteCoursesFragment extends Fragment {
         swipeRefreshLayout.setColorSchemeColors(Color.WHITE, Color.WHITE);
         swipeRefreshLayout.setWaveColor(Color.rgb(57, 73, 171));
         swipeRefreshLayout.setOnRefreshListener(() -> {
-          update();
+            update();
             Toast.makeText(getContext(), R.string.updating, Toast.LENGTH_SHORT).show();
         });
     }
@@ -91,7 +90,7 @@ public class DeleteCoursesFragment extends Fragment {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    Log.d("myjson",response.toString());
+                    Log.d("myjson", response.toString());
                     //this loop repeating to count of course list
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject object = response.getJSONObject(i);
@@ -101,7 +100,7 @@ public class DeleteCoursesFragment extends Fragment {
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cId,cName, cDay, cTime, cChar));
+                        courseItems.add(new Course(cId, cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {

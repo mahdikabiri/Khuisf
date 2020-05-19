@@ -19,41 +19,43 @@
         android:elevation="5dp"
         app:civ_border_color="@color/mybluecolor"
         app:civ_border_width="4dp" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="5dp"
-    android:gravity="center">
-    <TextView
-        android:id="@+id/nav_header_name_tv"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="name"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/mybluecolor"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/vazir"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-    <TextView
-        android:id="@+id/nav_header_access_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_tv_blue_bg"
-        android:fontFamily="@font/vazirbold"
-        android:text="access"
-        android:elevation="15dp"
-        android:textColor="@color/colorWite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/nav_header_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/vazir"
+            android:padding="5dp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:text="name"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/mybluecolor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/nav_header_access_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_tv_blue_bg"
+            android:elevation="15dp"
+            android:fontFamily="@font/vazirbold"
+            android:text="access"
+            android:textColor="@color/colorWite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    </LinearLayout>
 </LinearLayout>

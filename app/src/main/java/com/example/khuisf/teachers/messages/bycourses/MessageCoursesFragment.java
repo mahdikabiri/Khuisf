@@ -21,7 +21,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,7 +65,7 @@ public class MessageCoursesFragment extends Fragment {
 
     private void getCourses(String teacherCode) {
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.getCourseTeacher))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getCourseTeacher))
                 .addBodyParameter("code", teacherCode)
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
@@ -83,7 +82,7 @@ public class MessageCoursesFragment extends Fragment {
                         String cTime = object.getString("time");
                         String cChar = object.getString("charac");
                         // add items from db and save to arraylist
-                        courseItems.add(new Course(cId,cName, cDay, cTime, cChar));
+                        courseItems.add(new Course(cId, cName, cDay, cTime, cChar));
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {

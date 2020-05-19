@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:alpha=".4"
-    android:layout_margin="50dp"
-    android:src="@drawable/graphic_calender"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        android:alpha=".4"
+        android:src="@drawable/graphic_calender" />
+
     <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
         android:id="@+id/get_course_swipe_refresh"
         android:layout_width="match_parent"

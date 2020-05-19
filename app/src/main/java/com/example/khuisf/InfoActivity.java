@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:gravity="right"
-    tools:openDrawer="start"
-    >
+    tools:openDrawer="start">
 
     <include
         layout="@layout/app_bar_main2"
@@ -23,8 +22,7 @@
         android:background="@drawable/bg_nav_menu"
         android:fitsSystemWindows="false"
         app:headerLayout="@layout/nav_header_main2"
-        app:itemStyle="rounded_right">
-    </com.shreyaspatil.material.navigationview.MaterialNavigationView>
+        app:itemStyle="rounded_right"></com.shreyaspatil.material.navigationview.MaterialNavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

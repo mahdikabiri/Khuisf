@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWiteg"
     android:gravity="center|top"
     android:orientation="vertical"
     tools:context=".FortgetPassActivity">
@@ -41,22 +42,21 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="40dp"
-                    app:mtf_backgroundColor="@color/colorWiteg"
+                    app:mtf_backgroundColor="#F6F9FB"
                     app:mtf_image="@drawable/ic_fingerprint"
-                    app:mtf_labelColor="#666">
+                    app:mtf_labelColor="#878487">
 
                     <EditText
                         android:id="@+id/forget_pass_edt_phone_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusedByDefault="false"
-                        android:hint="@string/instert_national_code"
+                        android:hint="@string/insert_national_code"
                         android:inputType="phone"
+                        android:text="1111111111"
                         android:maxLength="10"
                         android:textAlignment="center"
                         android:textColor="#333"
                         android:textSize="18sp" />
-
                 </com.github.florent37.materialtextfield.MaterialTextField>
 
                 <Button

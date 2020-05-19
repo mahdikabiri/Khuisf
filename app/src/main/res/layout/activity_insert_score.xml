@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".teachers.insertscore.InsertScoreActivity">
 
@@ -16,14 +16,14 @@
         android:textSize="25dp"
         android:textStyle="bold" />
 
-        <com.mlsdev.animatedrv.AnimatedRecyclerView
-            android:id="@+id/insertscore_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:animationDuration="600"
-            app:layoutAnimation="@anim/layout_animation_from_bottom"
-            app:layoutManagerOrientation="vertical"
-            app:layoutManagerReverse="false"
-            app:layoutManagerType="linear" />
+    <com.mlsdev.animatedrv.AnimatedRecyclerView
+        android:id="@+id/insertscore_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:animationDuration="600"
+        app:layoutAnimation="@anim/layout_animation_from_bottom"
+        app:layoutManagerOrientation="vertical"
+        app:layoutManagerReverse="false"
+        app:layoutManagerType="linear" />
 
 </LinearLayout>

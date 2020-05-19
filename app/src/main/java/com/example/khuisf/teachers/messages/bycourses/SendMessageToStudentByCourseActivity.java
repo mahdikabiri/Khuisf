@@ -18,7 +18,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Student;
-import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.teachers.messages.FinalSendMessageActivity;
 import com.example.khuisf.teachers.messages.all.StudentAdapterForTeachMessage;
 
@@ -84,7 +83,7 @@ public class SendMessageToStudentByCourseActivity extends AppCompatActivity {
 
     private void getStudnet() {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(getString(R.string.host)+getString(R.string.getStudentForMessageByCourse))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getStudentForMessageByCourse))
                 .addBodyParameter("char", characteristic)
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override

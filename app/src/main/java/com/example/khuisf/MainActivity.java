@@ -2,10 +2,8 @@ package com.example.khuisf;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +30,7 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.cheshmak.android.sdk.core.Cheshmak;
+
 public class MainActivity extends AppCompatActivity {
     public static final String CHARAC = "characteristic";
     public static final String NAME = "coursename";
@@ -40,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     int role;
     LinearLayout layoutStu, layoutTeach;
-    private AppBarConfiguration mAppBarConfiguration;
     CircleImageView circleImageViewNavProf;
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-       // menuInflater.inflate(R.menu.menu_main_student, menu);
-        if(role==1){
+        // menuInflater.inflate(R.menu.menu_main_student, menu);
+        if (role == 1) {
             menuInflater.inflate(R.menu.menu_main_student, menu);
-        }else if(role==2){
+        } else if (role == 2) {
             menuInflater.inflate(R.menu.menu_main_teacher, menu);
         }
         return true;
@@ -132,12 +131,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itme_action_settings) {
             Toast.makeText(this, "به زودی ...", Toast.LENGTH_SHORT).show();
-           // startActivity(new Intent(MainActivity.this, ElipsisActivity.class));
+            // startActivity(new Intent(MainActivity.this, ElipsisActivity.class));
         } else if (item.getItemId() == R.id.itme_img_prof) {
             startActivity(new Intent(MainActivity.this, InfoActivity.class));
         } else if (item.getItemId() == R.id.itme_img_message) {
             startActivity(new Intent(MainActivity.this, InboxActivity.class));
-        } else  if(item.getItemId() == R.id.itme_action_sendmessage){
+        } else if (item.getItemId() == R.id.itme_action_sendmessage) {
             if (role == 1) {
                 startActivity(new Intent(this, ContactToTeacherActivity.class));
                /* getSupportFragmentManager().beginTransaction()

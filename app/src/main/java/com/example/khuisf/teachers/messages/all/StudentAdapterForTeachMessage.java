@@ -52,15 +52,15 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
         });
 
         holder.layout.setOnClickListener(v -> {
-        if(holder.cbCheck.isChecked()){
-            holder.cbCheck.setChecked(false);
-            studentItem.setState(0);
+            if (holder.cbCheck.isChecked()) {
+                holder.cbCheck.setChecked(false);
+                studentItem.setState(0);
 
-        }else {
-            holder.cbCheck.setChecked(true);
-            studentItem.setState(1);
+            } else {
+                holder.cbCheck.setChecked(true);
+                studentItem.setState(1);
 
-        }
+            }
         });
 
 
@@ -93,7 +93,7 @@ public class StudentAdapterForTeachMessage extends RecyclerView.Adapter<StudentA
             tvStuCode = itemView.findViewById(R.id.get_student_message_item_tvcode);
             cbCheck = itemView.findViewById(R.id.get_student_message_item_checkbox);
             imageView = itemView.findViewById(R.id.get_student_message_item_imageview);
-            layout=itemView.findViewById(R.id.item_get_all_constrant);
+            layout = itemView.findViewById(R.id.item_get_all_constrant);
         }
     }
 

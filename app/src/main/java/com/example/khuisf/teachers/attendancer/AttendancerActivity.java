@@ -19,7 +19,6 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.StudentAttendancer;
-import com.example.khuisf.entitys.Urls;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
@@ -42,12 +41,12 @@ public class AttendancerActivity extends AppCompatActivity {
     TextView tvDatePicker, tvCourseName;
     FloatingActionButton fab;
     JSONObject myObj = new JSONObject();
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private PersianDatePickerDialog picker;
     SpeedDialView speedDialView;
     LinearLayoutManager layout;
     WaveSwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private PersianDatePickerDialog picker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,7 +199,7 @@ public class AttendancerActivity extends AppCompatActivity {
 
     private void getStudnets(int status) {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(getString(R.string.host) +getString(R.string.getStudent))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getStudent))
                 .addBodyParameter("char", charac)
                 .setTag("getCourse")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {

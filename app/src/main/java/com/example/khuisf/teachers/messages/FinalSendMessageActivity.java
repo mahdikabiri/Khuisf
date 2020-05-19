@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +16,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Urls;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class FinalSendMessageActivity extends AppCompatActivity {
         listViewName.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, names));
 
         btnSendMessgae.setOnClickListener(v -> {
-            if(!text.getText().toString().trim().equals("")) {
+            if (!text.getText().toString().trim().equals("")) {
                 new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("پیام را ارسال میکنید")
                         .setConfirmText("بله")
@@ -64,25 +62,26 @@ public class FinalSendMessageActivity extends AppCompatActivity {
                             }
                         })
                         .show();
-            }else {
+            } else {
                 /// text is empty
-                SweetAlertDialog pDialog= new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
+                SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
                 pDialog.setTitleText(getString(R.string.empty_text))
                         .setConfirmText(getString(R.string.ok))
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
-                            pDialog.cancel();
+                                pDialog.cancel();
                             }
                         })
-                        .show();            }
+                        .show();
+            }
 
         });
     }
 
 
     private void sendStudentData(View view, String code, String text, String flagRole) {
-        AndroidNetworking.post(getString(R.string.host)+getString(R.string.insertMessageForStudent))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.insertMessageForStudent))
                 .addBodyParameter("student_code", code)
                 .addBodyParameter("message_text", text)
                 .addBodyParameter("flag_role", flagRole)
@@ -107,7 +106,7 @@ public class FinalSendMessageActivity extends AppCompatActivity {
 
 
     private void sendMessage(View view, String text) {
-        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.insertMessage))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.insertMessage))
                 .addBodyParameter("message_text", text)
                 .addBodyParameter("sender_message", getNameFromSharedRefs())
                 .build().

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -19,7 +18,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 import com.tr4android.recyclerviewslideitem.SwipeAdapter;
 import com.tr4android.recyclerviewslideitem.SwipeConfiguration;
 
@@ -37,25 +35,8 @@ public class SampleAdapter extends SwipeAdapter implements View.OnClickListener 
     public SampleAdapter(Context context, ArrayList<Course> courses) {
         mContext = context;
         this.inflater = LayoutInflater.from(context);
-        mDataset=courses;
+        mDataset = courses;
 
-    }
-
-    public class SampleViewHolder extends RecyclerView.ViewHolder {
-        ConstraintLayout contentView;
-        public TextView tvTitle;
-        public TextView tvDay;
-        public TextView tvTime;
-        public TextView tvChar;
-        public SampleViewHolder(View view) {
-            super(view);
-            contentView = view.findViewById(R.id.item_delete_layout);
-            tvTitle = itemView.findViewById(R.id.item_delete_course_tv_title);
-            tvTime = itemView.findViewById(R.id.item_delete_course_tv_time);
-            tvDay = itemView.findViewById(R.id.item_delete_course_tv_day);
-            tvChar = itemView.findViewById(R.id.item_delete_courseـtv_char);
-            contentView.setOnClickListener(SampleAdapter.this);
-        }
     }
 
     @Override
@@ -95,14 +76,14 @@ public class SampleAdapter extends SwipeAdapter implements View.OnClickListener 
     @Override
     public void onSwipe(int position, int direction) {
         SharedPreferences preferences = mContext.getSharedPreferences("prefs", MODE_PRIVATE);
-        String stuCode=preferences.getString("code","");
+        String stuCode = preferences.getString("code", "");
         Course currentItem = mDataset.get(position);
-        String courseChar=currentItem.getCharac();
-        String courseName=currentItem.getTitle();
+        String courseChar = currentItem.getCharac();
+        String courseName = currentItem.getTitle();
         if (direction == SWIPE_LEFT) {
             mDataset.remove(position);
             notifyItemRemoved(position);
-            deleteCourse(stuCode,courseChar,mContext,courseName);
+            deleteCourse(stuCode, courseChar, mContext, courseName);
 
         } else {
             Toast toast = Toast.makeText(mContext, "Marked item as read at position " + position, Toast.LENGTH_SHORT);
@@ -121,11 +102,9 @@ public class SampleAdapter extends SwipeAdapter implements View.OnClickListener 
         return mDataset.size();
     }
 
-
-
     private void deleteCourse(String studentCode, String characteristic, Context context, String courseName) {
         AndroidNetworking.initialize(context);
-        AndroidNetworking.post(context.getString(R.string.host)+context.getString(R.string.deleteCourse))
+        AndroidNetworking.post(context.getString(R.string.host) + context.getString(R.string.deleteCourse))
                 .addBodyParameter("char", characteristic)
                 .addBodyParameter("code", studentCode)
                 .build().getAsString(new StringRequestListener() {
@@ -133,7 +112,7 @@ public class SampleAdapter extends SwipeAdapter implements View.OnClickListener 
             public void onResponse(String response) {
                 Log.d("mures", response);
                 if (response.equals("1")) {
-                    Toast.makeText(context, courseName+" با موفقیت حذف شد ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, courseName + " با موفقیت حذف شد ", Toast.LENGTH_SHORT).show();
 
                 } else {
                     Toast.makeText(context, "درس حذف نشد", Toast.LENGTH_SHORT).show();
@@ -146,6 +125,24 @@ public class SampleAdapter extends SwipeAdapter implements View.OnClickListener 
             }
         });
 
+    }
+
+    public class SampleViewHolder extends RecyclerView.ViewHolder {
+        public TextView tvTitle;
+        public TextView tvDay;
+        public TextView tvTime;
+        public TextView tvChar;
+        ConstraintLayout contentView;
+
+        public SampleViewHolder(View view) {
+            super(view);
+            contentView = view.findViewById(R.id.item_delete_layout);
+            tvTitle = itemView.findViewById(R.id.item_delete_course_tv_title);
+            tvTime = itemView.findViewById(R.id.item_delete_course_tv_time);
+            tvDay = itemView.findViewById(R.id.item_delete_course_tv_day);
+            tvChar = itemView.findViewById(R.id.item_delete_courseـtv_char);
+            contentView.setOnClickListener(SampleAdapter.this);
+        }
     }
 
 }

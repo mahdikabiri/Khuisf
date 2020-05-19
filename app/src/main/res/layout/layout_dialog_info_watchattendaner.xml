@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:elevation="20dp"
     android:orientation="vertical"
-    android:paddingRight="30dp"
-    >
+    android:paddingRight="30dp">
 
 
     <LinearLayout
@@ -25,10 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/vazirbold"
             android:text="@string/existstudnet"
             android:textAlignment="viewStart"
-            android:layout_marginLeft="10dp"
             android:textSize="20sp"
             tools:ignore="RtlCompat" />
     </LinearLayout>
@@ -47,10 +46,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/vazirbold"
             android:text="@string/notexist_student"
             android:textAlignment="viewStart"
-            android:layout_marginLeft="10dp"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -68,11 +67,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/vazirbold"
+            android:lines="1"
             android:text="@string/not_set_studnet_attendancer"
             android:textAlignment="viewStart"
-            android:lines="1"
-            android:layout_marginLeft="10dp"
             android:textSize="20sp" />
     </LinearLayout>
 

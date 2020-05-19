@@ -1,16 +1,13 @@
 package com.example.khuisf.students.watchattendance;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +23,7 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Attendance;
-import com.example.khuisf.entitys.Urls;
 import com.marcoscg.dialogsheet.DialogSheet;
-import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,7 +75,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.info_icon_watch_attendancer){
+        if (item.getItemId() == R.id.info_icon_watch_attendancer) {
           /*  new LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
                     .setTopColorRes(R.color.colorGray)
                     .setIcon(R.drawable.ic_info)
@@ -124,7 +119,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
 
     private void getCourses() {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(getString(R.string.host) +getString(R.string.getAttendancer))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getAttendancer))
                 .addBodyParameter("studentcode", getCodeFromSharedRefs())
                 .addBodyParameter("charac", charac)
                 .setTag("getAttendance")
@@ -146,6 +141,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(getApplication(), "ایراد در دریافت برنامه هقتگی", Toast.LENGTH_SHORT).show();

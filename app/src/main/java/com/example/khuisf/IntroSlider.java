@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.khuisf.tools.SessionManager;
 import com.example.khuisf.tools.SessionManagerIntroSlider;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;

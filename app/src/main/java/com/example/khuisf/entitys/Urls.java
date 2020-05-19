@@ -3,11 +3,8 @@ package com.example.khuisf.entitys;
 import android.content.Context;
 
 public class Urls {
-    private Context context;
-    //public static String host = "http://mkabiri.ir/khuisf/";
-
-
     public static String login = "login.php";
+    //public static String host = "http://mkabiri.ir/khuisf/";
     public static String getCourses = "get_courses.php";
     public static String getStudent = "get_students.php";
     public static String getCourseTeacher = "get_courses_forteacher.php";
@@ -26,4 +23,5 @@ public class Urls {
     public static String insertMessage = "insert_message.php";
     public static String getMessageForStudent = "get_messages_for_student.php";
     public static String getTeachersForMessage = "get_teachers_formessage.php";
+    private Context context;
 }

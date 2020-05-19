@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         setClickableText();
 
 
-
         //this is for low versions andorid can not show ripple
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
             btnLogin.setBackground(getResources().getDrawable(R.drawable.custom_tv_blue_bg));
@@ -82,13 +81,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setClickableText() {
-        String fotgetText="رمز عبور خود را فراموش کرده ام";
+        String fotgetText = "رمز عبور خود را فراموش کرده ام";
 
-        SpannableString ss=new SpannableString(fotgetText);
-        ClickableSpan clickableSpan=new ClickableSpan() {
+        SpannableString ss = new SpannableString(fotgetText);
+        ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-            startActivity(new Intent(LoginActivity.this, FortgetPassActivity.class));
+                startActivity(new Intent(LoginActivity.this, FortgetPassActivity.class));
             }
 
             @Override
@@ -97,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 ds.setColor(getResources().getColor(R.color.mybluecolor));
             }
         };
-        ss.setSpan(clickableSpan,16,22, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan, 16, 22, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         tvforgetPass.setText(ss);
         tvforgetPass.setMovementMethod(LinkMovementMethod.getInstance());

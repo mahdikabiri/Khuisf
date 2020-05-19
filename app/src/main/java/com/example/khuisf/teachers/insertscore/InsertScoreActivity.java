@@ -1,9 +1,6 @@
 package com.example.khuisf.teachers.insertscore;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,15 +14,12 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Student;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 
 public class InsertScoreActivity extends AppCompatActivity {
     String charac, title;
@@ -55,7 +49,7 @@ public class InsertScoreActivity extends AppCompatActivity {
 
     private void getStudnets() {
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(getString(R.string.host) +getString(R.string.getStudent))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getStudent))
                 .addBodyParameter("char", charac)
                 .setTag("getCourse")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {

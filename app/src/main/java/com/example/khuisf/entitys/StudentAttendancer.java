@@ -26,11 +26,11 @@ public class StudentAttendancer {
         return pic;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public int getStatus() {
         return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

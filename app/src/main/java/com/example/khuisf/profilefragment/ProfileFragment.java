@@ -19,7 +19,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.tools.SessionManager;
 import com.squareup.picasso.Picasso;
 

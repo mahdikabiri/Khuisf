@@ -1,7 +1,6 @@
 package com.example.khuisf.teachers.insertscore;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Student;
-import com.example.khuisf.entitys.Urls;
 
 import java.util.ArrayList;
 
@@ -94,7 +92,7 @@ public class InsertScoreAdapter extends RecyclerView.Adapter<InsertScoreAdapter.
 
 
     private void sendScoreToDb(String score, String studentCode, String charac) {
-        AndroidNetworking.post(context.getString(R.string.host)+context.getString(R.string.setScore))
+        AndroidNetworking.post(context.getString(R.string.host) + context.getString(R.string.setScore))
                 .addBodyParameter("characteristic", charac)
                 .addBodyParameter("code", studentCode)
                 .addBodyParameter("score", score)

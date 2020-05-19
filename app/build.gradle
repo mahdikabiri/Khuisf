@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '30.0.0-rc2'
+    buildToolsVersion '30.0.0-rc4'
     defaultConfig {
         applicationId "com.example.khuisf"
         minSdkVersion 21
@@ -71,4 +71,5 @@ dependencies {
 
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
     implementation 'com.github.glomadrian:CodeInput:1.1@aar'
+    implementation 'com.raycoarana.codeinputview:codeinputview:2.1.4'
 }

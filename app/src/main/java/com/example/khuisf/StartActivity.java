@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.khuisf.tools.SessionManager;
 import com.example.khuisf.tools.SessionManagerIntroSlider;
 
 public class StartActivity extends AppCompatActivity {
@@ -25,17 +23,17 @@ public class StartActivity extends AppCompatActivity {
         animation1.setDuration(1500);
         ivLogo.startAnimation(animation1);
         SessionManagerIntroSlider manager = new SessionManagerIntroSlider(this);
-        if(!manager.isLogedInforIntro()){
+        if (!manager.isLogedInforIntro()) {
             finish();
             startActivity(new Intent(this, IntroSlider.class));
-        }else {
+        } else {
 
-        android.os.Handler handler = new Handler();
-        Runnable r = () -> {
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        };
-        handler.postDelayed(r, 1800);
+            android.os.Handler handler = new Handler();
+            Runnable r = () -> {
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+            };
+            handler.postDelayed(r, 1800);
         }
 
     }

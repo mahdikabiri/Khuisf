@@ -78,7 +78,7 @@
     <string name="insert">ثبت</string>
 
 
-    <string name="hosts">http://192.168.67.1//project/khuisf/</string>
+    <string name="hosts">http://192.168.56.1//khuisf/</string>
     <string name="host">http://mkabiri.ir/khuisf/</string>
     <string name="login_url">login.php</string>
     <string name="getTeachersForMessage">get_teachers_formessage.php</string>
@@ -100,7 +100,7 @@
     <string name="getStudent">get_students.php</string>
     <string name="getCourses">get_courses.php</string>
     <string name="checkPhoneNumberForSms">checkPhoneNumberForSms.php</string>
-
+    <string name="genetareCodeForsms">generateCodeSendSms.php</string>
 
 
     <string name="ok">ok</string>
@@ -123,4 +123,9 @@
     <string name="instert_national_code">کد ملی خود را وارد کنید</string>
     <string name="access_to_simcard">آیا به این سیمکارت دسترسی دارید؟</string>
     <string name="phone_number_not_found">شماره ای پیدا نشد</string>
+    <string name="insert_national_code">کدملی خود را وارد کنید</string>
+    <string name="if_not_recive_sms">اگر کد را دریافت نکرده اید اینجا کلیک کنید</string>
+    <string name="check_internet_connection_presian">اینترنت دستگاه را برسی کنید</string>
+    <string name="insert_compalate_code">کد را کامل وارد کنید</string>
+    <string name="sending_sms">درحال ارسال پیامک ...</string>
 </resources>

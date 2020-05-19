@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/teacher_list_item_fab_send"
@@ -24,16 +23,15 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        app:cardCornerRadius="25dp"
         android:layout_height="wrap_content"
         android:elevation="30dp"
         android:padding="5dp"
+        app:cardCornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:padding="10dp"
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,6 +40,7 @@
             android:elevation="15dp"
             android:gravity="center"
             android:orientation="vertical"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="5dp">
 
@@ -49,8 +48,9 @@
                 android:id="@+id/teacher_list_item_tv_teachername"
                 android:layout_width="match_parent"
 
-               android:drawableRight="@drawable/ic_person" android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:drawableRight="@drawable/ic_person"
                 android:text="name"
                 android:textAlignment="center"
                 android:textSize="15sp" />
@@ -59,9 +59,9 @@
                 android:id="@+id/teacher_list_item_tv_course_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="cours title"
                 android:drawableRight="@drawable/ic_coues"
+                android:text="cours title"
+                android:textAlignment="center"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 

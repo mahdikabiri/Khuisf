@@ -129,9 +129,9 @@ public class MessageAllFragment extends Fragment {
         intent.putStringArrayListExtra("names", (ArrayList<String>) stuname);
         //this is for authentication receiver
         intent.putExtra("flagRole", "1");
-        if(!stuname.isEmpty()){
+        if (!stuname.isEmpty()) {
             startActivity(intent);
-        }else {
+        } else {
             Toast.makeText(getContext(), "حد اقل یک نفر را انتخاب کنید", Toast.LENGTH_SHORT).show();
         }
     }

@@ -60,12 +60,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/custombuttonblue"
                 android:layout_margin="10dp"
-                android:textColor="#fff"
-                android:textStyle="bold"
+                android:background="@drawable/custombuttonblue"
                 android:fontFamily="@font/vazirbold"
-                android:text="ارسال" />
+                android:text="ارسال"
+                android:textColor="#fff"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>

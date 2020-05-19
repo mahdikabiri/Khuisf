@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +17,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Message;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,9 +28,9 @@ import jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout;
 
 public class InboxActivity extends AppCompatActivity {
     ArrayList<Message> myItems;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +59,12 @@ public class InboxActivity extends AppCompatActivity {
         });
 
     }
-    private void getInbox( ) {
-        String studentCode=getCodeFromSharedPrefs();
-        String userRole= String.valueOf(getRoleFromSharedPrefs());
+
+    private void getInbox() {
+        String studentCode = getCodeFromSharedPrefs();
+        String userRole = String.valueOf(getRoleFromSharedPrefs());
         AndroidNetworking.initialize(this);
-        AndroidNetworking.post(getString(R.string.host)+getString(R.string.getMessageForStudent))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getMessageForStudent))
                 .addBodyParameter("student_code", studentCode)
                 .addBodyParameter("role_code", userRole)
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
@@ -87,6 +86,7 @@ public class InboxActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onError(ANError anError) {
                 Toast.makeText(InboxActivity.this, anError + "s", Toast.LENGTH_SHORT).show();

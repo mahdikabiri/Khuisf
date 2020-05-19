@@ -15,7 +15,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Teacher;
-import com.example.khuisf.entitys.Urls;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,7 +43,7 @@ public class ContactToTeacherActivity extends AppCompatActivity {
     }
 
     private void getTeachers(String studentCode) {
-        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.getTeachersForMessage))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getTeachersForMessage))
                 .addBodyParameter("student_code", studentCode)
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {

@@ -7,34 +7,34 @@
 
         </menu>
     </item>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_share"
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_share"
 
-                    android:icon="@drawable/ic_user_menu"
-                    android:title="اطلاعات" />
-                <item
-                    android:id="@+id/weekly_plan_student"
-                    android:icon="@drawable/ic_timetable"
-                    android:title="برنامه هفتگی" />
-                <item
-                    android:id="@+id/nav_score"
-                    android:icon="@drawable/ic_scoreboard"
-                    android:title="نمرات ترم جاری" />
-                <item
-                    android:id="@+id/see_attendace"
-                    android:icon="@drawable/ic_attendancer"
-                    android:title="وضعیت حضور و غیاب" />
-                <item
-                    android:id="@+id/select_courses"
-                    android:icon="@drawable/ic_books_stack_of_three"
-                    android:title="انتخاب واحد" />
+            android:icon="@drawable/ic_user_menu"
+            android:title="اطلاعات" />
+        <item
+            android:id="@+id/weekly_plan_student"
+            android:icon="@drawable/ic_timetable"
+            android:title="برنامه هفتگی" />
+        <item
+            android:id="@+id/nav_score"
+            android:icon="@drawable/ic_scoreboard"
+            android:title="نمرات ترم جاری" />
+        <item
+            android:id="@+id/see_attendace"
+            android:icon="@drawable/ic_attendancer"
+            android:title="وضعیت حضور و غیاب" />
+        <item
+            android:id="@+id/select_courses"
+            android:icon="@drawable/ic_books_stack_of_three"
+            android:title="انتخاب واحد" />
 
-                <item
-                    android:id="@+id/deleteCourses"
-                    android:icon="@drawable/ic_cancel_course"
-                    android:title="حذف و اضافه" />
-            </group>
+        <item
+            android:id="@+id/deleteCourses"
+            android:icon="@drawable/ic_cancel_course"
+            android:title="حذف و اضافه" />
+    </group>
 
     <item android:title="@string/setting">
         <menu>

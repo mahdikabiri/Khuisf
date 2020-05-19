@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:background="@color/colorWiteg"
     android:orientation="vertical">
+
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/graphic_watch_attendancer"
         android:layout_margin="50dp"
         android:alpha=".4"
-        />
+        android:src="@drawable/graphic_watch_attendancer" />
+
     <jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout
         android:id="@+id/get_course_swipe_refresh"
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             app:layoutManagerReverse="false"
             app:layoutManagerType="linear" />
 
-         </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
+    </jp.co.recruit_lifestyle.android.widget.WaveSwipeRefreshLayout>
 
-   
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Course;
-import com.example.khuisf.entitys.Urls;
 import com.example.khuisf.teachers.getcourses.CourseAdapterForTeach;
 
 import org.json.JSONArray;
@@ -38,12 +37,13 @@ import static android.content.Context.MODE_PRIVATE;
 public class AttendacerFragmentForTeacher extends Fragment {
     ArrayList<Course> studentItems;
     ArrayList<Course> courseItems;
+    WaveSwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    WaveSwipeRefreshLayout swipeRefreshLayout;
 
     public AttendacerFragmentForTeacher() {
     }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -82,7 +82,7 @@ public class AttendacerFragmentForTeacher extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         String teacherCode = preferences.getString("code", "");
         AndroidNetworking.initialize(getActivity());
-        AndroidNetworking.post(getString(R.string.host)+ getString(R.string.getCourseTeacher))
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getCourseTeacher))
                 .addBodyParameter("code", teacherCode)
                 .setTag("getCourses")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {

@@ -68,10 +68,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="بازگشت"
         android:background="@drawable/ripple_foe_loginbtn"
+        android:text="بازگشت"
+        android:textColor="@color/colorWite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/colorWite"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
