@@ -3,6 +3,7 @@ package com.example.khuisf;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -21,12 +22,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.recoverpass.FortgetPassActivity;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thekhaeng.pushdownanim.PushDownAnim;
+import com.valdesekamdem.library.mdtoast.MDToast;
 
 import org.json.JSONObject;
+
+import java.util.logging.Logger;
 
 import me.cheshmak.android.sdk.core.Cheshmak;
 
@@ -128,7 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                 getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("answ", response.toString());
                         try {
                             String getedUsername = response.getString("username");
                             String getedName = response.getString("name");
@@ -136,13 +140,15 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (getedUsername.toLowerCase().equals(username.toLowerCase())) {
                                 //
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.your_entered), MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
+                                mdToast.show();
                                 SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
                                 preferences.edit().putString("username", getedUsername).apply();
                                 preferences.edit().putString("name", getedName).apply();
                                 preferences.edit().putInt("role", getedAccess).apply();
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                sendCheshmakIdToServer(getedUsername);
                                 finish();
-                                Toast.makeText(LoginActivity.this, "شما وارد شدید", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             Toast.makeText(LoginActivity.this, "نام کاربری یا رمز عبور اشتباه است", Toast.LENGTH_SHORT).show();
@@ -155,9 +161,31 @@ public class LoginActivity extends AppCompatActivity {
                     public void onError(ANError anError) {
                         Toast.makeText(LoginActivity.this, "connection fail", Toast.LENGTH_SHORT).show();
                         Log.d("answ", anError.toString());
-
                     }
                 });
+    }
+
+
+    private void sendCheshmakIdToServer(String username) {
+        String cheshmakID = Cheshmak.getCheshmakID(this);
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.insertCheshmakId))
+                .addBodyParameter("username", username)
+                .addBodyParameter("cheshmak_id", cheshmakID)
+                .setTag("LOGIN")
+                .build().getAsString(new StringRequestListener() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(LoginActivity.this, response+"", Toast.LENGTH_SHORT).show();
+                Log.d("loged",response);
+            }
+
+            @Override
+            public void onError(ANError anError) {
+                Toast.makeText(LoginActivity.this, anError+"", Toast.LENGTH_SHORT).show();
+                Log.d("loged",anError.toString());
+
+            }
+        });
     }
 
     private void init() {

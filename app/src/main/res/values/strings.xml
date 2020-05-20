@@ -103,6 +103,7 @@
     <string name="checkPhoneNumberForSms">checkPhoneNumberForSms.php</string>
     <string name="genetareCodeForsms">generateCodeSendSms.php</string>
     <string name="changePass">ChangePass.php</string>
+    <string name="insertCheshmakId">InsertCheshmakId.php</string>
 
 
     <string name="ok">ok</string>
@@ -133,4 +134,5 @@
     <string name="moving_to_change_pass_ac">در حال انتقال به صفخه تغییر پسورد</string>
     <string name="password_changed">رمز عبور با موفقیت تغییر پیدا</string>
     <string name="password_not_changed">رمز عبور تغییر نکرد</string>
+    <string name="your_entered">شماوارد شدید</string>
 </resources>
