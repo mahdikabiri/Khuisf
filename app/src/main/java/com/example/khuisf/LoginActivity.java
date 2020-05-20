@@ -21,11 +21,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.example.khuisf.recoverpass.FortgetPassActivity;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.textfield.TextInputLayout;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import org.json.JSONObject;
+
+import me.cheshmak.android.sdk.core.Cheshmak;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -46,6 +49,19 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
+        /*TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+        }else {
+        Log.d("sss",telephonyManager.getDeviceId());
+        }
+*/
         PushDownAnim.setPushDownAnimTo(btnLogin)
                 .setScale(PushDownAnim.MODE_SCALE, 0.89f);
 

@@ -52,7 +52,6 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/insert_national_code"
                         android:inputType="phone"
-                        android:text="1111111111"
                         android:maxLength="10"
                         android:textAlignment="center"
                         android:textColor="#333"

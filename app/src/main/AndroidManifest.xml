@@ -16,12 +16,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
-        <activity android:name=".ChangePassActivity"></activity>
+        <activity android:name=".recoverpass.ChangePassActivity"></activity>
         <activity
-            android:name=".AuthenticationActiviry"
+            android:name=".recoverpass.AuthenticationActiviry"
             android:theme="@style/sss" />
         <activity
-            android:name=".FortgetPassActivity"
+            android:name=".recoverpass.FortgetPassActivity"
             android:label="@string/recover_pass_presian" />
         <activity
             android:name=".IntroSlider"

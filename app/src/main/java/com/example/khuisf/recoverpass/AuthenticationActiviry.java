@@ -1,4 +1,4 @@
-package com.example.khuisf;
+package com.example.khuisf.recoverpass;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,14 +15,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.khuisf.R;
 import com.raycoarana.codeinputview.CodeInputView;
 import com.raycoarana.codeinputview.OnCodeCompleteListener;
+import com.valdesekamdem.library.mdtoast.MDToast;
+
+import ir.samanjafari.easycountdowntimer.CountDownInterface;
+import ir.samanjafari.easycountdowntimer.EasyCountDownTextview;
 
 public class AuthenticationActiviry extends AppCompatActivity {
     CodeInputView codeInput;
-    TextView tvSendAgain;
+    TextView tvSendAgain,tvInsertCode;
     String getedAuthCode;
-    private Handler mHandler = new Handler();
+    EasyCountDownTextview countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,32 +37,42 @@ public class AuthenticationActiviry extends AppCompatActivity {
         Intent intent = getIntent();
         getedAuthCode = intent.getStringExtra("authCode");
 
+        countDownTimer.setOnTick(new CountDownInterface() {
+            @Override
+            public void onTick(long time) {
+            }
+
+            @Override
+            public void onFinish() {
+                Toast.makeText(AuthenticationActiviry.this, "finish", Toast.LENGTH_SHORT).show();
+                codeInput.setEditable(false);
+                codeInput.setError("زمان شما تمام شده");
+            }
+        });
         codeInput.addOnCompleteListener(new OnCodeCompleteListener() {
             @Override
             public void onCompleted(String code) {
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Make the input enable again so the user can change it
-                        if (getedAuthCode.equals(codeInput.getCode())) {
-                            Toast.makeText(AuthenticationActiviry.this, "در حال انتقال به صفخه تغییر پسورد", Toast.LENGTH_SHORT).show();
-                            finish();
-                            startActivity(new Intent(AuthenticationActiviry.this, ChangePassActivity.class));
-                        } else {
-                            codeInput.setEditable(true);
-                            //Show error
-                            codeInput.setError("کد شما اشتباه است");
-                        }
-                    }
-                }, 1000);
+                //Make the input enable again so the user can change it
+                if (getedAuthCode.equals(codeInput.getCode())) {
+                    MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.moving_to_change_pass_ac), MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
+                    mdToast.show();
+                    finish();
+                    startActivity(new Intent(AuthenticationActiviry.this, ChangePassActivity.class));
+                } else {
+                    //Show error
+                    codeInput.setError("کد شما اشتباه است");
+                    codeInput.setEditable(true);
+
+                }
             }
         });
         setClickableText();
     }
 
     private void init() {
-        codeInput = findViewById(R.id.authentication_code_input);
+        codeInput = findViewById(R.id.authentication_code_input1);
         tvSendAgain = findViewById(R.id.authentication_tv_sendaagain);
+        countDownTimer = findViewById(R.id.authentication_timer);
     }
 
     private void setClickableText() {
@@ -66,8 +81,8 @@ public class AuthenticationActiviry extends AppCompatActivity {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-                //  startActivity(new Intent(LoginActivity.this, FortgetPassActivity.class));
-                Toast.makeText(AuthenticationActiviry.this, "send again message", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AuthenticationActiviry.this, FortgetPassActivity.class));
+                finish();
             }
 
             @Override
@@ -80,4 +95,5 @@ public class AuthenticationActiviry extends AppCompatActivity {
         tvSendAgain.setText(ss);
         tvSendAgain.setMovementMethod(LinkMovementMethod.getInstance());
     }
+
 }

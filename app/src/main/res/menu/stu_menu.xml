@@ -36,7 +36,7 @@
             android:title="حذف و اضافه" />
     </group>
 
-    <item android:title="@string/setting">
+    <item android:title="@string/tools">
         <menu>
             <item
                 android:icon="@drawable/ic_logout"

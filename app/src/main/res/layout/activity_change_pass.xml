@@ -7,7 +7,7 @@
     android:background="@color/colorWiteg"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".AuthenticationActiviry">
+    tools:context=".ChangePassActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -34,6 +34,7 @@
                 android:textSize="30sp" />
 
             <EditText
+                android:id="@+id/changepass_edt_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -42,6 +43,7 @@
                 android:textAlignment="center" />
 
             <EditText
+                android:id="@+id/changepass_edt_pass_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -50,12 +52,13 @@
                 android:textAlignment="center" />
 
             <Button
+                android:id="@+id/change_pass_btn_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:background="@drawable/custombuttonblue"
                 android:text="ثبت"
-                android:textColor="@color/fff"
-                android:background="@drawable/custombuttonblue"/>
+                android:textColor="@color/fff" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

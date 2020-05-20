@@ -72,4 +72,7 @@ dependencies {
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
     implementation 'com.github.glomadrian:CodeInput:1.1@aar'
     implementation 'com.raycoarana.codeinputview:codeinputview:2.1.4'
+
+    implementation 'ir.samanjafari.easycountdowntimer:easycountdowntimer:2.3.3'
+    implementation 'com.valdesekamdem.library:md-toast:0.9.0'
 }

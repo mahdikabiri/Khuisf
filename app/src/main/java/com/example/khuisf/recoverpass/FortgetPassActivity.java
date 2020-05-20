@@ -1,8 +1,7 @@
-package com.example.khuisf;
+package com.example.khuisf.recoverpass;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.example.khuisf.R;
 import com.example.khuisf.tools.MyNetwork;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
@@ -29,7 +29,7 @@ public class FortgetPassActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fotget_pass);
+        setContentView(R.layout.activity_forget_pass);
         btnSend = findViewById(R.id.forget_pass_btn_send_number);
         edtPhoneNumber = findViewById(R.id.forget_pass_edt_phone_number);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -44,20 +44,15 @@ public class FortgetPassActivity extends AppCompatActivity {
             } else {
                 // startActivity(new Intent(FortgetPassActivity.this, AuthenticationActiviry.class));
                 if (MyNetwork.isNetworkConnected(this)) {
+
+                    saveNationalCodeToSH(getNumber);
                     getReadyNum(getNumber);
                 } else {
                     Toast.makeText(this, R.string.check_internet_connection_presian, Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-        //this is for low versions andorid can not show ripple
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
-            btnSend.setBackground(getResources().getDrawable(R.drawable.custom_tv_blue_bg));
-        } else {
-            btnSend.setBackground(getResources().getDrawable(R.drawable.ripple_foe_loginbtn));
-        }
-
+        craeteBackgrandButton();
         /*btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +63,19 @@ public class FortgetPassActivity extends AppCompatActivity {
         });*/
     }
 
+    private void saveNationalCodeToSH(String getNumber) {
+        SharedPreferences preferences = getSharedPreferences("code", MODE_PRIVATE);
+        preferences.edit().putString("nationalcode", getNumber).apply();
+    }
+
+    private void craeteBackgrandButton() {
+        //this is for low versions andorid can not show ripple
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
+            btnSend.setBackground(getResources().getDrawable(R.drawable.custom_tv_blue_bg));
+        } else {
+            btnSend.setBackground(getResources().getDrawable(R.drawable.ripple_foe_loginbtn));
+        }
+    }
 
     private void getReadyNum(String getNumber) {
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
@@ -80,9 +88,7 @@ public class FortgetPassActivity extends AppCompatActivity {
                     pDialog.setTitleText("جستجو...");
                     pDialog.setCancelable(false);
                     pDialog.show();
-
                     sendPhonNumber(getNumber, sDialog, pDialog);
-
                 })
                 .show();
     }
@@ -106,8 +112,13 @@ public class FortgetPassActivity extends AppCompatActivity {
                                     })
                                     .setConfirmClickListener(s -> {
                                         //send request for send sms to user and go to autrization activity
+                                        //s.dismiss();
+                                        s.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+                                        s.setTitle("در حال ارسال پیام");
+                                        s.setContentText("");
+                                        s.setCancelText("لغو");
+                                        s.setCancelable(false);
                                         sendSms(nationalCode);
-                                        Toast.makeText(FortgetPassActivity.this, R.string.sending_sms, Toast.LENGTH_LONG).show();
                                     })
                                     .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                         } else {
@@ -124,8 +135,8 @@ public class FortgetPassActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                        pDialog.dismiss();
-                        Toast.makeText(FortgetPassActivity.this, "ارور در شبکه", Toast.LENGTH_SHORT).show();
+                        pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        pDialog.setTitle("اینترنت خود را برسی کنید");
 
                     }
                 });
@@ -139,13 +150,12 @@ public class FortgetPassActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.d("code", response);
-                        Toast.makeText(FortgetPassActivity.this, response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FortgetPassActivity.this, response, Toast.LENGTH_LONG).show();
                         startAuthActiviry(response);
                     }
 
                     @Override
                     public void onError(ANError anError) {
-
                     }
                 });
     }
