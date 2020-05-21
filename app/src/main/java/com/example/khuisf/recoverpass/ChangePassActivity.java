@@ -2,6 +2,7 @@ package com.example.khuisf.recoverpass;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -75,12 +76,17 @@ public class ChangePassActivity extends AppCompatActivity {
                     MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.password_changed) + "", MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
                     mdToast.show();
                     finish();
+                }else {
+                    Log.d("salam",response);
+                    MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.password_not_changed) + "", MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
+                    mdToast.show();
                 }
+
             }
 
             @Override
             public void onError(ANError anError) {
-                MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.password_not_changed) + "", MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
+                MDToast mdToast = MDToast.makeText(getApplicationContext(),  getString(R.string.network_err), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
                 mdToast.show();
             }
         });

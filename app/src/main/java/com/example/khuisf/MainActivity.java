@@ -162,6 +162,19 @@ public class MainActivity extends AppCompatActivity {
         return "";
     }
 
+
+    public void open_ac_support(MenuItem item) {
+        startActivity(new Intent(MainActivity.this, ContactActivity.class));
+
+       /* SessionManager manager = new SessionManager(MainActivity.this);
+        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        preferences.edit().putString("code", "null").apply();
+        manager.setLogedIn(false);
+        Cheshmak.deleteAllTags();
+        preferences.edit().clear().commit();
+        finish();
+    */}
+
     public void logout(MenuItem item) {
         SessionManager manager = new SessionManager(MainActivity.this);
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);

@@ -28,6 +28,12 @@
 
     </style>
 
+    <style name="right_lef_margin" parent="Widget">
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+
+
+    </style>
 
     <style name="sss" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->

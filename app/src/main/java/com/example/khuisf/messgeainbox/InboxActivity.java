@@ -17,6 +17,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Message;
+import com.example.khuisf.tools.GetDataFromSH;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,8 +62,8 @@ public class InboxActivity extends AppCompatActivity {
     }
 
     private void getInbox() {
-        String studentCode = getCodeFromSharedPrefs();
-        String userRole = String.valueOf(getRoleFromSharedPrefs());
+        String studentCode = GetDataFromSH.getCodeFromSharedPrefs(this);
+        String userRole = String.valueOf(GetDataFromSH.getRoleFromSharedPrefs(this));
         AndroidNetworking.initialize(this);
         AndroidNetworking.post(getString(R.string.host) + getString(R.string.getMessageForStudent))
                 .addBodyParameter("student_code", studentCode)
@@ -102,21 +103,9 @@ public class InboxActivity extends AppCompatActivity {
         }
     }
 
-
     private void update() {
         myItems.clear();
         recyclerView.scheduleLayoutAnimation();
         getInbox();
     }
-
-    private String getCodeFromSharedPrefs() {
-        SharedPreferences preferences = this.getSharedPreferences("prefs", MODE_PRIVATE);
-        return preferences.getString("code", "");
-    }
-
-    private int getRoleFromSharedPrefs() {
-        SharedPreferences preferences = this.getSharedPreferences("prefs", MODE_PRIVATE);
-        return preferences.getInt("role", 0);
-    }
-
 }

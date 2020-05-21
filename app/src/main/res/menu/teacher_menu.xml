@@ -28,7 +28,11 @@
     <item android:title="@string/tools">
         <menu>
             <item
-                android:icon="@drawable/ic_logout"
+                android:icon="@drawable/ic_support"
+                android:onClick="open_ac_support"
+                android:title="@string/contact_with_support" />
+            <item
+                android:icon="@drawable/ic_off"
                 android:onClick="logout"
                 android:title="خروج" />
         </menu>

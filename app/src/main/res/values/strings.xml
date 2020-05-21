@@ -79,8 +79,8 @@
     <string name="insert">ثبت</string>
 
 
-    <string name="host">http://192.168.56.1//khuisf/</string>
-    <string name="hosts">http://mkabiri.ir/khuisf/</string>
+    <string name="hosts">http://192.168.56.1//khuisf/</string>
+    <string name="host">http://mkabiri.ir/khuisf/</string>
     <string name="login_url">login.php</string>
     <string name="getTeachersForMessage">get_teachers_formessage.php</string>
     <string name="getMessageForStudent">get_messages_for_student.php</string>
@@ -135,4 +135,9 @@
     <string name="password_changed">رمز عبور با موفقیت تغییر پیدا</string>
     <string name="password_not_changed">رمز عبور تغییر نکرد</string>
     <string name="your_entered">شماوارد شدید</string>
+    <string name="wrong_code">کد شما اشتباه است</string>
+    <string name="network_err">ایراد در شبکه</string>
+    <string name="wrong_user_pass">نام کاربری یا رمز عبور اشتباه است</string>
+    <string name="contact_with_support">ارتباط با پشتیبانی</string>
+    <string name="contact_us">ارتباط با ما</string>
 </resources>

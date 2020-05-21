@@ -21,6 +21,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Score;
+import com.example.khuisf.tools.GetDataFromSH;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -86,7 +87,7 @@ public class GetScoreFragment extends Fragment {
     private void getScore() {
         AndroidNetworking.initialize(getActivity());
         AndroidNetworking.post(getString(R.string.host) + getString(R.string.getScore))
-                .addBodyParameter("code", getCodeFromSharedPrefs())
+                .addBodyParameter("code", GetDataFromSH.getCodeFromSharedPrefs(getContext()))
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
             @Override
             public void onResponse(JSONArray response) {
@@ -124,9 +125,9 @@ public class GetScoreFragment extends Fragment {
             }
         }, 1000);
     }
-
+/*
     private String getCodeFromSharedPrefs() {
         SharedPreferences preferences = getActivity().getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");
-    }
+    }*/
 }

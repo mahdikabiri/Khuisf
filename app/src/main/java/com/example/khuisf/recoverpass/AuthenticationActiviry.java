@@ -60,7 +60,7 @@ public class AuthenticationActiviry extends AppCompatActivity {
                     startActivity(new Intent(AuthenticationActiviry.this, ChangePassActivity.class));
                 } else {
                     //Show error
-                    codeInput.setError("کد شما اشتباه است");
+                    codeInput.setError(R.string.wrong_code);
                     codeInput.setEditable(true);
 
                 }

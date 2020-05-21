@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWiteg"
+    tools:context=".ContactActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="40dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:alpha=".5"
+                    app:srcCompat="@drawable/ic_message_for_contactus" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/vazirbold"
+                    android:text="@string/contact_us"
+                    android:textSize="30dp" />
+
+                <EditText
+                    android:id="@+id/contact_edt_name"
+                    style="@style/right_lef_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/custom_withe_bg_border_blue"
+                    android:hint="نام (اختیاری)"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/contact_edt_subject"
+                    style="@style/right_lef_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/custom_withe_bg_border_blue"
+                    android:hint="موضوع"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/contact_edt_text"
+                    style="@style/right_lef_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/custom_withe_bg_border_blue"
+                    android:hint="پیام شما"
+                    android:lines="5"
+                    android:textAlignment="center" />
+
+                <Button
+                    android:id="@+id/contactus_btn_send_message"
+                    style="@style/right_lef_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
+                    android:text="                ارسال                "
+                    android:textColor="@color/colorWite"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/contactus_iv_gmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/ic_gmail"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toStartOf="@+id/contactus_iv_telegram"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <ImageButton
+            android:id="@+id/contactus_iv_telegram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="100dp"
+            android:background="@drawable/ic_telegram"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toEndOf="@+id/contactus_iv_gmail"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintVertical_bias="0.48" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

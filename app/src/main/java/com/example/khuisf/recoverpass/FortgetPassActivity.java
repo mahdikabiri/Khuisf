@@ -85,9 +85,11 @@ public class FortgetPassActivity extends AppCompatActivity {
                 .setConfirmClickListener(sDialog -> {
                     SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
                     //  pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                    pDialog.setTitleText("جستجو...");
-                    pDialog.setCancelable(false);
-                    pDialog.show();
+                    sDialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+                    sDialog.setCancelable(false);
+                    sDialog.setCancelButton("لغو", sweetAlertDialog -> {
+                        sDialog.dismissWithAnimation();
+                    });
                     sendPhonNumber(getNumber, sDialog, pDialog);
                 })
                 .show();
@@ -108,11 +110,11 @@ public class FortgetPassActivity extends AppCompatActivity {
                                     .setTitleText(response)
                                     .setConfirmText("بله")
                                     .setCancelButton("خیر", s -> {
-                                        s.dismiss();
+                                        s.dismissWithAnimation();
                                     })
                                     .setConfirmClickListener(s -> {
                                         //send request for send sms to user and go to autrization activity
-                                        //s.dismiss();
+                                        s.dismiss();
                                         s.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
                                         s.setTitle("در حال ارسال پیام");
                                         s.setContentText("");
@@ -127,7 +129,7 @@ public class FortgetPassActivity extends AppCompatActivity {
                                     .setTitleText(response)
                                     .setConfirmText("بستن")
                                     .setConfirmClickListener(s -> {
-                                        sDialog.dismiss();
+                                        sDialog.dismissWithAnimation();
                                     })
                                     .changeAlertType(SweetAlertDialog.ERROR_TYPE);
                         }
@@ -137,7 +139,6 @@ public class FortgetPassActivity extends AppCompatActivity {
                     public void onError(ANError anError) {
                         pDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
                         pDialog.setTitle("اینترنت خود را برسی کنید");
-
                     }
                 });
     }
@@ -149,7 +150,6 @@ public class FortgetPassActivity extends AppCompatActivity {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("code", response);
                         Toast.makeText(FortgetPassActivity.this, response, Toast.LENGTH_LONG).show();
                         startAuthActiviry(response);
                     }

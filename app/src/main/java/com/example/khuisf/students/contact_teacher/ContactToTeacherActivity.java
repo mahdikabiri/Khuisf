@@ -15,6 +15,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Teacher;
+import com.example.khuisf.tools.GetDataFromSH;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +40,7 @@ public class ContactToTeacherActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
-        getTeachers(getCodeFromSharedRefs());
+        getTeachers(GetDataFromSH.getCodeFromSharedPrefs(this));
     }
 
     private void getTeachers(String studentCode) {
@@ -75,9 +76,9 @@ public class ContactToTeacherActivity extends AppCompatActivity {
                     }
                 });
     }
-
+/*
     private String getCodeFromSharedRefs() {
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("code", "");
-    }
+    }*/
 }

@@ -23,6 +23,7 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
 import com.example.khuisf.entitys.Attendance;
+import com.example.khuisf.tools.GetDataFromSH;
 import com.marcoscg.dialogsheet.DialogSheet;
 
 import org.json.JSONArray;
@@ -53,7 +54,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
         charac = getIntent().getStringExtra(MainActivity.CHARAC);
         courseTitle = getIntent().getStringExtra(MainActivity.NAME);
 
-        tvStuName.setText(getStuNameFromSharedRefs());
+        tvStuName.setText(GetDataFromSH.getStuNameFromSharedRefs(this));
         tvCourseName.setText(courseTitle);
         getCourses();
     }
@@ -120,7 +121,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     private void getCourses() {
         AndroidNetworking.initialize(this);
         AndroidNetworking.post(getString(R.string.host) + getString(R.string.getAttendancer))
-                .addBodyParameter("studentcode", getCodeFromSharedRefs())
+                .addBodyParameter("studentcode", GetDataFromSH.getCodeFromSharedPrefs(this))
                 .addBodyParameter("charac", charac)
                 .setTag("getAttendance")
                 .build().getAsJSONArray(new JSONArrayRequestListener() {
@@ -150,15 +151,10 @@ public class ShowAttendanceActivity extends AppCompatActivity {
             }
         });
     }
-
-    private String getCodeFromSharedRefs() {
-        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        return preferences.getString("code", "");
-    }
-
+/*
     private String getStuNameFromSharedRefs() {
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         return preferences.getString("name", "");
-    }
+    }*/
 
 }
