@@ -41,7 +41,6 @@ public class AuthenticationActiviry extends AppCompatActivity {
             @Override
             public void onTick(long time) {
             }
-
             @Override
             public void onFinish() {
                 Toast.makeText(AuthenticationActiviry.this, "finish", Toast.LENGTH_SHORT).show();

@@ -17,7 +17,10 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
         <activity android:name=".ContactActivity"
-            android:theme="@style/sss"></activity>
+
+            android:parentActivityName=".MainActivity">
+
+        </activity>
         <activity android:name=".recoverpass.ChangePassActivity" />
         <activity
             android:name=".recoverpass.AuthenticationActiviry"

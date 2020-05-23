@@ -136,7 +136,6 @@ public class LoginActivity extends AppCompatActivity {
         AndroidNetworking.post(getString(R.string.host) + getString(R.string.insertCheshmakId))
                 .addBodyParameter("username", username)
                 .addBodyParameter("cheshmak_id", cheshmakID)
-                .setTag("LOGIN")
                 .build();
     }
 

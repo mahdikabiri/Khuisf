@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SurfaceControl;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,7 +30,10 @@ import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import maes.tech.intentanim.CustomIntent;
 import me.cheshmak.android.sdk.core.Cheshmak;
+
+import static maes.tech.intentanim.CustomIntent.customType;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CHARAC = "characteristic";
@@ -164,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void open_ac_support(MenuItem item) {
-        startActivity(new Intent(MainActivity.this, ContactActivity.class));
-
+        Intent intent=new Intent(MainActivity.this,ContactActivity.class);
+        startActivity(intent);
+        CustomIntent.customType(MainActivity.this,"left-to-right");
        /* SessionManager manager = new SessionManager(MainActivity.this);
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         preferences.edit().putString("code", "null").apply();

@@ -29,8 +29,8 @@
     </style>
 
     <style name="right_lef_margin" parent="Widget">
-        <item name="android:layout_marginLeft">30dp</item>
-        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
 
 
     </style>

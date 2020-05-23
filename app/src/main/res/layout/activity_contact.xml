@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWiteg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".ContactActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,11 +17,8 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="40dp"
-            app:cardCornerRadius="30dp"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

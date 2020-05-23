@@ -68,11 +68,14 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging:17.6.0"
     implementation "com.google.firebase:firebase-ads:17.2.0"
     implementation 'com.github.thekhaeng:pushdown-anim-click:1.1.1'
-
+    ////
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
     implementation 'com.github.glomadrian:CodeInput:1.1@aar'
     implementation 'com.raycoarana.codeinputview:codeinputview:2.1.4'
 
     implementation 'ir.samanjafari.easycountdowntimer:easycountdowntimer:2.3.3'
     implementation 'com.valdesekamdem.library:md-toast:0.9.0'
+
+    implementation 'com.phantomvk.slideback:slideback:latest.release'
+    implementation 'com.github.hajiyevelnur92:intentanimation:1.0'
 }
