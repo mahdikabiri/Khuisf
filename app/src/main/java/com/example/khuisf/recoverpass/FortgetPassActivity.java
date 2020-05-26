@@ -16,7 +16,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.tools.MyNetwork;
+import com.example.khuisf.tools.MyTools;
 import com.thekhaeng.pushdownanim.PushDownAnim;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -43,7 +43,7 @@ public class FortgetPassActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.insert_compalate_code, Toast.LENGTH_SHORT).show();
             } else {
                 // startActivity(new Intent(FortgetPassActivity.this, AuthenticationActiviry.class));
-                if (MyNetwork.isNetworkConnected(this)) {
+                if (MyTools.isNetworkConnected(this)) {
 
                     saveNationalCodeToSH(getNumber);
                     getReadyNum(getNumber);

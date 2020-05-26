@@ -1,5 +1,6 @@
 package com.example.khuisf;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout layoutStu, layoutTeach;
     CircleImageView circleImageViewNavProf;
     private AppBarConfiguration mAppBarConfiguration;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         init();
-        configCheshmak();
+        context=this;
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         View headView = navigationView.getHeaderView(0);
         TextView tv_access = headView.findViewById(R.id.nav_header_access_tv);
@@ -105,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void configCheshmak() {
         String gConfig= CheshmakConfig.getString("block_state","not");
-        Toast.makeText(this, gConfig, Toast.LENGTH_SHORT).show();
     }
 
     private void setImageProf(String picUrl) {

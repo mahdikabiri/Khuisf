@@ -9,8 +9,17 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.example.khuisf.LoginActivity;
+import com.example.khuisf.MainActivity;
+import com.example.khuisf.R;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class BlockService extends Service {
     @Nullable
@@ -26,26 +35,22 @@ public class BlockService extends Service {
         JSONObject object = null;
         try {
             object = new JSONObject(intent.getStringExtra("me.cheshmak.data"));
-            String myOption = object.getString("TEXT");
+            String mytext = object.getString("TEXT");
             String blockSTATE = object.getString("BLOCKSTATE");
             switch (blockSTATE) {
                 case "bu":
-                    blockUser();
+                    blockUser(mytext);
                     break;
                 case "ubu":
-                    unBlockUser();
+                    unBlockUser(mytext);
                     break;
                 case "bp":
-                    blockPhone();
+                    blockPhone(mytext);
                     break;
                 case "ubp":
-                    unBlockPhone();
+                    unBlockPhone(mytext);
                     break;
             }
-
-            blockUser();
-            Toast.makeText(this, "" + myOption, Toast.LENGTH_SHORT).show();
-
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -54,32 +59,51 @@ public class BlockService extends Service {
     }
 
 
-    private void blockUser() {
+    private void blockUser(String mytext) {
         SessionManager manager = new SessionManager(this);
         if (manager.isLogedIn()) {
+            Toast.makeText(this, mytext, Toast.LENGTH_SHORT).show();
+
             SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-            String s=null;
-            s=preferences.getString("username","null");
-            Toast.makeText(this, s+"  blocked", Toast.LENGTH_SHORT).show();
+            String username = preferences.getString("username", "null");
 
+            AndroidNetworking.post(getString(R.string.host) + getString(R.string.blockUser_url))
+                    .addBodyParameter("username", username)
+                    .build().
+                    getAsString(new StringRequestListener() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.equals("1")) {
+                                SweetAlertDialog ss = new SweetAlertDialog(MainActivity.context, SweetAlertDialog.ERROR_TYPE);
+                                ss.setTitleText(getString(R.string.account_blocked))
+                                        .setContentText(mytext)
+                                        .setConfirmClickListener(s -> {
+                                            MainActivity.context.startActivity(new Intent(MainActivity.context, LoginActivity.class));
+                                            System.exit(1);
 
+                                        }).setCancelable(false);
+                                MyTools.logout(MainActivity.context);
+                                ss.show();
+                            }
+                        }
 
-
-            /*
-            ُ getedUsernam=preferences.getString("username", "");
-            Toast.makeText(this, getedUsernam+"  blocked", Toast.LENGTH_SHORT).show();
-        */}
+                        @Override
+                        public void onError(ANError anError) {
+                            Toast.makeText(BlockService.this, anError + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 
-    private void unBlockUser() {
+    private void unBlockUser(String mytext) {
         Toast.makeText(this, "user unblocked", Toast.LENGTH_SHORT).show();
     }
 
-    private void blockPhone() {
+    private void blockPhone(String mytext) {
         Toast.makeText(this, "phone blocked", Toast.LENGTH_SHORT).show();
     }
 
-    private void unBlockPhone() {
+    private void unBlockPhone(String mytext) {
         Toast.makeText(this, "phone unblocked", Toast.LENGTH_SHORT).show();
     }
 
