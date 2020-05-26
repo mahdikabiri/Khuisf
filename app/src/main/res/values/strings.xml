@@ -79,8 +79,8 @@
     <string name="insert">ثبت</string>
 
 
-    <string name="host">http://192.168.56.1//khuisf/</string>
-    <string name="hosts">http://mkabiri.ir/khuisf/</string>
+    <string name="hosts">http://192.168.56.1//khuisf/</string>
+    <string name="host">http://mkabiri.ir/khuisf/</string>
     <string name="login_url">login.php</string>
     <string name="getTeachersForMessage">get_teachers_formessage.php</string>
     <string name="getMessageForStudent">get_messages_for_student.php</string>

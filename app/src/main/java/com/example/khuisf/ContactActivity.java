@@ -1,5 +1,7 @@
 package com.example.khuisf;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -19,8 +21,6 @@ import com.valdesekamdem.library.mdtoast.MDToast;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import maes.tech.intentanim.CustomIntent;
 
-import static maes.tech.intentanim.CustomIntent.customType;
-
 public class ContactActivity extends SlideActivity {
     Button btnSend;
     EditText edtName, edtSubject, edtText;
@@ -38,9 +38,6 @@ public class ContactActivity extends SlideActivity {
         setContentView(R.layout.activity_contact);
         init();
         ButtonDesign.setDesign(btnSend, this);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         PushDownAnim.setPushDownAnimTo(ivTelegram)
                 .setScale(PushDownAnim.MODE_SCALE, 0.8f);
         PushDownAnim.setPushDownAnimTo(ivGmail)
@@ -49,19 +46,48 @@ public class ContactActivity extends SlideActivity {
         btnSend.setOnClickListener(v -> {
             getReadyValues(edtName.getText().toString(), edtSubject.getText().toString().trim(), edtText.getText().toString());
         });
+        ivTelegram.setOnClickListener(v -> {
+          /*  Intent waIntent = new Intent(Intent.ACTION_SEND);
+            waIntent.setType("text/plain");
+            waIntent.setPackage("org.telegram.messenger");
+            startActivity(waIntent);*/
+            /*final String appName = "org.telegram.messenger";
+             String msg = "test message";
+            final boolean isAppInstalled = isAppAvailable(getApplicationContext(), appName);
+            if (isAppInstalled)
+            {
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                myIntent.setPackage(appName);
+                myIntent.putExtra(Intent.EXTRA_TEXT, msg);//
+                startActivity(Intent.createChooser(myIntent, "Share with"));
+            }
+            else
+            {
+                Toast.makeText(this, "Telegram not Installed", Toast.LENGTH_SHORT).show();
+            }*/
 
+            Intent telegram = new Intent(Intent.ACTION_VIEW, Uri.parse("https://telegram.me/mahdikabiri96"));
+            startActivity(telegram);
+        });
 
+        ivGmail.setOnClickListener(v -> {
+            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                    "mailto", "mahdikabiri47@gmail.com", null));
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "اپلیکیشن دانشگاه");
+            startActivity(Intent.createChooser(emailIntent, null));
+        });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         if (item.getItemId() == android.R.id.home) {
             finish();
-            return true;
+            CustomIntent.customType(ContactActivity.this, "right-to-left");
         }
-
         return false;
     }
+
     private void getReadyValues(String name, String subject, String text) {
         if (subject.isEmpty() || text.isEmpty()) {
             //check fields
@@ -119,13 +145,9 @@ public class ContactActivity extends SlideActivity {
         edtSubject.setText("");
     }
 
-    @Override
-    public void finish() {
-        super.finish();
-        CustomIntent.customType(ContactActivity.this,"right-to-left");
-    }
-
     private void init() {
+        //set back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnSend = findViewById(R.id.contactus_btn_send_message);
         edtName = findViewById(R.id.contact_edt_name);
         edtSubject = findViewById(R.id.contact_edt_subject);

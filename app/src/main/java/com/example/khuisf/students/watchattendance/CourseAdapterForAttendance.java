@@ -16,6 +16,8 @@ import com.example.khuisf.entitys.Course;
 
 import java.util.ArrayList;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class CourseAdapterForAttendance extends RecyclerView.Adapter<CourseAdapterForAttendance.CourseViewHolder> {
 
     LayoutInflater inflater;
@@ -54,6 +56,9 @@ public class CourseAdapterForAttendance extends RecyclerView.Adapter<CourseAdapt
                 intent.putExtra(MainActivity.TIME, currentItem.getTime());
 
                 context.startActivity(intent);
+                //animation
+                CustomIntent.customType(context,"left-to-right");
+
             }
         });
     }

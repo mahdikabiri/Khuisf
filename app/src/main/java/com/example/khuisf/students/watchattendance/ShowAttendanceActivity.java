@@ -1,7 +1,6 @@
 package com.example.khuisf.students.watchattendance;
 
 import android.annotation.SuppressLint;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +24,7 @@ import com.example.khuisf.R;
 import com.example.khuisf.entitys.Attendance;
 import com.example.khuisf.tools.GetDataFromSH;
 import com.marcoscg.dialogsheet.DialogSheet;
+import com.phantomvk.slideback.SlideActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +32,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ShowAttendanceActivity extends AppCompatActivity {
+import maes.tech.intentanim.CustomIntent;
+
+public class ShowAttendanceActivity extends SlideActivity {
     ArrayList<Attendance> myItems;
     String charac, courseTitle;
     TextView tvStuName, tvCourseName;
@@ -43,6 +45,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_attendance);
+
         init();
         myItems = new ArrayList<>();
         adapter = new AdapterForAttendance(this, myItems);
@@ -64,6 +67,7 @@ public class ShowAttendanceActivity extends AppCompatActivity {
         tvStuName = findViewById(R.id.activity_show_attendance_tv_stuname);
         tvCourseName = findViewById(R.id.activity_show_attendance_tv_coursename);
         AndroidNetworking.initialize(this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -77,27 +81,6 @@ public class ShowAttendanceActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.info_icon_watch_attendancer) {
-          /*  new LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.VERTICAL)
-                    .setTopColorRes(R.color.colorGray)
-                    .setIcon(R.drawable.ic_info)
-                    .setTitle("ssssss")
-                    .setMessage("salaaaam")
-                    .setPositiveButton(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(ShowAttendanceActivity.this, "", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .setNegativeButton(android.R.string.no, null)
-                    .show();*/
-
-           /* final Dialog dialog = new Dialog(this);
-            dialog.setContentView(R.layout.layout_dialog_info_watchattendaner);
-
-            dialog.setCanceledOnTouchOutside(true);
-            dialog.show();*/
-
-
             new DialogSheet(this)
                     .setTitle(R.string.help_text)
                     .setColoredNavigationBar(true)
@@ -113,8 +96,12 @@ public class ShowAttendanceActivity extends AppCompatActivity {
                     })
                     .setButtonsColorRes(R.color.colorAccent) // You can use dialogSheetAccent style attribute instead
                     .show();
-        }
 
+        } else if (item.getItemId() == android.R.id.home) {
+            finish();
+            CustomIntent.customType(this, "right-to-left");
+
+        }
         return super.onOptionsItemSelected(item);
     }
 

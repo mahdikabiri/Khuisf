@@ -17,10 +17,14 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
         <activity android:name=".ContactActivity"
-
-            android:parentActivityName=".MainActivity">
-
+            android:label="پشتیبانی">
         </activity>
+
+        <service android:name=".tools.BlockService">
+            <meta-data android:name="cheshmakPush"
+                android:value="startServiceOnPush" />
+        </service>
+
         <activity android:name=".recoverpass.ChangePassActivity" />
         <activity
             android:name=".recoverpass.AuthenticationActiviry"

@@ -27,6 +27,7 @@ import com.valdesekamdem.library.mdtoast.MDToast;
 
 import org.json.JSONObject;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.cheshmak.android.sdk.core.Cheshmak;
 
 public class LoginActivity extends AppCompatActivity {
@@ -92,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
         AndroidNetworking.post(getString(R.string.host) + getString(R.string.login_url))
                 .addBodyParameter("username", username)
                 .addBodyParameter("password", password)
-                .setTag("LOGIN")
                 .build().
                 getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -112,8 +112,16 @@ public class LoginActivity extends AppCompatActivity {
                                 preferences.edit().putString("name", getedName).apply();
                                 preferences.edit().putInt("role", getedAccess).apply();
                                 sendCheshmakIdToServer(getedUsername);
+
+                                if (getedAccess == 1) {
+                                    Cheshmak.sendTag("student");
+                                } else if (getedAccess == 2) {
+                                    Cheshmak.sendTag("teacher");
+                                }
+
                                 finish();
                             }
+
                         } catch (Exception e) {
                             MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.wrong_user_pass), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
                             mdToast.show();
@@ -124,10 +132,25 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                        MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.network_err), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
-                        mdToast.show();
+                        if (anError.toString().contains("is_blocked")) {
+                            new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                                    .setTitleText("ورود ممکن نیست!")
+                                    .setContentText("حساب مورد نظر از طرف مدیریت مسدود شده است")
+                                    .setCustomImage(R.drawable.ic_banned)
+                                    .setConfirmButton("ارتباط با پشتیبانی", sweetAlertDialog -> {
+
+                                    })
+                                    .setCancelButton("بستن", sweetAlertDialog -> sweetAlertDialog.dismissWithAnimation())
+                                    .show();
+
+                        } else {
+                            MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.network_err), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
+                            mdToast.show();
+                        }
                     }
                 });
+
+
     }
 
 

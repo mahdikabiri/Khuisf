@@ -32,6 +32,7 @@ import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 import maes.tech.intentanim.CustomIntent;
 import me.cheshmak.android.sdk.core.Cheshmak;
+import me.cheshmak.android.sdk.core.config.CheshmakConfig;
 
 import static maes.tech.intentanim.CustomIntent.customType;
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         init();
+        configCheshmak();
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         View headView = navigationView.getHeaderView(0);
         TextView tv_access = headView.findViewById(R.id.nav_header_access_tv);
@@ -99,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(r, 3000);
 
 
+    }
+
+    private void configCheshmak() {
+        String gConfig= CheshmakConfig.getString("block_state","not");
+        Toast.makeText(this, gConfig, Toast.LENGTH_SHORT).show();
     }
 
     private void setImageProf(String picUrl) {
