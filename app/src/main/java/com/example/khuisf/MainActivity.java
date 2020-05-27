@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.SurfaceControl;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,16 +26,12 @@ import com.androidnetworking.AndroidNetworking;
 import com.example.khuisf.messgeainbox.InboxActivity;
 import com.example.khuisf.students.contact_teacher.ContactToTeacherActivity;
 import com.example.khuisf.tools.MyTools;
-import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import maes.tech.intentanim.CustomIntent;
-import me.cheshmak.android.sdk.core.Cheshmak;
 import me.cheshmak.android.sdk.core.config.CheshmakConfig;
-
-import static maes.tech.intentanim.CustomIntent.customType;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CHARAC = "characteristic";
@@ -50,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     public static Context context;
 
+
+    private long backPressedTime;
+    private Toast backTost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
         init();
-        context=this;
+        context = this;
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         View headView = navigationView.getHeaderView(0);
         TextView tv_access = headView.findViewById(R.id.nav_header_access_tv);
@@ -107,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configCheshmak() {
-        String gConfig= CheshmakConfig.getString("block_state","not");
+        String gConfig = CheshmakConfig.getString("block_state", "not");
     }
 
     private void setImageProf(String picUrl) {
@@ -176,11 +175,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backTost.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backTost = Toast.makeText(context, "برای خروج دوباره فشار دهید", Toast.LENGTH_SHORT);
+            backTost.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
     public void open_ac_support(MenuItem item) {
-        Intent intent=new Intent(MainActivity.this,ContactActivity.class);
+        Intent intent = new Intent(MainActivity.this, ContactActivity.class);
         startActivity(intent);
-        CustomIntent.customType(MainActivity.this,"left-to-right");
-       }
+        CustomIntent.customType(MainActivity.this, "left-to-right");
+    }
 
     public void logout(MenuItem item) {
 

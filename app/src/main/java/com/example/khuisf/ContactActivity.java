@@ -96,9 +96,8 @@ public class ContactActivity extends SlideActivity {
         } else {
             //send message
             new SweetAlertDialog(this, SweetAlertDialog.BUTTON_NEGATIVE)
-                    .setTitleText("آیا مطمنید؟")
+                    .setTitleText(getString(R.string.sendMessage))
                     .setConfirmText("بله")
-
                     .setConfirmClickListener(sDialog -> {
                         sDialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
                         sendValeus(name, subject, text, GetDataFromSH.getNationalCodeFromSharedPrefs(this), sDialog);
@@ -109,7 +108,6 @@ public class ContactActivity extends SlideActivity {
 
 
     private void sendValeus(String name, String subject, String text, String nationalCode, SweetAlertDialog sDialog) {
-        Toast.makeText(this, nationalCode + "", Toast.LENGTH_SHORT).show();
         AndroidNetworking.post(getString(R.string.host) + getString(R.string.contactUs_url))
                 .addBodyParameter("name", name)
                 .addBodyParameter("subject", subject)

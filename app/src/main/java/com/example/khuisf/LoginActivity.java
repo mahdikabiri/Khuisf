@@ -2,6 +2,7 @@ package com.example.khuisf;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -12,13 +13,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.recoverpass.FortgetPassActivity;
 import com.example.khuisf.tools.ButtonDesign;
 import com.example.khuisf.tools.SessionManager;
@@ -27,15 +31,20 @@ import com.valdesekamdem.library.mdtoast.MDToast;
 
 import org.json.JSONObject;
 
+import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.cheshmak.android.sdk.core.Cheshmak;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnLogin;
+    CircularProgressButton btnLogin;
     EditText edtUsername, edtPassword;
     TextView tvforgetPass;
     TextInputLayout inputLayoutUsername, inputLayoutPass;
+
+
+    private long backPressedTime;
+    private Toast backTost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +69,17 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener((View v) -> {
                     if (validInput(inputLayoutUsername) && validInput(inputLayoutPass)) {
+                      btnLogin.startAnimation();
                         login(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim(), manager);
+                        btnLogin.revertAnimation();
+
                     }
                 }
         );
     }
 
     private void setClickableText() {
-        String fotgetText = "رمز عبور خود را فراموش کرده ام";
+        String fotgetText = getString(R.string.forgeted_my_pas);
 
         SpannableString ss = new SpannableString(fotgetText);
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -138,14 +150,40 @@ public class LoginActivity extends AppCompatActivity {
                                     .setContentText("حساب مورد نظر از طرف مدیریت مسدود شده است")
                                     .setCustomImage(R.drawable.ic_banned)
                                     .setConfirmButton("ارتباط با پشتیبانی", sweetAlertDialog -> {
+                                        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getNationalCode))
+                                                .addBodyParameter("username", username)
+                                                .addBodyParameter("password", password)
+                                                .build().getAsString(new StringRequestListener() {
+                                            @Override
+                                            public void onResponse(String response) {
+                                                //here we need get national code from db for send to contact us
+                                                SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+                                                preferences.edit().putString("national_code", response).apply();
+                                                startActivity(new Intent(LoginActivity.this, ContactActivity.class));
+                                            }
+
+                                            @Override
+                                            public void onError(ANError anError) {
+                                                btnLogin.revertAnimation();
+
+                                            }
+                                        });
 
                                     })
-                                    .setCancelButton("بستن", sweetAlertDialog -> sweetAlertDialog.dismissWithAnimation())
-                                    .show();
+                                    .setCancelButton("بستن", sweetAlertDialog -> {
+                                        sweetAlertDialog.dismissWithAnimation();
+                                        btnLogin.revertAnimation();
+                                    });
+
+                                    /*.setCancelButton("بستن", sweetAlertDialog ->
+
+                                            sweetAlertDialog.dismissWithAnimation())
+                                    .show();*/
 
                         } else {
                             MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.network_err), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
                             mdToast.show();
+                            btnLogin.revertAnimation();
                         }
                     }
                 });
@@ -160,6 +198,20 @@ public class LoginActivity extends AppCompatActivity {
                 .addBodyParameter("username", username)
                 .addBodyParameter("cheshmak_id", cheshmakID)
                 .build();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backTost.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backTost = Toast.makeText(this, "برای خروج دوباره فشار دهید", Toast.LENGTH_SHORT);
+            backTost.show();
+        }
+        backPressedTime = System.currentTimeMillis();
     }
 
     private void init() {

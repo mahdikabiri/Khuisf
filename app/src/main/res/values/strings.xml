@@ -104,6 +104,7 @@
     <string name="genetareCodeForsms">generateCodeSendSms.php</string>
     <string name="changePass">ChangePass.php</string>
     <string name="insertCheshmakId">InsertCheshmakId.php</string>
+    <string name="getNationalCode">getNationalCode.php</string>
     <string name="contactUs_url">contact_us.php</string>
     <string name="blockUser_url">BlockUser.php</string>
 
@@ -144,4 +145,6 @@
     <string name="contact_us">ارتباط با ما</string>
     <string name="yout_message_sended"> پیام شما با موفقیت ارسال شد </string>
     <string name="account_blocked">حساب کاربری شما مسدود شد</string>
+    <string name="sendMessage">آیاپیام را ارسال می کنید؟</string>
+    <string name="forgeted_my_pas">رمز عبور خود را فراموش کرده ام</string>
 </resources>

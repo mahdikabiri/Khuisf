@@ -93,7 +93,7 @@
 
             </LinearLayout>
 
-            <Button
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
                 android:id="@+id/login_btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,8 +107,18 @@
                 android:shadowColor="@color/mybluecolor"
                 android:text="ورود"
                 android:textColor="#fff"
-                android:textSize="20sp" />
-
+                android:textSize="20sp"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_color="@color/myorangecolor"
+                app:spinning_bar_padding="6dp"/>
+<!--
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:spinning_bar_width="4dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="6dp"
+                 />-->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

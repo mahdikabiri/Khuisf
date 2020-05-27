@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity {
         ivLogo = findViewById(R.id.iv_logo);
 
         AlphaAnimation animation1 = new AlphaAnimation(0f, 0.7f);
-        animation1.setDuration(1500);
+        animation1.setDuration(1000);
         ivLogo.startAnimation(animation1);
         SessionManagerIntroSlider manager = new SessionManagerIntroSlider(this);
         if (!manager.isLogedInforIntro()) {
