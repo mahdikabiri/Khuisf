@@ -19,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         ivLogo = findViewById(R.id.iv_logo);
 
-        AlphaAnimation animation1 = new AlphaAnimation(0f, 1.0f);
+        AlphaAnimation animation1 = new AlphaAnimation(0f, 0.7f);
         animation1.setDuration(1500);
         ivLogo.startAnimation(animation1);
         SessionManagerIntroSlider manager = new SessionManagerIntroSlider(this);
@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(new Intent(this, LoginActivity.class));
                 finish();
             };
-            handler.postDelayed(r, 1800);
+            handler.postDelayed(r, 1500);
         }
 
     }

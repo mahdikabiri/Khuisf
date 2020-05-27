@@ -26,6 +26,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.androidnetworking.AndroidNetworking;
 import com.example.khuisf.messgeainbox.InboxActivity;
 import com.example.khuisf.students.contact_teacher.ContactToTeacherActivity;
+import com.example.khuisf.tools.MyTools;
 import com.example.khuisf.tools.SessionManager;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -179,22 +180,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent=new Intent(MainActivity.this,ContactActivity.class);
         startActivity(intent);
         CustomIntent.customType(MainActivity.this,"left-to-right");
-       /* SessionManager manager = new SessionManager(MainActivity.this);
-        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        preferences.edit().putString("code", "null").apply();
-        manager.setLogedIn(false);
-        Cheshmak.deleteAllTags();
-        preferences.edit().clear().commit();
-        finish();
-    */}
+       }
 
     public void logout(MenuItem item) {
-        SessionManager manager = new SessionManager(MainActivity.this);
-        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        preferences.edit().putString("code", "null").apply();
-        manager.setLogedIn(false);
-        Cheshmak.deleteAllTags();
-        preferences.edit().clear().commit();
+
+        MyTools.logout(this);
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
         finish();
     }
