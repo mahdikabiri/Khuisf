@@ -30,7 +30,7 @@ import me.cheshmak.android.sdk.core.Cheshmak;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment  {
     LinearLayout layoutStu, layoutTeach;
     TextView tvName, tvNationalCode, tvUserName, tvPhone, tvFatherName;
     //Students
@@ -38,6 +38,11 @@ public class ProfileFragment extends Fragment {
     //Teachers
     TextView tvTeacherCode;
     CircleImageView ivAvatar;
+
+
+
+    private long backPressedTime;
+    private Toast backTost;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -66,6 +71,7 @@ public class ProfileFragment extends Fragment {
             handler.postDelayed(r, 1000);
         }
 
+
         setTexes(role, view);
 
         String picUrl = preferences.getString("pic", "");
@@ -75,6 +81,23 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getActivity(), "به زودی", Toast.LENGTH_SHORT).show();
         });
     }
+
+/*
+    @Override
+    public void onBackPressed() {
+
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backTost.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backTost = Toast.makeText(context, "برای خروج دوباره فشار دهید", Toast.LENGTH_SHORT);
+            backTost.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+    */
+
 
     private void setImageProf(String picUrl) {
 

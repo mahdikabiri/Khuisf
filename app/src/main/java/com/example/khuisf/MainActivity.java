@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
     public static Context context;
 
 
-    private long backPressedTime;
-    private Toast backTost;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
         AndroidNetworking.initialize(this);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
+
         init();
+
         context = this;
         SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
         View headView = navigationView.getHeaderView(0);
@@ -175,19 +174,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backTost.cancel();
-            super.onBackPressed();
-            return;
-        } else {
-            backTost = Toast.makeText(context, "برای خروج دوباره فشار دهید", Toast.LENGTH_SHORT);
-            backTost.show();
-        }
-        backPressedTime = System.currentTimeMillis();
-    }
 
     public void open_ac_support(MenuItem item) {
         Intent intent = new Intent(MainActivity.this, ContactActivity.class);

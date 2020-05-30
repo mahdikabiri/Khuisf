@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.R;
@@ -24,7 +26,7 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
     public JSONObject jsonObject = new JSONObject();
     LayoutInflater inflater;
     Context context;
-    private ArrayList<StudentAttendancer> mstudents;
+    public ArrayList<StudentAttendancer> mstudents;
 
     public AttendancerAdapter(Context context, ArrayList<StudentAttendancer> students, JSONObject jsonObjectonnvar) {
         this.context = context;
@@ -43,7 +45,7 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
         StudentAttendancer currentItem = mstudents.get(position);
         holder.tvName.setText(currentItem.getName());
         holder.tvCode.setText(currentItem.getCode());
-        Picasso.get().load(currentItem.getPic()).into(holder.imgProf);
+        Picasso.get().load(currentItem.getPic()).placeholder(R.drawable.ic_avatar_placeholfrt).into(holder.imgProf);
 
 
         generateStatus(currentItem.getStatus(), holder);
@@ -60,6 +62,28 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
 
         if (currentItem.getStatus() == 2) {
             holder.iconSwitch.setAlpha((float) .1);
+        }
+
+        //for expanded item
+        boolean isExpaned = mstudents.get(position).isExpanded();
+        holder.expandableLayout.setVisibility(isExpaned ? View.VISIBLE : View.GONE);
+        StudentAttendancer studentAttendancer = mstudents.get(position);
+
+        seticon(holder, studentAttendancer);
+
+        holder.imageView1.setOnClickListener(v -> {
+            studentAttendancer.setExpanded(!studentAttendancer.isExpanded());
+            notifyItemChanged(position);
+
+        });
+
+    }
+
+    private void seticon(CourseViewHolder holder, StudentAttendancer studentAttendancer) {
+        if (studentAttendancer.isExpanded()) {
+            holder.imageView1.setImageResource(R.drawable.ic_up_arrow);
+        } else if (!studentAttendancer.isExpanded()) {
+            holder.imageView1.setImageResource(R.drawable.ic_down_arrow);
         }
     }
 
@@ -87,6 +111,8 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
         public TextView tvCode;
         public IconSwitch iconSwitch;
         public CircleImageView imgProf;
+        ConstraintLayout expandableLayout;
+        AppCompatImageView imageView1;
 
 
         public CourseViewHolder(@NonNull View itemView) {
@@ -95,6 +121,9 @@ public class AttendancerAdapter extends RecyclerView.Adapter<AttendancerAdapter.
             tvCode = itemView.findViewById(R.id.attendancer_tv_code);
             iconSwitch = itemView.findViewById(R.id.attendance_item_icon_switch);
             imgProf = itemView.findViewById(R.id.circleImageView);
+            expandableLayout = itemView.findViewById(R.id.expandable_layout_attendancer_item);
+            imageView1 = itemView.findViewById(R.id.img_test);
+
         }
 
 

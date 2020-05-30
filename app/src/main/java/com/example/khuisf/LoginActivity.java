@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.cheshmak.android.sdk.core.Cheshmak;
+import me.cheshmak.android.sdk.core.config.CheshmakConfig;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -57,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
+        //Toast.makeText(this, CheshmakConfig.getString("url","null"), Toast.LENGTH_SHORT).show();
 
         ButtonDesign.setDesign(btnLogin, this);
 
