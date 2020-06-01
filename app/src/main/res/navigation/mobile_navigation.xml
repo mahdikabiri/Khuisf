@@ -5,10 +5,19 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_share">
 
+
+
+
+    <fragment
+        android:id="@+id/nav_week"
+        android:name="com.example.khuisf.FragmentWeek"
+        android:label="برنامه هفتگی" />
+
+
     <fragment
         android:id="@+id/weekly_plan_student"
         android:name="com.example.khuisf.students.weeklyplan.weeklyPlanFragment"
-        android:label="برنامه هفتگی"
+        android:label="دروس اخذ شده"
         tools:layout="@layout/fragment_getcourse" />
 
     <fragment

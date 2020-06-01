@@ -9,6 +9,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
                     if (validInput(inputLayoutUsername) && validInput(inputLayoutPass)) {
                       btnLogin.startAnimation();
                         login(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim(), manager);
-                        btnLogin.revertAnimation();
 
                     }
                 }
@@ -111,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        btnLogin.revertAnimation();
                         try {
                             String getedUsername = response.getString("username");
                             String getedName = response.getString("name");
@@ -146,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                        if (anError.toString().contains("is_blocked")) {
+                        if (anError.toString().contains("blocked")) {
                             new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                                     .setTitleText("ورود ممکن نیست!")
                                     .setContentText("حساب مورد نظر از طرف مدیریت مسدود شده است")
@@ -162,6 +163,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
                                                 preferences.edit().putString("national_code", response).apply();
                                                 startActivity(new Intent(LoginActivity.this, ContactActivity.class));
+                                                btnLogin.revertAnimation();
                                             }
 
                                             @Override
@@ -174,8 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                                     })
                                     .setCancelButton("بستن", sweetAlertDialog -> {
                                         sweetAlertDialog.dismissWithAnimation();
-                                        btnLogin.revertAnimation();
-                                    });
+                                    }).show();
 
                                     /*.setCancelButton("بستن", sweetAlertDialog ->
 
@@ -185,9 +186,12 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             MDToast mdToast = MDToast.makeText(getApplicationContext(), getString(R.string.network_err), MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
                             mdToast.show();
-                            btnLogin.revertAnimation();
                         }
+
+                        btnLogin.revertAnimation();
+
                     }
+
                 });
 
 

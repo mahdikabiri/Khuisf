@@ -9,14 +9,17 @@
     </item>
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_week"
+            android:icon="@drawable/ic_timetable"
+            android:title="برنامه هفتگی" />
+        <item
             android:id="@+id/nav_share"
-
             android:icon="@drawable/ic_user_menu"
             android:title="اطلاعات" />
         <item
             android:id="@+id/weekly_plan_student"
-            android:icon="@drawable/ic_timetable"
-            android:title="برنامه هفتگی" />
+            android:icon="@drawable/ic_books_stack_of_three"
+            android:title="درس های من" />
         <item
             android:id="@+id/nav_score"
             android:icon="@drawable/ic_scoreboard"

@@ -147,4 +147,10 @@
     <string name="account_blocked">حساب کاربری شما مسدود شد</string>
     <string name="sendMessage">آیاپیام را ارسال می کنید؟</string>
     <string name="forgeted_my_pas">رمز عبور خود را فراموش کرده ام</string>
+    <string name="monday">دوشنبه</string>
+    <string name="firday">جمعه</string>
+    <string name="wednesday">چهارشنبه</string>
+    <string name="tuesday">سه شنبه</string>
+    <string name="sunday">بک شنبه</string>
+    <string name="saturday">شنبه</string>
 </resources>

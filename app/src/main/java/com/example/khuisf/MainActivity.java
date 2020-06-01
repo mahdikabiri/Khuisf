@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     public static Context context;
 
 
+    private long backPressedTime;
+    private Toast backTost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.weekly_plan_student, R.id.nav_insertscore, R.id.nav_attendaner,
                 R.id.nav_score, R.id.nav_share, R.id.select_courses, R.id.deleteCourses, R.id.see_attendace,
-                R.id.nav_send_message_teacher, R.id.contactTeacherFragment)
+                R.id.nav_send_message_teacher, R.id.contactTeacherFragment,R.id.nav_week)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -174,6 +177,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backTost.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backTost = Toast.makeText(context, "برای خروج دوباره فشار دهید", Toast.LENGTH_SHORT);
+            backTost.show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 
     public void open_ac_support(MenuItem item) {
         Intent intent = new Intent(MainActivity.this, ContactActivity.class);

@@ -6,7 +6,8 @@
         android:icon="@drawable/ic_group"
         android:title="نمایش همه" />
     <item
-        android:id="@+id/nav_show_courses"
+        android:id="@+id/nav_show_csourses"
         android:icon="@drawable/ic_coues"
         android:title="براساس مشخصه" />
+
 </menu>
