@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_marginStart="8dp"
-
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:elevation="10dp"
@@ -28,7 +27,7 @@
             android:elevation="8dp"
             android:orientation="horizontal"
             app:bnc_mode="inside"
-
+            android:padding="3dp"
             >
 
 
@@ -36,7 +35,10 @@
                 android:id="@+id/l_itیسبeسیبm_یsیhome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:bt_shape="@drawable/custom_withe_bg"
                 app:bt_colorInactive="@color/colorRed"
+                app:bt_colorActive="@color/pink"
+                app:bt_shapeColor="@color/pink_light"
                 app:bt_icon="@drawable/ic_friday"
                 app:bt_title="جمعه" />
 
@@ -44,6 +46,9 @@
                 android:id="@+id/l_itیسبem_یsیhome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:bt_shapeColor="@color/blued_light"
+                app:bt_shape="@drawable/custom_withe_bg"
+                app:bt_colorActive="@color/blued"
                 app:bt_colorInactive="@color/mybluecolor"
                 app:bt_icon="@drawable/ic_thursday"
                 app:bt_title="پنج شنبه" />
@@ -52,6 +57,9 @@
                 android:id="@+id/l_item_یsیhome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:bt_colorActive="@color/blue"
+                app:bt_shape="@drawable/custom_withe_bg"
+                app:bt_shapeColor="@color/blue_light"
                 app:bt_colorInactive="@color/mybluecolor"
                 app:bt_icon="@drawable/ic_wednesday"
                 app:bt_title="چهار شنبه" />
@@ -60,16 +68,22 @@
                 android:id="@+id/l_item_sیhome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:bt_colorActive="@color/green"
                 app:bt_colorInactive="@color/mybluecolor"
                 app:bt_icon="@drawable/ic_tuesday"
+                app:bt_shape="@drawable/custom_withe_bg"
+                app:bt_shapeColor="@color/green_light"
                 app:bt_title="سه شنبه" />
 
             <com.gauravk.bubblenavigation.BubbleToggleView
                 android:id="@+id/l_item_shome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:bt_colorActive="@color/yellow"
                 app:bt_colorInactive="@color/mybluecolor"
                 app:bt_icon="@drawable/ic_monday"
+                app:bt_shape="@drawable/custom_withe_bg"
+                app:bt_shapeColor="@color/yellow_light"
                 app:bt_title="دوشنبه" />
 
             <com.gauravk.bubblenavigation.BubbleToggleView
@@ -78,17 +92,20 @@
                 android:layout_height="wrap_content"
                 app:bt_colorInactive="@color/mybluecolor"
                 app:bt_icon="@drawable/ic_sunday"
-                app:bt_shapeColor="@color/green"
+                app:bt_colorActive="@color/orange"
+                app:bt_shapeColor="@color/orange_light"
+                app:bt_shape="@drawable/custom_withe_bg"
                 app:bt_title="یکشنبه" />
 
             <com.gauravk.bubblenavigation.BubbleToggleView
                 android:id="@+id/l_item_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:bt_colorActive="@color/myorangecolor"
+                app:bt_colorActive="@color/red"
                 app:bt_colorInactive="@color/mybluecolor"
                 app:bt_icon="@drawable/ic_saturday"
-                app:bt_active="true"
+                app:bt_shape="@drawable/custom_withe_bg"
+                app:bt_shapeColor="@color/red_light"
                 app:bt_title="شنبه" />
             <!-- Add more child items here - max upto 5 -->
 

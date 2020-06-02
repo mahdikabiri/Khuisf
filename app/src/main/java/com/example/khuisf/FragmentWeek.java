@@ -73,7 +73,7 @@ public class FragmentWeek extends Fragment {
         vpMain.setAdapter(adapter);
         ///storage how much fragment
         vpMain.setOffscreenPageLimit(6);
-        vpMain.setCurrentItem(1);
+        vpMain.setCurrentItem(6);
 
         return view;
     }
