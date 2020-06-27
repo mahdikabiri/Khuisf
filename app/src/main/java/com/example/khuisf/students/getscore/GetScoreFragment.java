@@ -43,28 +43,20 @@ public class GetScoreFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_getscore, container, false);
+        View view = inflater.inflate(R.layout.fragment_getscore, container, false);
         RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        root.setLayoutParams(layoutParams);
-        return root;
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.frag_getscore_recycler);
+        recyclerView = view.findViewById(R.id.frag_getscore_recycler);
         AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
         adapter = new ScoreAdapter(getContext(), courseItems);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         initSwipeRefreashLayout(view);
         getScore();
-
+        view.setLayoutParams(layoutParams);
+        return view;
     }
+
+
 
     private void initSwipeRefreashLayout(View view) {
         swipeRefreshLayout = view.findViewById(R.id.get_score_swipe_refresh);

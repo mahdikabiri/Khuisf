@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.weekly_plan_student, R.id.nav_insertscore, R.id.nav_attendaner,
                 R.id.nav_score, R.id.nav_share, R.id.select_courses, R.id.deleteCourses, R.id.see_attendace,
-                R.id.nav_send_message_teacher, R.id.contactTeacherFragment,R.id.nav_week)
+                R.id.nav_send_message_teacher, R.id.contactTeacherFragment, R.id.nav_week, R.id.show_all_notes)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         return "";
     }
 
-
+/*
     @Override
     public void onBackPressed() {
 
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             backTost.show();
         }
         backPressedTime = System.currentTimeMillis();
-    }
+    }*/
 
     public void open_ac_support(MenuItem item) {
         Intent intent = new Intent(MainActivity.this, ContactActivity.class);

@@ -10,10 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -40,32 +37,20 @@ public class weeklyPlanFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
-    public weeklyPlanFragment() {
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_getcourse, container, false);
-
-        return view;
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.recycler_getcourse);
+        recyclerView = view.findViewById(R.id.recycler_getcourse);
         AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
         adapter = new CourseAdapter(getContext(), courseItems);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         initSwipeRefreashLayout(view);
         getCourses();
-
+        return view;
     }
+
 
     private void initSwipeRefreashLayout(View view) {
         swipeRefreshLayout = view.findViewById(R.id.get_course_swipe_refresh);

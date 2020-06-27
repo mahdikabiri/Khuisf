@@ -42,7 +42,7 @@
                     android:id="@+id/activity_show_attendance_tv_stuname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_school"
+                    android:drawableRight="@drawable/ic_student"
                     android:text="دانشجو"
                     android:textSize="20sp" />
 

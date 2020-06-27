@@ -71,7 +71,6 @@ public class ContactToTeacherActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         Toast.makeText(getApplication(), "ایراد در دریافت برنامه دروس", Toast.LENGTH_SHORT).show();
-                        Log.d("ersss", anError.toString());
 
                     }
                 });

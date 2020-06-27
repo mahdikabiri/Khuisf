@@ -48,25 +48,17 @@ public class AttendacerFragmentForTeacher extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_attendance, container, false);
-        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setLayoutParams(layoutParams);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.recycler_attendance);
+        recyclerView = view.findViewById(R.id.recycler_attendance);
         courseItems = new ArrayList<>();
         adapter = new CourseAdapterForTeach(getContext(), courseItems);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         //geting teachers code from shared preferences
         initSwipeRefreashLayout(view);
         getCourses();
+        return view;
     }
+
 
     private void initSwipeRefreashLayout(View view) {
         swipeRefreshLayout = view.findViewById(R.id.get_course_atendance_for_teacher_swipe_refresh);

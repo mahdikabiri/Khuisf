@@ -82,7 +82,6 @@ public class InfoActivity extends AppCompatActivity {
             case "مدیر":
                 roleForSend = 4;
                 break;
-
         }
         return roleForSend;
 

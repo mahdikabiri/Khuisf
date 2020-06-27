@@ -3,21 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_share">
-
-
-
+    app:startDestination="@id/nav_week">
 
     <fragment
         android:id="@+id/nav_week"
-        android:name="com.example.khuisf.FragmentWeek"
+        android:name="com.example.khuisf.week.FragmentWeek"
         android:label="برنامه هفتگی" />
-
 
     <fragment
         android:id="@+id/weekly_plan_student"
         android:name="com.example.khuisf.students.weeklyplan.weeklyPlanFragment"
-        android:label="دروس اخذ شده"
+        android:label="درس های من"
         tools:layout="@layout/fragment_getcourse" />
 
     <fragment
@@ -66,5 +62,10 @@
         android:id="@+id/contactTeacherFragment"
         android:name="com.example.khuisf.ContactTeacherFragment"
         android:label=" ارتباط با استاد"
+        tools:layout="@layout/fragment_contact_teacher" />
+    <fragment
+        android:id="@+id/show_all_notes"
+        android:name="com.example.khuisf.notes.GetAllNotesFragment"
+        android:label="یادداشت ها"
         tools:layout="@layout/fragment_contact_teacher" />
 </navigation>

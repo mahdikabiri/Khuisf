@@ -3,64 +3,112 @@ package com.example.khuisf.week.days;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
+import com.example.khuisf.database.AppDatabase;
+import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.note.Note;
+import com.example.khuisf.entitys.note.NoteDao;
+import com.example.khuisf.notes.NoteAdapter;
+import com.example.khuisf.students.weeklyplan.CourseAdapter;
+import com.example.khuisf.tools.GetDataFromSH;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TuesdayFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class TuesdayFragment extends Fragment {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.util.ArrayList;
+import java.util.List;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class TuesdayFragment extends Fragment implements NoteAdapter.NoteCallback {
 
-    public TuesdayFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TuesdayFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TuesdayFragment newInstance(String param1, String param2) {
-        TuesdayFragment fragment = new TuesdayFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    ArrayList<Course> courseItems;
+    private RecyclerView recyclerView,recyclerViewNote;
+    private RecyclerView.Adapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tuesday, container, false);
+        View view = inflater.inflate(R.layout.fragment_tuesday, container, false);
+        recyclerView = view.findViewById(R.id.fragment_tuesday_recycler);
+        recyclerViewNote = view.findViewById(R.id.fragment_monday_recycler_note);
+        AndroidNetworking.initialize(getContext());
+        courseItems = new ArrayList<>();
+        adapter = new CourseAdapter(getContext(), courseItems);
+        recyclerView.setAdapter(adapter);
+        intiNoteRecycler();
+        getCourses();
+        return view;
+    }
+
+    private void intiNoteRecycler() {
+        NoteDao noteDao;
+        List<Note> notes;
+        AppDatabase appDatabase = AppDatabase.getInstance(getContext());
+        noteDao = appDatabase.noteDao();
+        notes = noteDao.getAllTuesday();
+        NoteAdapter noteAdapter;
+        noteAdapter = new NoteAdapter(this,true,getContext());
+        recyclerViewNote.setAdapter(noteAdapter);
+        noteAdapter.addNotes(notes);
+    }
+
+    private void getCourses() {
+        AndroidNetworking.initialize(getActivity());
+        AndroidNetworking.post(getString(R.string.host) + getString(R.string.getCoursesday))
+                .addBodyParameter("code", GetDataFromSH.getCodeFromSharedPrefs(getContext()))
+                .addBodyParameter("day", getString(R.string.tuesday))
+                .setTag("getCourses")
+                .build().getAsJSONArray(new JSONArrayRequestListener() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    //this loop repeating to count of course list
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject object = response.getJSONObject(i);
+                        int cId = object.getInt("id");
+                        String cName = object.getString("name");
+                        String cDay = object.getString("day");
+                        String cTime = object.getString("time");
+                        String cChar = object.getString("charac");
+                        // add items from db and save to arraylist
+                        courseItems.add(new Course(cId, cName, cDay, cTime, cChar));
+                        adapter.notifyDataSetChanged();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(getActivity(), e.toString() + "", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(ANError anError) {
+                Toast.makeText(getActivity(),getString(R.string.fail_get_plan), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onDeleteClick(Note note, int position) {
+
+    }
+
+    @Override
+    public void onEditClick(Note note, int position) {
+
+    }
+
+    @Override
+    public void onOpenNote(Note note, int postion) {
+
     }
 }

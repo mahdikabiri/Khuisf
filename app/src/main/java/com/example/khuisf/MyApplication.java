@@ -10,5 +10,6 @@ public class MyApplication extends Application {
         super.onCreate();
         Cheshmak.with(this);
         Cheshmak.initTracker(getString(R.string.key_cheshmak));
+
     }
 }

@@ -2,15 +2,52 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/pink_light"
     android:layout_height="match_parent"
     tools:context=".week.days.FridayFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+  <!--  <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="@string/firday" />
+        android:text="@string/friday" />
+  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical">
+
+        <com.mlsdev.animatedrv.AnimatedRecyclerView
+            android:id="@+id/fragment_friday_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_weight="4"
+            app:animationDuration="600"
+            app:layoutAnimation="@anim/layout_animation_from_bottom"
+            app:layoutManagerOrientation="vertical"
+            app:layoutManagerReverse="false"
+            app:layoutManagerType="linear" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="یادداشت های امروز" />
+
+        <com.mlsdev.animatedrv.AnimatedRecyclerView
+            android:id="@+id/fragment_friday_recycler_note"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_weight="1"
+            app:animationDuration="600"
+            app:layoutAnimation="@anim/layout_animation_from_bottom"
+            app:layoutManagerOrientation="vertical"
+            app:layoutManagerReverse="false"
+            app:layoutManagerType="linear" />
+    </LinearLayout>
+
 </FrameLayout>

@@ -15,7 +15,11 @@
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_user_menu"
-            android:title="اطلاعات فردی" />
+            android:title="اطلاعات کاربری" />
+        <item
+            android:id="@+id/show_all_notes"
+            android:icon="@drawable/ic_note"
+            android:title="یادداشت های من" />
         <item
             android:id="@+id/nav_attendaner"
             android:icon="@drawable/ic_attendancer"

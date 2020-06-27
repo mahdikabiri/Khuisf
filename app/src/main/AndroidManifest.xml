@@ -16,12 +16,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
-        <activity android:name=".ContactActivity"
-            android:label="پشتیبانی">
-        </activity>
+        <activity android:name=".notes.ShowNoteActivity"></activity>
+        <activity android:name=".notes.EditNoteActivity" />
+        <activity
+            android:name=".ContactActivity"
+            android:label="پشتیبانی" />
 
         <service android:name=".tools.BlockService">
-            <meta-data android:name="cheshmakPush"
+            <meta-data
+                android:name="cheshmakPush"
                 android:value="startServiceOnPush" />
         </service>
 

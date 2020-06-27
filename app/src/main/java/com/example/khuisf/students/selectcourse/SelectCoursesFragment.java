@@ -50,13 +50,8 @@ public class SelectCoursesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_select_courses, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.select_course_recycler);
+        View view = inflater.inflate(R.layout.fragment_select_courses, container, false);
+        recyclerView = view.findViewById(R.id.select_course_recycler);
         AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
         adapter = new SelectCourseAdapter(getContext(), courseItems);
@@ -66,6 +61,13 @@ public class SelectCoursesFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         initSwipeRefreashLayout(view);
         getCourses();
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
 
     }
 

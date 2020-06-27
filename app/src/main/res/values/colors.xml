@@ -68,28 +68,32 @@
     <color name="red">#f54133</color>
     <color name="red_light">#fceaea</color>
 
-    <color name="pink">#9b53ff</color>
-    <color name="pink_light">#A1E4D5FA</color>
-
-    <color name="green">#248a65</color>
-    <color name="green_light">#A1CDF3E6</color>
+    <color name="orange">#e26141</color>
+    <color name="orange_light">#A1FAD8D0</color>
 
 
     <color name="yellow">#faab46</color>
     <color name="yellow_light">#9FF6E8D2</color>
 
 
+    <color name="green">#248a65</color>
+    <color name="green_light">#A1CDF3E6</color>
+
+
     <color name="blue">#49a2fe</color>
     <color name="blue_light">#A6CFE2F6</color>
 
 
-
-    <color name="orange">#e26141</color>
-    <color name="orange_light">#A1FAD8D0</color>
-
-
     <color name="blued">#566ee8</color>
     <color name="blued_light">#9FD6DBF6</color>
+
+
+    <color name="pink">#9b53ff</color>
+    <color name="pink_light">#A1E4D5FA</color>
+
+
+<!--yekshanbe-->
+
 
 
 

@@ -42,25 +42,16 @@ public class InsertScoreFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_insertscore, container, false);
-        return root;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.fragment_insert_score_recycler);
+        View view = inflater.inflate(R.layout.fragment_insertscore, container, false);
+        recyclerView = view.findViewById(R.id.fragment_insert_score_recycler);
         courseItems = new ArrayList<>();
         adapter = new CourseAdapterForTeachInsertScore(getContext(), courseItems);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setAdapter(adapter);
         //geting teachers code from shared preferences
-
         initSwipeRefreashLayout(view);
         getCourses();
+        return view;
     }
 
     private void initSwipeRefreashLayout(View view) {

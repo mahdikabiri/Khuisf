@@ -13,8 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -49,25 +47,18 @@ public class DeleteCoursesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delete_courses, container, false);
 
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.delete_course_recycler);
-
+        View view = inflater.inflate(R.layout.fragment_delete_courses, container, false);
+        recyclerView = view.findViewById(R.id.delete_course_recycler);
         AndroidNetworking.initialize(getContext());
         courseItems = new ArrayList<>();
         adapter = new SampleAdapter(getContext(), courseItems);
         // recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
         //recyclerView.setAdapter(new SampleAdapter(getContext(),recyclerView));
         initSwipeRefreashLayout(view);
         getCourses();
+        return view;
     }
 
 
