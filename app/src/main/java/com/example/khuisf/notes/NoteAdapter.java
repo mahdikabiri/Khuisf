@@ -2,13 +2,19 @@ package com.example.khuisf.notes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +43,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     private boolean useWitheItem;
     private Context context;
     private NoteDao noteDao;
+    private AdapterView.OnItemClickListener mlistener;
 
 
     public NoteAdapter(NoteCallback noteCallback, boolean useWitheItem, Context context) {
@@ -95,30 +102,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         holder.bingNote(notes.get(position), holder);
-    }
-
-    private void initBubbleAction(View v, int adapterPosition, Note note) {
-        //if(!useWitheItem){
-        BubbleActions.on(v)
-                .addAction("حذف", R.drawable.ic_delete_note, () -> {
-                    //   noteCallback.onDeleteClick(note, adapterPosition);
-                    Toast.makeText(v.getContext(), "یادداشت حذف شد ", Toast.LENGTH_SHORT).show();
-                    noteDao.delete(note);
-                    delteNote(adapterPosition);
-                    //.delteNote(position);
-                })
-                .addAction("ویرایش", R.drawable.ic_edit_note, new Callback() {
-                    @Override
-                    public void doAction() {
-                        if (!useWitheItem) {
-                            noteCallback.onEditClick(note, adapterPosition);
-                            Intent intent = new Intent(v.getContext(), EditNoteActivity.class);
-                            intent.putExtra("note", note);
-                        } else {
-                        }
-                        Toast.makeText(context, "برای ویرایش از تب یادداشت ها اقدام کنید", Toast.LENGTH_SHORT).show();
-                    }
-                }).show();
     }
 
     @Override
@@ -185,7 +168,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             tvTitle.setText(note.getTitle());
             setDay(note.getDay(), tvDay, itemView);
             holder.layout.setOnLongClickListener(v -> {
-                initBubbleAction(v, getAdapterPosition(), note);
+                if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.P) {
+                    initBubbleAction(v, getAdapterPosition(), note);
+                } else {
+                  initPopupMenu(layout,getAdapterPosition(),note);
+
+
+                }
+                //
                 return false;
             });
             setBackColor(note, cardView, itemView);
@@ -193,9 +183,53 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             layout.setOnClickListener(v -> {
                 Toast.makeText(v.getContext(), R.string.for_edit_hold, Toast.LENGTH_SHORT).show();
             });
-
         }
     }
+
+    private void initPopupMenu(LinearLayout layout, int adapterPosition, Note note) {
+        PopupMenu popupMenu = new PopupMenu(context, layout);
+        popupMenu.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.popup_menu_edt_item:
+                    if (!useWitheItem) {
+                        noteCallback.onEditClick(note, adapterPosition);
+                        Intent intent = new Intent(context, EditNoteActivity.class);
+                        intent.putExtra("note", note);
+                    } else {
+                        Toast.makeText(context, "برای ویرایش از تب یادداشت ها اقدام کنید", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case R.id.popup_menu_delete_item:
+                    noteDao.delete(note);
+                    delteNote(adapterPosition);
+                    Toast.makeText(context, "یادداشت حذف شد ", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return false;
+        });
+
+        popupMenu.inflate(R.menu.popup_menu);
+        popupMenu.show();
+    }
+
+    private void initBubbleAction(View v, int adapterPosition, Note note) {
+        //if(!useWitheItem){
+        BubbleActions.on(v)
+                .addAction("حذف", R.drawable.ic_delete_note, () -> {
+                    //   noteCallback.onDeleteClick(note, adapterPosition);
+                    Toast.makeText(v.getContext(), "یادداشت حذف شد ", Toast.LENGTH_SHORT).show();
+                    noteDao.delete(note);
+                    delteNote(adapterPosition);
+                    //.delteNote(position);
+                })
+                .addAction("ویرایش", R.drawable.ic_edit_note, new Callback() {
+                    @Override
+                    public void doAction() {
+
+                    }
+                }).show();
+    }
+
 
     private void setDay(int day, TextView tvDay, View itemView) {
         switch (day) {
@@ -270,8 +304,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
         void onOpenNote(Note note, int postion);
     }
-
-
 
 
 }
