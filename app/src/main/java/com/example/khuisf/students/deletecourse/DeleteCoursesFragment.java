@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +17,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.course.Course;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +58,6 @@ public class DeleteCoursesFragment extends Fragment {
         getCourses();
         return view;
     }
-
 
     private void initSwipeRefreashLayout(View view) {
         swipeRefreshLayout = view.findViewById(R.id.delete_score_swipe_refresh);

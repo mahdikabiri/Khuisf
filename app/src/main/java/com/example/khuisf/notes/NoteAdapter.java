@@ -270,4 +270,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
         void onOpenNote(Note note, int postion);
     }
+
+
+
+
 }

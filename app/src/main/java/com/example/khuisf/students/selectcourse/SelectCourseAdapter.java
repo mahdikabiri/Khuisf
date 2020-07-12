@@ -19,7 +19,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.course.Course;
 
 import java.util.ArrayList;
 

@@ -6,11 +6,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.khuisf.entitys.course.CourseEntity;
-import com.example.khuisf.entitys.course.CourseEntityDao;
+import com.example.khuisf.entitys.coursesec.CourseEntity;
+import com.example.khuisf.entitys.coursesec.CourseEntityDao;
 import com.example.khuisf.entitys.note.Note;
 import com.example.khuisf.entitys.note.NoteDao;
-import com.example.khuisf.entitys.test.Test;
 
 @Database(entities = {Note.class,CourseEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {

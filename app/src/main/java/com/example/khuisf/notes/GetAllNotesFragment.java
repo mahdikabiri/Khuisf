@@ -38,7 +38,6 @@ public class GetAllNotesFragment extends Fragment implements NoteAdapter.NoteCal
     private boolean isInEditMode = false;
     private NoteDao noteDao;
     List<Note> notes;
-    List<Note> notesAll;
     int position;
     View view;
     LinearLayout layout;

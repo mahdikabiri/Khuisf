@@ -46,8 +46,6 @@ public interface NoteDao {
     @Query("DELETE FROM tbl_notes")
     void deleteAllNotes();
 
-
-
     @Query("SELECT * FROM tbl_notes WHERE title LIKE :keyword")
     List<Note> searchByTitle(String keyword);
 }

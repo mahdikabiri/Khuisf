@@ -1,7 +1,6 @@
 package com.example.khuisf.week.days;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +14,12 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.database.AppDatabase;
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.course.Course;
 import com.example.khuisf.entitys.note.Note;
 import com.example.khuisf.entitys.note.NoteDao;
 import com.example.khuisf.notes.NoteAdapter;
 import com.example.khuisf.students.weeklyplan.CourseAdapter;
 import com.example.khuisf.tools.GetDataFromSH;
-import com.example.khuisf.week.ViewPagerFragmentInterface;
 
 import org.json.JSONArray;
 import org.json.JSONException;

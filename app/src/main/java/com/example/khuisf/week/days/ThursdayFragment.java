@@ -14,7 +14,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.example.khuisf.R;
 import com.example.khuisf.database.AppDatabase;
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.course.Course;
 import com.example.khuisf.entitys.note.Note;
 import com.example.khuisf.entitys.note.NoteDao;
 import com.example.khuisf.notes.NoteAdapter;

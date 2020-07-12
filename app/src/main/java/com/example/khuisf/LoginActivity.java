@@ -2,23 +2,19 @@ package com.example.khuisf;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -35,7 +31,6 @@ import org.json.JSONObject;
 import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.cheshmak.android.sdk.core.Cheshmak;
-import me.cheshmak.android.sdk.core.config.CheshmakConfig;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText edtUsername, edtPassword;
     TextView tvforgetPass;
     TextInputLayout inputLayoutUsername, inputLayoutPass;
-
 
     private long backPressedTime;
     private Toast backTost;
@@ -72,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener((View v) -> {
                     if (validInput(inputLayoutUsername) && validInput(inputLayoutPass)) {
-                      btnLogin.startAnimation();
+                        btnLogin.startAnimation();
                         login(edtUsername.getText().toString().trim(), edtPassword.getText().toString().trim(), manager);
 
                     }
@@ -127,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                 preferences.edit().putString("name", getedName).apply();
                                 preferences.edit().putInt("role", getedAccess).apply();
                                 sendCheshmakIdToServer(getedUsername);
-
+//                                manager.setLogedIn(true);
                                 if (getedAccess == 1) {
                                     Cheshmak.sendTag("student");
                                 } else if (getedAccess == 2) {
@@ -179,7 +173,6 @@ public class LoginActivity extends AppCompatActivity {
                                     }).show();
 
                                     /*.setCancelButton("بستن", sweetAlertDialog ->
-
                                             sweetAlertDialog.dismissWithAnimation())
                                     .show();*/
 
@@ -189,12 +182,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         btnLogin.revertAnimation();
-
                     }
-
                 });
-
-
     }
 
 

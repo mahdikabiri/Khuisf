@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.course.Course;
 import com.example.khuisf.teachers.insertscore.InsertScoreActivity;
 
 import java.util.ArrayList;

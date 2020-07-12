@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.khuisf.MainActivity;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.course.Course;
 
 import java.util.ArrayList;
 

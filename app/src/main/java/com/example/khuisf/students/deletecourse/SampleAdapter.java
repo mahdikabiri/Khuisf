@@ -17,7 +17,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.khuisf.R;
-import com.example.khuisf.entitys.Course;
+import com.example.khuisf.entitys.course.Course;
 import com.tr4android.recyclerviewslideitem.SwipeAdapter;
 import com.tr4android.recyclerviewslideitem.SwipeConfiguration;
 
@@ -110,7 +110,6 @@ public class SampleAdapter extends SwipeAdapter implements View.OnClickListener 
                 .build().getAsString(new StringRequestListener() {
             @Override
             public void onResponse(String response) {
-                Log.d("mures", response);
                 if (response.equals("1")) {
                     Toast.makeText(context, courseName + " با موفقیت حذف شد ", Toast.LENGTH_SHORT).show();
 

@@ -1,4 +1,4 @@
-package com.example.khuisf.entitys.course;
+package com.example.khuisf.entitys.coursesec;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,6 +13,7 @@ public class CourseEntity implements Parcelable {
     private int id;
 
     private String characteristic;
+    private String title;
     private String date;
     private String day;//in week
     private String Time;
@@ -102,6 +103,26 @@ public class CourseEntity implements Parcelable {
         this.unitTh = unitTh;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public CourseEntity( String characteristic, String title, String date, String day, String time, String place, String master, String testDay, int unitAc, int unitTh) {
+        this.characteristic = characteristic;
+        this.date = date;
+        this.day = day;
+        this.title = title;
+        Time = time;
+        this.place = place;
+        this.master = master;
+        this.testDay = testDay;
+        this.unitAc = unitAc;
+        this.unitTh = unitTh;
+    }
 
     @Override
     public int describeContents() {
